@@ -29,6 +29,15 @@ public class WordSearchReader {
 		return lines.get(0);
 	}
 	
+	public String[][] makeGrid() {
+		List<String> puzzle = readPuzzle();
+		String[][] grid = new String[puzzle.size()][puzzle.size()]; 
+		for (int i = 0; i < puzzle.size(); i++) {
+			grid[i] = puzzle.get(i).split(",");
+		}
+		return grid;
+	}
+	
 	public List<String> readPuzzle() {
 		List<String> lines = readFile();
 		List<String> puzzle = new ArrayList<>();
