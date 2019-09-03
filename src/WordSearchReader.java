@@ -23,6 +23,15 @@ public class WordSearchReader {
 		return lines.get(0);
 	}
 	
+	public List<String> readPuzzle() {
+		List<String> lines = readFile();
+		List<String> puzzle = new ArrayList<>();
+		for(int i = 1; i < lines.size(); i++) {
+			puzzle.add(lines.get(i));
+		}
+		return puzzle;
+	}
+	
 	public List<String> readFile() {
 		
 		try {

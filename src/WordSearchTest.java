@@ -20,5 +20,14 @@ public class WordSearchTest {
 		String expected = "BUFFY,XANDER,GILES";
 	    assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void whenReadPuzzleIsPassedItReturnsTheListOfPuzzleStrings() {
+		WordSearchReader wordSearchReader = new WordSearchReader("puzzle_test.txt");
+		List<String> actual = wordSearchReader.readPuzzle();
+		List<String> expected = Arrays.asList("Y,G,M,E,F,B,N,D,H,D,G,Y,Y,B,I", "E,K,G,H,Q,Z,T,J,A,A,F,F,F,M,K");
+	    assertEquals(expected, actual);
+	}
+	
 
 }
