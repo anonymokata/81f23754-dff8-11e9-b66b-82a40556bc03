@@ -49,6 +49,13 @@ public class WordSearchTest {
 		assertArrayEquals(expected, actual);
 	}
 	
+	@Test
+	public void whenMakeGridIsPassedItReturnsThePuzzleAsA2DArrayMedium() {
+		WordSearchReader wordSearchReader = new WordSearchReader("puzzle_grid_test_medium.txt");
+		String[][] actual = wordSearchReader.makeGrid();
+		String[][] expected = {{"Y","G","M"}, {"E","K","G"}, {"H","O","A"}};
+		assertArrayEquals(expected, actual);
+	}
 	
 
 }
