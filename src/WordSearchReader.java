@@ -17,7 +17,12 @@ public class WordSearchReader {
 	public WordSearchReader(String filePath) {
 		this(Paths.get(filePath));
 	}
-
+	
+	public String readKeywords() {
+		List<String> lines = readFile();
+		return lines.get(0);
+	}
+	
 	public List<String> readFile() {
 		
 		try {
@@ -29,5 +34,7 @@ public class WordSearchReader {
 			return new ArrayList<>();
 		}
 	}
+	
+	
 
 }
