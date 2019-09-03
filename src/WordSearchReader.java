@@ -9,7 +9,7 @@ import java.util.List;
 public class WordSearchReader {
 	
 	private Path filePath;
-	
+
 	public WordSearchReader(Path filePath) {
 		this.filePath = filePath;
 	}
@@ -17,6 +17,12 @@ public class WordSearchReader {
 	public WordSearchReader(String filePath) {
 		this(Paths.get(filePath));
 	}
+	
+	public String[] splitKeywords() {
+		String keywords = readKeywords();
+		return keywords.split(",");
+	}
+
 	
 	public String readKeywords() {
 		List<String> lines = readFile();

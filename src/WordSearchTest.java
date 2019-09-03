@@ -1,10 +1,14 @@
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Arrays;
 import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 public class WordSearchTest {
 
+	
 	@Test
 	public void whenReadFileIsPassedItReturnsAListOfStringsFromTheTextFile() {
 		WordSearchReader wordSearchReader = new WordSearchReader("small_test.txt");
@@ -27,6 +31,14 @@ public class WordSearchTest {
 		List<String> actual = wordSearchReader.readPuzzle();
 		List<String> expected = Arrays.asList("Y,G,M,E,F,B,N,D,H,D,G,Y,Y,B,I", "E,K,G,H,Q,Z,T,J,A,A,F,F,F,M,K");
 	    assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void whenSplitKeywordsIsPassedItReturnsAnArrayOfKeywords() {
+		WordSearchReader wordSearchReader = new WordSearchReader("keyword_test.txt");
+		String[] actual = wordSearchReader.splitKeywords();
+		String[] expected = {"BUFFY","XANDER","GILES"};
+	    assertArrayEquals(expected, actual);
 	}
 	
 
