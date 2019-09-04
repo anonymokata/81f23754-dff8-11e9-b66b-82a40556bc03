@@ -30,8 +30,7 @@ public class Finder {
 		List<Coordinates> potentials = new ArrayList<>();
 		for (int row = 0; row < grid.length; row++) {
 			for (int col = 0; col < grid.length; col++) {
-				if (keyword.getWord().startsWith(grid[row][col]) 
-						&& (keyword.getLength() <= (grid[0].length - col))) {
+				if (keyword.getWord().startsWith(grid[row][col])) {
 					potentials.add(new Coordinates(row, col));
 				}
 			}
@@ -40,14 +39,14 @@ public class Finder {
 	}
 
 	public Boolean checkNextCoordinates(Coordinates coordinates) {
-		if (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow()][coordinates.getCol()+1])) {
+		if (keyword.getWord().substring(1, 2).equals(getHorizontalGridString(coordinates))) {
 			return true;
 		} else {
 			return false;
 		}	
 	}
 	
-	public String getGridString(Coordinates coordinates) {
+	public String getHorizontalGridString(Coordinates coordinates) {
 		String gridString = grid[coordinates.getRow()][coordinates.getCol()+1];
 		return gridString;
 	}

@@ -95,7 +95,7 @@ public class WordSearchTest {
 		String actual = findTaraShort.findPotentialStartingCoordinates().toString();
 		String actual2 = findDawnShort.findPotentialStartingCoordinates().toString();
 		String expected = "[(1,0)]";
-		String expected2 = "[(3,0)]";
+		String expected2 = "[(2,3), (3,0)]";
 		assertEquals(expected, actual);
 		assertEquals(expected2, actual2);
 	}
@@ -103,14 +103,14 @@ public class WordSearchTest {
 	@Test
 	public void whenFindPotentialStartingCoordinatesIsPassedDawnItReturnsCoordinatesLong() {
 		String actual = findDawnLong.findPotentialStartingCoordinates().toString();
-		String expected = "[(3,1)]";
+		String expected = "[(2,3), (3,1)]";
 		assertEquals(expected, actual);
 	}
 	
 	@Test
 	public void whenFindPotentialStartingCoordinatesIsPassedXanderItReturnsAListOfCoordinatesFull() {
 		String actual = findXander.findPotentialStartingCoordinates().toString();
-		String expected = "[(7,0), (8,3), (9,0), (11,0), (11,7), (14,5)]";
+		String expected = "[(4,11), (7,0), (7,12), (8,3), (9,0), (11,0), (11,7), (14,5)]";
 		assertEquals(expected, actual);
 	}
 	
@@ -130,7 +130,7 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenGetGridStringIsPassedACoordinatesItReturnsAMatchingGridString() {
-		String actual = findDawnShort.getGridString(new Coordinates (3,0));
+		String actual = findDawnShort.getHorizontalGridString(new Coordinates (3,0));
 		String expected = "A";
 		assertEquals(expected, actual);
 	}
