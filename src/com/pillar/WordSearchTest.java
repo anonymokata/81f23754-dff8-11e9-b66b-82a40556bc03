@@ -127,5 +127,12 @@ public class WordSearchTest {
 		Boolean expected = false;
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void whenGetGridStringIsPassedACoordinatesItReturnsAMatchingGridString() {
+		String actual = findDawnShort.getGridString(new Coordinates (3,0));
+		String expected = "A";
+		assertEquals(expected, actual);
+	}
 
 }

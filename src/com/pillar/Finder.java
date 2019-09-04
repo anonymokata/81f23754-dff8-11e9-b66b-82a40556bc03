@@ -44,7 +44,11 @@ public class Finder {
 			return true;
 		} else {
 			return false;
-		}
-		
+		}	
+	}
+	
+	public String getGridString(Coordinates coordinates) {
+		String gridString = grid[coordinates.getRow()][coordinates.getCol()+1];
+		return gridString;
 	}
 }
