@@ -14,12 +14,14 @@ public class WordSearchTest {
 	WordSearchReader wordSearchReader;
 	WordSearchReader mainReader;
 	WordSearchReader horizontalReader;
+	WordSearchReader horizontalReaderLong;
 	Finder finder;
 	
 	@BeforeEach
 	public void setup() {
 		mainReader = new WordSearchReader("word_search.txt");
 		horizontalReader = new WordSearchReader("horizontal_test.txt");
+		horizontalReaderLong = new WordSearchReader("horizontal_test_long.txt");
 	}
 
 	@Test
@@ -81,25 +83,25 @@ public class WordSearchTest {
 	@Test
 	public void whenFindFirstLetterCoordinatesIsPassedTaraItReturnsCoordinates() {
 		finder = new Finder(horizontalReader.getAllKeywords().get(0), horizontalReader.makeGrid());
-		String actual = finder.findFirstLetterCoordinates();
-		String expected = "TARA: (1,0)";
+		String actual = finder.findFirstLetterCoordinates().toString();
+		String expected = "[(1,0)]";
 		assertEquals(expected, actual);
 	}
 	
 	@Test
 	public void whenFindFirstLetterCoordinatesIsPassedDawnItReturnsCoordinates() {
 		finder = new Finder(horizontalReader.getAllKeywords().get(1), horizontalReader.makeGrid());
-		String actual = finder.findFirstLetterCoordinates();
-		String expected = "DAWN: (3,0)";
+		String actual = finder.findFirstLetterCoordinates().toString();
+		String expected = "[(3,0)]";
 		assertEquals(expected, actual);
 	}
-//	
-//	@Test
-//	public void whenFindFirstLetterCoordinatesIsPassedDawnItReturnsCoordinatesLong() {
-//		wordSearchReader = new WordSearchReader("horizontal_test_long.txt");
-//		String actual = wordSearchReader.findFirstLetterCoordinates(wordSearchReader.getAllKeywords().get(1));
-//		String expected = "DAWN: (3,1)";
-//		assertEquals(expected, actual);
-//	}
+	
+	@Test
+	public void whenFindFirstLetterCoordinatesIsPassedDawnItReturnsCoordinatesLong() {
+		finder = new Finder(horizontalReaderLong.getAllKeywords().get(1), horizontalReaderLong.makeGrid());
+		String actual = finder.findFirstLetterCoordinates().toString();
+		String expected = "[(3,1)]";
+		assertEquals(expected, actual);
+	}
 
 }
