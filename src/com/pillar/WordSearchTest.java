@@ -16,6 +16,7 @@ public class WordSearchTest {
 	WordSearchReader horizontalReader;
 	WordSearchReader horizontalReaderLong;
 	Finder finder;
+	Finder finder2;
 	
 	@BeforeEach
 	public void setup() {
@@ -72,28 +73,24 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenGetAllKeywordsIsPassedItReturnsAListOfKeywordObjectsFirst() {
-		String actual1 = mainReader.getAllKeywords().get(0).getWord();
-		String expected1 = "BUFFY";
+		String actual = mainReader.getAllKeywords().get(0).getWord();
 		String actual2 = mainReader.getAllKeywords().get(2).getWord();
+		String expected = "BUFFY";
 		String expected2 = "GILES";
-		assertEquals(expected1, actual1);
+		assertEquals(expected, actual);
 		assertEquals(expected2, actual2);
 	}
 	
 	@Test
-	public void whenFindFirstLetterCoordinatesIsPassedTaraItReturnsCoordinates() {
+	public void whenFindFirstLetterCoordinatesIsPassedAKeywordItReturnsCoordinates() {
 		finder = new Finder(horizontalReader.getAllKeywords().get(0), horizontalReader.makeGrid());
+		finder2 = new Finder(horizontalReader.getAllKeywords().get(1), horizontalReader.makeGrid());
 		String actual = finder.findFirstLetterCoordinates().toString();
+		String actual2 = finder2.findFirstLetterCoordinates().toString();
 		String expected = "[(1,0)]";
+		String expected2 = "[(3,0)]";
 		assertEquals(expected, actual);
-	}
-	
-	@Test
-	public void whenFindFirstLetterCoordinatesIsPassedDawnItReturnsCoordinates() {
-		finder = new Finder(horizontalReader.getAllKeywords().get(1), horizontalReader.makeGrid());
-		String actual = finder.findFirstLetterCoordinates().toString();
-		String expected = "[(3,0)]";
-		assertEquals(expected, actual);
+		assertEquals(expected2, actual2);
 	}
 	
 	@Test
@@ -101,6 +98,14 @@ public class WordSearchTest {
 		finder = new Finder(horizontalReaderLong.getAllKeywords().get(1), horizontalReaderLong.makeGrid());
 		String actual = finder.findFirstLetterCoordinates().toString();
 		String expected = "[(3,1)]";
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void whenFindFirstLetterCoordinatesIsPassedXanderItReturnsAListOfCoordinatesFull() {
+		finder = new Finder(mainReader.getAllKeywords().get(1), mainReader.makeGrid());
+		String actual = finder.findFirstLetterCoordinates().toString();
+		String expected = "[(7,0), (8,3), (9,0), (11,0), (11,7), (14,5)]";
 		assertEquals(expected, actual);
 	}
 
