@@ -1,15 +1,23 @@
 package com.pillar;
-import static org.junit.Assert.assertArrayEquals;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class WordSearchTest {
 
 	WordSearchReader wordSearchReader;
+	WordSearchReader mainReader;
+	
+	@BeforeEach
+	public void setup() {
+		mainReader = new WordSearchReader("word_search.txt");
+	}
 
 	@Test
 	public void whenReadFileIsPassedItReturnsAListOfStringsFromTheTextFile() {
@@ -21,9 +29,8 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenReadKeywordsIsPassedItReturnsAStringOfKeywords() {
-		wordSearchReader = new WordSearchReader("keyword_test.txt");
-		String actual = wordSearchReader.readKeywords();
-		String expected = "BUFFY,XANDER,GILES";
+		String actual = mainReader.readKeywords();
+		String expected = "BUFFY,XANDER,GILES,ANGEL,WILLOW,DAWN,SPIKE,HELLMOUTH,SLAYER,OZ,TARA";
 	    assertEquals(expected, actual);
 	}
 	
@@ -37,9 +44,8 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenSplitKeywordsIsPassedItReturnsAnArrayOfKeywords() {
-		wordSearchReader = new WordSearchReader("keyword_test.txt");
-		String[] actual = wordSearchReader.splitKeywords();
-		String[] expected = {"BUFFY","XANDER","GILES"};
+		String[] actual = mainReader.splitKeywords();
+		String[] expected = {"BUFFY","XANDER","GILES","ANGEL","WILLOW","DAWN","SPIKE","HELLMOUTH","SLAYER","OZ","TARA"};		
 	    assertArrayEquals(expected, actual);
 	}
 	
@@ -61,18 +67,12 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenGetAllKeywordsIsPassedItReturnsAListOfKeywordObjectsFirst() {
-		wordSearchReader = new WordSearchReader("keyword_test.txt");
-		String actual = wordSearchReader.getAllKeywords().get(0).getWord();
-		String expected = "BUFFY";
-		assertEquals(expected, actual);
-	}
-	
-	@Test
-	public void whenGetAllKeywordsIsPassedItReturnsAListOfKeywordObjectsLast() {
-		wordSearchReader = new WordSearchReader("keyword_test.txt");
-		String actual = wordSearchReader.getAllKeywords().get(2).getWord();
-		String expected = "GILES";
-		assertEquals(expected, actual);
+		String actual1 = mainReader.getAllKeywords().get(0).getWord();
+		String expected1 = "BUFFY";
+		String actual2 = mainReader.getAllKeywords().get(2).getWord();
+		String expected2 = "GILES";
+		assertEquals(expected1, actual1);
+		assertEquals(expected2, actual2);
 	}
 	
 	@Test
@@ -98,22 +98,5 @@ public class WordSearchTest {
 		String expected = "DAWN: (3,1)";
 		assertEquals(expected, actual);
 	}
-	
-//	@Test
-//	public void whenFindKeywordCoordinatesIsPassedTaraItReturnsTheHorizontalKeywordCoordinates() {
-//		wordSearchReader = new WordSearchReader("horizontal_test.txt");
-//		String actual = wordSearchReader.findKeywordCoordinatesHorizontal(wordSearchReader.getAllKeywords().get(0));
-//		String expected = "TARA: (1,0),(1,1),(1,2),(1,3)";
-//		assertEquals(expected, actual);
-//	}
-//	
-//	@Test
-//	public void whenFindKeywordCoordinatesIsPassedDawnItReturnsTheHorizontalKeywordCoordinates() {
-//		wordSearchReader = new WordSearchReader("horizontal_test.txt");
-//		String actual = wordSearchReader.findKeywordCoordinatesHorizontal(wordSearchReader.getAllKeywords().get(1));
-//		String expected = "DAWN: (3,0),(3,1),(3,2),(3,3)";
-//		assertEquals(expected, actual);
-//	}
-	
 
 }
