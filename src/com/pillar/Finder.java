@@ -14,6 +14,11 @@ public class Finder {
 	public Keyword getKeyword() {
 		return keyword;
 	}
+	
+	
+	public void setKeyword(Keyword keyword) {
+		this.keyword = keyword;
+	}
 
 	public String[][] getGrid() {
 		return grid;

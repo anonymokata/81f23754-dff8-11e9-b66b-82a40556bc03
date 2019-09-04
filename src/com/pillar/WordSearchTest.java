@@ -14,6 +14,7 @@ public class WordSearchTest {
 	WordSearchReader wordSearchReader;
 	WordSearchReader mainReader;
 	WordSearchReader horizontalReader;
+	Finder finder;
 	
 	@BeforeEach
 	public void setup() {
@@ -79,19 +80,19 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenFindFirstLetterCoordinatesIsPassedTaraItReturnsCoordinates() {
-		Finder finder = new Finder(horizontalReader.getAllKeywords().get(0), horizontalReader.makeGrid());
+		finder = new Finder(horizontalReader.getAllKeywords().get(0), horizontalReader.makeGrid());
 		String actual = finder.findFirstLetterCoordinates();
 		String expected = "TARA: (1,0)";
 		assertEquals(expected, actual);
 	}
 	
-//	@Test
-//	public void whenFindFirstLetterCoordinatesIsPassedDawnItReturnsCoordinates() {
-//		wordSearchReader = new WordSearchReader("horizontal_test.txt");
-//		String actual = wordSearchReader.findFirstLetterCoordinates(wordSearchReader.getAllKeywords().get(1));
-//		String expected = "DAWN: (3,0)";
-//		assertEquals(expected, actual);
-//	}
+	@Test
+	public void whenFindFirstLetterCoordinatesIsPassedDawnItReturnsCoordinates() {
+		finder = new Finder(horizontalReader.getAllKeywords().get(1), horizontalReader.makeGrid());
+		String actual = finder.findFirstLetterCoordinates();
+		String expected = "DAWN: (3,0)";
+		assertEquals(expected, actual);
+	}
 //	
 //	@Test
 //	public void whenFindFirstLetterCoordinatesIsPassedDawnItReturnsCoordinatesLong() {
