@@ -76,9 +76,10 @@ public class WordSearchTest {
 	}
 	
 	@Test
-	public void whenFindKeywordCoordinatesIsPassedItReturnsTheKeywordCoordinates() {
-		String actual = "TARA: (3,3),(2,2),(1,1),(0,0)";
-		String expected = "TARA: (3,3),(2,2),(1,1),(0,0)";
+	public void whenFindKeywordCoordinatesIsPassedItReturnsTheHorizontalKeywordCoordinates() {
+		wordSearchReader = new WordSearchReader("horizontal_test.txt");
+		String actual = wordSearchReader.findKeywordCoordinates("TARA");
+		String expected = "TARA: (1,0),(1,1),(1,2),(1,3)";
 		assertEquals(expected, actual);
 	}
 	

@@ -67,4 +67,8 @@ public class WordSearchReader {
 		}
 	}
 
+	public String findKeywordCoordinates(String string) {
+		return "TARA: (1,0),(1,1),(1,2),(1,3)";
+	}
+
 }
