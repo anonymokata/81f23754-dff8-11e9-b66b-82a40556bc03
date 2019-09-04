@@ -83,6 +83,14 @@ public class WordSearchTest {
 		assertEquals(expected, actual);
 	}
 	
+	@Test
+	public void whenFindFirstLetterCoordinatesIsPassedDawnItReturnsCoordinates() {
+		wordSearchReader = new WordSearchReader("horizontal_test.txt");
+		String actual = wordSearchReader.findFirstLetterCoordinates(wordSearchReader.getAllKeywords().get(1));
+		String expected = "DAWN: (3,0)";
+		assertEquals(expected, actual);
+	}
+	
 //	@Test
 //	public void whenFindKeywordCoordinatesIsPassedTaraItReturnsTheHorizontalKeywordCoordinates() {
 //		wordSearchReader = new WordSearchReader("horizontal_test.txt");

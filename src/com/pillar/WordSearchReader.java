@@ -71,9 +71,11 @@ public class WordSearchReader {
 	public String findFirstLetterCoordinates(Keyword keyword) {
 		String[][] grid = makeGrid();
 		String coordinates = keyword.getWord() + ": ";
-				if (keyword.getWord().startsWith(grid[1][0])) {
-					coordinates += "(" + 1 + "," + 0 + ")";
+		for (int row = 0; row < grid.length; row++) {		
+			if (keyword.getWord().startsWith(grid[row][0])) {
+					coordinates += "(" + row + "," + 0 + ")";
 				}
+		}
 		return coordinates;
 	}
 
