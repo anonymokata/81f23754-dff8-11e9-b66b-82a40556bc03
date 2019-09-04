@@ -1,9 +1,12 @@
+package com.pillar;
+
 
 public class Keyword {
-
+	
 	private String word;
 	private Integer length;
 	private Boolean isFound;
+
 
 	public Keyword(String word, Boolean isFound) {
 		super();
@@ -30,7 +33,7 @@ public class Keyword {
 	public void setIsFound(Boolean isFound) {
 		this.isFound = isFound;
 	}
-
+	
 	@Override
 	public String toString() {
 		return word;

@@ -1,3 +1,4 @@
+package com.pillar;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -9,8 +10,7 @@ import org.junit.jupiter.api.Test;
 public class WordSearchTest {
 
 	WordSearchReader wordSearchReader;
-	Keyword keyword;
-	
+
 	@Test
 	public void whenReadFileIsPassedItReturnsAListOfStringsFromTheTextFile() {
 		wordSearchReader = new WordSearchReader("small_test.txt");
@@ -72,6 +72,13 @@ public class WordSearchTest {
 		wordSearchReader = new WordSearchReader("keyword_test.txt");
 		String actual = wordSearchReader.getAllKeywords().get(2).getWord();
 		String expected = "GILES";
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void whenFindKeywordCoordinatesIsPassedItReturnsTheKeywordCoordinates() {
+		String actual = "TARA: (3,3),(2,2),(1,1),(0,0)";
+		String expected = "TARA: (3,3),(2,2),(1,1),(0,0)";
 		assertEquals(expected, actual);
 	}
 	
