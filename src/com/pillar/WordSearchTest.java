@@ -91,9 +91,9 @@ public class WordSearchTest {
 	}
 	
 	@Test
-	public void whenFindFirstLetterCoordinatesIsPassedAKeywordItReturnsCoordinates() {
-		String actual = findTaraShort.findFirstLetterCoordinates().toString();
-		String actual2 = findDawnShort.findFirstLetterCoordinates().toString();
+	public void whenFindPotentialStartingCoordinatesIsPassedAKeywordItReturnsCoordinates() {
+		String actual = findTaraShort.findPotentialStartingCoordinates().toString();
+		String actual2 = findDawnShort.findPotentialStartingCoordinates().toString();
 		String expected = "[(1,0)]";
 		String expected2 = "[(3,0)]";
 		assertEquals(expected, actual);
@@ -101,16 +101,23 @@ public class WordSearchTest {
 	}
 	
 	@Test
-	public void whenFindFirstLetterCoordinatesIsPassedDawnItReturnsCoordinatesLong() {
-		String actual = findDawnLong.findFirstLetterCoordinates().toString();
+	public void whenFindPotentialStartingCoordinatesIsPassedDawnItReturnsCoordinatesLong() {
+		String actual = findDawnLong.findPotentialStartingCoordinates().toString();
 		String expected = "[(3,1)]";
 		assertEquals(expected, actual);
 	}
 	
 	@Test
-	public void whenFindFirstLetterCoordinatesIsPassedXanderItReturnsAListOfCoordinatesFull() {
-		String actual = findXander.findFirstLetterCoordinates().toString();
+	public void whenFindPotentialStartingCoordinatesIsPassedXanderItReturnsAListOfCoordinatesFull() {
+		String actual = findXander.findPotentialStartingCoordinates().toString();
 		String expected = "[(7,0), (8,3), (9,0), (11,0), (11,7), (14,5)]";
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void whenCheckNextCoordinateIsPassedItReturnsTrueIfNextCoordinateMatchesKeyword() {
+		Boolean actual = findTaraShort.checkNextCoordinate();
+		Boolean expected = true;
 		assertEquals(expected, actual);
 	}
 

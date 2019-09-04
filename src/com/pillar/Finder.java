@@ -26,7 +26,7 @@ public class Finder {
 		return grid;
 	}
 
-	public List<Coordinates> findFirstLetterCoordinates() {
+	public List<Coordinates> findPotentialStartingCoordinates() {
 		List<Coordinates> potentials = new ArrayList<>();
 		for (int row = 0; row < grid.length; row++) {
 			for (int col = 0; col < grid.length; col++) {
@@ -37,5 +37,9 @@ public class Finder {
 			}
 		}
 		return potentials;
+	}
+
+	public Boolean checkNextCoordinate() {
+		return true;
 	}
 }
