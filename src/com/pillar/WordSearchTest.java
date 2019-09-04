@@ -115,9 +115,16 @@ public class WordSearchTest {
 	}
 	
 	@Test
-	public void whenCheckNextCoordinateIsPassedItReturnsTrueIfNextCoordinateMatchesKeyword() {
-		Boolean actual = findTaraShort.checkNextCoordinate();
+	public void whenCheckNextCoordinatesIsPassedItReturnsTrueIfNextCoordinateMatchesKeyword() {
+		Boolean actual = findTaraShort.checkNextCoordinates(new Coordinates (1,0));
 		Boolean expected = true;
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void whenCheckNextCoordinatesIsPassedItReturnsFalseIfNextCoordinateDoesNotMatchKeyword() {
+		Boolean actual = findDawnShort.checkNextCoordinates(new Coordinates (2,0));
+		Boolean expected = false;
 		assertEquals(expected, actual);
 	}
 

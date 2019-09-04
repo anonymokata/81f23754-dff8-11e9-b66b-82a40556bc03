@@ -39,7 +39,12 @@ public class Finder {
 		return potentials;
 	}
 
-	public Boolean checkNextCoordinate() {
-		return true;
+	public Boolean checkNextCoordinates(Coordinates coordinates) {
+		if (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow()][coordinates.getCol()+1])) {
+			return true;
+		} else {
+			return false;
+		}
+		
 	}
 }
