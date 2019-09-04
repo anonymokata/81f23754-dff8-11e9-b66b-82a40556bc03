@@ -68,19 +68,19 @@ public class WordSearchReader {
 		}
 	}
 	
-	public String findFirstLetterCoordinates(Keyword keyword) {
-		String[][] grid = makeGrid();
-		String coordinates = keyword.getWord() + ": ";
-		for (int row = 0; row < grid.length; row++) {
-			for (int col = 0; col < grid.length; col++) {
-			if (keyword.getWord().startsWith(grid[row][col]) 
-					&& (keyword.getLength() <= (grid[0].length - col)))  {
-					coordinates += "(" + row + "," + col + ")";
-				}
-			}
-		}
-		return coordinates;
-	}
+//	public String findFirstLetterCoordinates(Keyword keyword) {
+//		String[][] grid = makeGrid();
+//		String coordinates = keyword.getWord() + ": ";
+//		for (int row = 0; row < grid.length; row++) {
+//			for (int col = 0; col < grid.length; col++) {
+//			if (keyword.getWord().startsWith(grid[row][col]) 
+//					&& (keyword.getLength() <= (grid[0].length - col)))  {
+//					coordinates += "(" + row + "," + col + ")";
+//				}
+//			}
+//		}
+//		return coordinates;
+//	}
 
 //	public String findKeywordCoordinatesHorizontal(Keyword keyword) {
 //		String[][] grid = makeGrid();
