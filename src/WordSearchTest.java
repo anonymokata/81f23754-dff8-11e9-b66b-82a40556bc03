@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 public class WordSearchTest {
 
 	WordSearchReader wordSearchReader;
+	Keyword keyword;
 	
 	@Test
 	public void whenReadFileIsPassedItReturnsAListOfStringsFromTheTextFile() {
@@ -58,6 +59,21 @@ public class WordSearchTest {
 		assertArrayEquals(expected, actual);
 	}
 	
+	@Test
+	public void whenGetAllKeywordsIsPassedItReturnsAListOfKeywordObjectsFirst() {
+		wordSearchReader = new WordSearchReader("keyword_test.txt");
+		String actual = wordSearchReader.getAllKeywords().get(0).getWord();
+		String expected = "BUFFY";
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void whenGetAllKeywordsIsPassedItReturnsAListOfKeywordObjectsLast() {
+		wordSearchReader = new WordSearchReader("keyword_test.txt");
+		String actual = wordSearchReader.getAllKeywords().get(2).getWord();
+		String expected = "GILES";
+		assertEquals(expected, actual);
+	}
 	
 
 }

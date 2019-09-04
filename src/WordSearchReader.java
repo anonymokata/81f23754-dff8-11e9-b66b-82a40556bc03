@@ -18,6 +18,15 @@ public class WordSearchReader {
 		this(Paths.get(filePath));
 	}
 	
+	public List<Keyword> getAllKeywords() {	
+		String[] splitKeywords = splitKeywords();
+		List<Keyword> keywords = new ArrayList<>();
+		for (String each : splitKeywords) {
+			keywords.add(new Keyword (each, false));
+		}
+		return keywords;
+	}
+	
 	public String[] splitKeywords() {
 		String keywords = readKeywords();
 		return keywords.split(",");
@@ -58,7 +67,5 @@ public class WordSearchReader {
 			return new ArrayList<>();
 		}
 	}
-	
-	
 
 }
