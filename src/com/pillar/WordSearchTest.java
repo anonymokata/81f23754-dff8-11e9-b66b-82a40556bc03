@@ -15,20 +15,36 @@ public class WordSearchTest {
 	WordSearchReader mainReader;
 	WordSearchReader horizontalReader;
 	WordSearchReader horizontalReaderLong;
-	Finder finder;
-	Finder finder2;
+	WordSearchReader smallTest;
+	WordSearchReader puzzleTest;
+	WordSearchReader puzzleTestGridSmall;
+	WordSearchReader puzzleTestGridMed;
 	
+	Finder finder;
+	Finder findTaraShort;
+	Finder findDawnShort;
+	Finder findDawnLong;
+	Finder findXander;
+
 	@BeforeEach
 	public void setup() {
 		mainReader = new WordSearchReader("word_search.txt");
+		smallTest = new WordSearchReader("small_test.txt");
+		puzzleTest = new WordSearchReader("puzzle_test.txt");
+		puzzleTestGridSmall = new WordSearchReader("puzzle_grid_test_small.txt");
+		puzzleTestGridMed = new WordSearchReader("puzzle_grid_test_medium.txt");
 		horizontalReader = new WordSearchReader("horizontal_test.txt");
 		horizontalReaderLong = new WordSearchReader("horizontal_test_long.txt");
+		
+		findTaraShort = new Finder(horizontalReader.getAllKeywords().get(0), horizontalReader.makeGrid());
+		findDawnShort = new Finder(horizontalReader.getAllKeywords().get(1), horizontalReader.makeGrid());
+		findDawnLong = new Finder(horizontalReaderLong.getAllKeywords().get(1), horizontalReaderLong.makeGrid());
+		findXander = new Finder(mainReader.getAllKeywords().get(1), mainReader.makeGrid());
 	}
 
 	@Test
 	public void whenReadFileIsPassedItReturnsAListOfStringsFromTheTextFile() {
-		wordSearchReader = new WordSearchReader("small_test.txt");
-		List<String> actual = wordSearchReader.readFile();
+		List<String> actual = smallTest.readFile();
 		List<String> expected = Arrays.asList("BUFFY","XANDER","GILES");
 	    assertEquals(expected, actual);
 	}
@@ -42,8 +58,7 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenReadPuzzleIsPassedItReturnsTheListOfPuzzleStrings() {
-		wordSearchReader = new WordSearchReader("puzzle_test.txt");
-		List<String> actual = wordSearchReader.readPuzzle();
+		List<String> actual = puzzleTest.readPuzzle();
 		List<String> expected = Arrays.asList("Y,G,M,E,F,B,N,D,H,D,G,Y,Y,B,I", "E,K,G,H,Q,Z,T,J,A,A,F,F,F,M,K");
 	    assertEquals(expected, actual);
 	}
@@ -57,18 +72,12 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenMakeGridIsPassedItReturnsThePuzzleAsA2DArraySmall() {
-		wordSearchReader = new WordSearchReader("puzzle_grid_test_small.txt");
-		String[][] actual = wordSearchReader.makeGrid();
+		String[][] actual = puzzleTestGridSmall.makeGrid();
+		String[][] actual2 = puzzleTestGridMed.makeGrid();
 		String[][] expected = {{"Y","G"}, {"E","K"}};
+		String[][] expected2 = {{"Y","G","M"}, {"E","K","G"}, {"H","O","A"}};
 		assertArrayEquals(expected, actual);
-	}
-	
-	@Test
-	public void whenMakeGridIsPassedItReturnsThePuzzleAsA2DArrayMedium() {
-		wordSearchReader = new WordSearchReader("puzzle_grid_test_medium.txt");
-		String[][] actual = wordSearchReader.makeGrid();
-		String[][] expected = {{"Y","G","M"}, {"E","K","G"}, {"H","O","A"}};
-		assertArrayEquals(expected, actual);
+		assertArrayEquals(expected2, actual2);
 	}
 	
 	@Test
@@ -83,10 +92,8 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenFindFirstLetterCoordinatesIsPassedAKeywordItReturnsCoordinates() {
-		finder = new Finder(horizontalReader.getAllKeywords().get(0), horizontalReader.makeGrid());
-		finder2 = new Finder(horizontalReader.getAllKeywords().get(1), horizontalReader.makeGrid());
-		String actual = finder.findFirstLetterCoordinates().toString();
-		String actual2 = finder2.findFirstLetterCoordinates().toString();
+		String actual = findTaraShort.findFirstLetterCoordinates().toString();
+		String actual2 = findDawnShort.findFirstLetterCoordinates().toString();
 		String expected = "[(1,0)]";
 		String expected2 = "[(3,0)]";
 		assertEquals(expected, actual);
@@ -95,16 +102,14 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenFindFirstLetterCoordinatesIsPassedDawnItReturnsCoordinatesLong() {
-		finder = new Finder(horizontalReaderLong.getAllKeywords().get(1), horizontalReaderLong.makeGrid());
-		String actual = finder.findFirstLetterCoordinates().toString();
+		String actual = findDawnLong.findFirstLetterCoordinates().toString();
 		String expected = "[(3,1)]";
 		assertEquals(expected, actual);
 	}
 	
 	@Test
 	public void whenFindFirstLetterCoordinatesIsPassedXanderItReturnsAListOfCoordinatesFull() {
-		finder = new Finder(mainReader.getAllKeywords().get(1), mainReader.makeGrid());
-		String actual = finder.findFirstLetterCoordinates().toString();
+		String actual = findXander.findFirstLetterCoordinates().toString();
 		String expected = "[(7,0), (8,3), (9,0), (11,0), (11,7), (14,5)]";
 		assertEquals(expected, actual);
 	}
