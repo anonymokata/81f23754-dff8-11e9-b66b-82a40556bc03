@@ -96,13 +96,15 @@ public class Finder {
 		if (direction == Direction.HORIZONTAL) {
 			keywordSubstring = keyword.getWord().substring(2, keyword.getLength());
 			foundCoordinates = new ArrayList<>();
+			foundCoordinates.add(coordinates);
+			foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol()+1));
 			for (int i = 0; i < keywordSubstring.length(); i++) {
 				gridSubstring += grid[coordinates.getRow()][coordinates.getCol() + 2 + i];
 				foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() + 2 + i));
 			}
 			if (keywordSubstring.equals(gridSubstring)) {
 				keyword.setIsFound(true);
-				keyword.setRemainingCoordinates(foundCoordinates);
+				keyword.setCoordinates(foundCoordinates);
 			}
 		}
 	}

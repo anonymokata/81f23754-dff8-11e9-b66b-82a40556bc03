@@ -9,8 +9,7 @@ public class Keyword {
 	private Integer length;
 	private Boolean isFound = false;
 	private List<PotentialStartCoordinates> potentialStartCoordinates;
-	private Coordinates startCoordinates;
-	private List<Coordinates> remainingCoordinates;
+	private List<Coordinates> coordinates;
 
 
 	public Keyword() {
@@ -21,12 +20,11 @@ public class Keyword {
 		super();
 		this.word = word;
 	}
-	
-	public Keyword(String word, Coordinates startCoordinates, List<Coordinates> remainingCoordinates) {
+
+	public Keyword(String word, List<Coordinates> coordinates) {
 		super();
 		this.word = word;
-		this.startCoordinates = startCoordinates;
-		this.remainingCoordinates = remainingCoordinates;
+		this.coordinates = coordinates;
 	}
 
 	public String getWord() {
@@ -57,30 +55,21 @@ public class Keyword {
 		this.potentialStartCoordinates = potentialStartCoordinates;
 	}
 
-	public Coordinates getStartCoordinates() {
-		return startCoordinates;
+	public List<Coordinates> getCoordinates() {
+		return coordinates;
 	}
 
-	public void setStartCoordinates(Coordinates startCoordinates) {
-		this.startCoordinates = startCoordinates;
-	}
-
-
-	public List<Coordinates> getRemainingCoordinates() {
-		return remainingCoordinates;
-	}
-
-	public void setRemainingCoordinates(List<Coordinates> remainingCoordinates) {
-		this.remainingCoordinates = remainingCoordinates;
+	public void setCoordinates(List<Coordinates> coordinates) {
+		this.coordinates = coordinates;
 	}
 
 	//fix ending ","
 	public String writeCoordinatesString() {
-		String coordinates = word + ": " + startCoordinates.toString() + ",";
-		for (Coordinates each : remainingCoordinates) {
-			coordinates += each.toString() + ",";
+		String coordinatesString = word + ": ";
+		for (Coordinates each : coordinates) {
+			coordinatesString += each.toString() + ",";
 		}
-		return coordinates;
+		return coordinatesString;
 	}
 	
 
