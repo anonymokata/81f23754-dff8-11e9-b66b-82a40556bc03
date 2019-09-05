@@ -53,8 +53,8 @@ public class Finder {
 			if (checkVertical(coordinates)) {
 				tempDirections.add(Direction.VERTICAL);
 			}
-			if (checkDiagnalDown(coordinates)) {
-				tempDirections.add(Direction.DIAGNAL_DOWN);
+			if (checkDiagonalDown(coordinates)) {
+				tempDirections.add(Direction.DIAGONAL_DOWN);
 			}
 			potentials = new PotentialStartCoordinates(coordinates, tempDirections);
 			allKeywordPotentials.add(potentials);
@@ -72,7 +72,7 @@ public class Finder {
 				&& keyword.getLength() <= grid.length - coordinates.getRow();
 	}
 
-	private Boolean checkDiagnalDown(Coordinates coordinates) {
+	private Boolean checkDiagonalDown(Coordinates coordinates) {
 		return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow() + 1][coordinates.getCol() + 1]))
 				&& keyword.getLength() <= grid.length - coordinates.getRow();
 	}

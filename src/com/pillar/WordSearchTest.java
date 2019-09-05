@@ -43,7 +43,7 @@ public class WordSearchTest {
 		findDawnShort = new Finder(horizontalReader.getAllKeywords().get(1), horizontalReader.makeGrid());
 		findDawnLong = new Finder(horizontalReaderLong.getAllKeywords().get(1), horizontalReaderLong.makeGrid());
 		findXander = new Finder(mainReader.getAllKeywords().get(1), mainReader.makeGrid());
-		findTaraVertical = new Finder(verticalTest.getAllKeywords().get(1), verticalTest.makeGrid());
+		findTaraVertical = new Finder(verticalTest.getAllKeywords().get(0), verticalTest.makeGrid());
 	}
 
 	@Test
@@ -127,32 +127,29 @@ public class WordSearchTest {
 		assertEquals(expected, actual);
 	}
 	
-//	@Test
-//	public void whenCheckSecondCoordinatesIsPassedAVerticalClueItAddsVerticalToDirectionsField() {
-//		findTaraVertical.checkSecondCoordinates(new Coordinates (0,0));
-//		Direction actual = findTaraVertical.getDirections().get(1); 
-//		Direction expected = Direction.VERTICAL;
-//		assertEquals(expected, actual);
-//	}
-//	
-//	@Test
-//	public void whenCheckSecondCoordinatesIsPassedAHorizontalAndVerticalClueItAddsHorizontalAndVerticalToDirectionsField() {
-//		findTaraVertical.checkSecondCoordinates(new Coordinates (0,0));
-//		Direction actual = findTaraVertical.getDirections().get(0);
-//		Direction actual2 = findTaraVertical.getDirections().get(1);
-//		Direction expected = Direction.HORIZONTAL;
-//		Direction expected2 = Direction.VERTICAL;
-//		assertEquals(expected, actual);
-//		assertEquals(expected2, actual2);
-//	}
-//	
-//	@Test
-//	public void whenCheckSecondCoordinatesIsPassedADiagnalDownClueItAddsDiagnalDownToDirectionsField() {
-//		findTaraVertical.checkSecondCoordinates(new Coordinates (0,0));
-//		Direction actual = findTaraVertical.getDirections().get(2); 
-//		Direction expected = Direction.DIAGNAL_DOWN;
-//		assertEquals(expected, actual);
-//	}
+	@Test
+	public void whenCheckSecondCoordinatesIsPassedAVerticalClueItAddsVerticalToDirectionsField() {
+		findTaraVertical.findPotentialStartingCoordinates();
+		findTaraVertical.getDirectionsForPotentialStartingCoordinates();
+		Direction actual = findTaraVertical.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(1); 
+		Direction expected = Direction.VERTICAL;
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void whenCheckSecondCoordinatesIsPassedAHorizontalAndVerticalClueItAddsHorizontalAndVerticalToDirectionsField() {
+		findTaraVertical.findPotentialStartingCoordinates();
+		findTaraVertical.getDirectionsForPotentialStartingCoordinates();
+		Direction actual = findTaraVertical.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0);
+		Direction actual2 = findTaraVertical.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(1);
+		Direction actual3 = findTaraVertical.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(2);
+		Direction expected = Direction.HORIZONTAL;
+		Direction expected2 = Direction.VERTICAL;
+		Direction expected3 = Direction.DIAGONAL_DOWN;
+		assertEquals(expected, actual);
+		assertEquals(expected2, actual2);
+		assertEquals(expected3, actual3);
+	}
 
 
 }
