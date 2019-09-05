@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Keyword {
 	
-	private String word;
+	protected String word;
 	private Integer length;
 	private Boolean isFound = false;
-	private List<PotentialStartCoordinates> potentialStartCoordinates;
+	protected List<PotentialStartCoordinates> potentialStartCoordinates;
 	private List<Coordinates> coordinates;
 
 
@@ -21,10 +21,10 @@ public class Keyword {
 		this.word = word;
 	}
 
-	public Keyword(String word, List<Coordinates> coordinates) {
+	public Keyword(String word, List<PotentialStartCoordinates> potentialStartCoordinates) {
 		super();
 		this.word = word;
-		this.coordinates = coordinates;
+		this.potentialStartCoordinates = potentialStartCoordinates;
 	}
 
 	public String getWord() {

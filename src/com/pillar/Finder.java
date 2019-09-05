@@ -8,6 +8,7 @@ import java.util.Set;
 public class Finder {
 
 	private Keyword keyword;
+	private List<Keyword> directionTypes;
 	private String[][] grid;
 
 	public Finder(Keyword keyword, String[][] grid) {
@@ -26,6 +27,14 @@ public class Finder {
 
 	public String[][] getGrid() {
 		return grid;
+	}
+
+	public List<Keyword> getDirectionTypes() {
+		return directionTypes;
+	}
+
+	public void setDirectionTypes(List<Keyword> directionTypes) {
+		this.directionTypes = directionTypes;
 	}
 
 	public void findPotentialStartingCoordinates() {
@@ -89,15 +98,34 @@ public class Finder {
 		return (keyword.getLength() > 2);
 	}
 
+	public void setKeywordToDirectionType() {
+		List<Keyword> directionTypes = new ArrayList<>();
+		Keyword directionType;
+		for (int i = 0; i < keyword.getPotentialStartCoordinates().size(); i++) {
+			for (Direction each : keyword.getPotentialStartCoordinates().get(i).getDirections()) {
+				switch (each) {
+				case HORIZONTAL:
+					directionType = new Horizontal(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
+					break;
+				default:
+					directionType = null;
+					break;
+				}
+				directionTypes.add(directionType);
+			}
+		}
+		setDirectionTypes(directionTypes);
+	}
+
 	public void testDirection(Direction direction, Coordinates coordinates) {
 		String keywordSubstring = getKeywordSubstring(direction);
 		String gridSubstring = "";
-		
+
 		List<Coordinates> foundCoordinates;
 		if (direction == Direction.HORIZONTAL) {
 			foundCoordinates = new ArrayList<>();
 			foundCoordinates.add(coordinates);
-			foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol()+1));
+			foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() + 1));
 			for (int i = 0; i < keywordSubstring.length(); i++) {
 				gridSubstring += grid[coordinates.getRow()][coordinates.getCol() + 2 + i];
 				foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() + 2 + i));
@@ -108,15 +136,14 @@ public class Finder {
 			}
 		}
 	}
-	
-	
+
 	public String getKeywordSubstring(Direction direction) {
 		String keywordSubstring;
 		switch (direction) {
 		case HORIZONTAL:
 			keywordSubstring = keyword.getWord().substring(2, keyword.getLength());
 			break;
-		 default:
+		default:
 			keywordSubstring = "Not_Found";
 			break;
 		}

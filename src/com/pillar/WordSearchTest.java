@@ -167,5 +167,13 @@ public class WordSearchTest {
 		assertEquals(expected, actual);
 	}
 	
+	@Test
+	public void whenSetKeywordToDirectionTypeIsPassedAHorizontalKeywordItAHorizontalObjectToField() {
+		findTaraShort.setPotentialStartCoordinatesWithDirections();
+		findTaraShort.setKeywordToDirectionType();
+		String actual = findTaraShort.getDirectionTypes().get(0).toString();
+		String expected = "Horizontal";
+		assertEquals(expected, actual);
+	}
 
 }
