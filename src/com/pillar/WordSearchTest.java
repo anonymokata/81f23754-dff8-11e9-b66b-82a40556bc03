@@ -128,7 +128,7 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAVerticalClueItAddsVerticalToDirectionsField() {
-		findTaraVertical.checkSecondCoordinates(new Coordinates (0,1));
+		findTaraVertical.checkSecondCoordinates(new Coordinates (0,0));
 		Direction actual = findTaraVertical.getDirections().get(1); 
 		Direction expected = Direction.VERTICAL;
 		assertEquals(expected, actual);
@@ -136,7 +136,7 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAHorizontalAndVerticalClueItAddsHorizontalAndVerticalToDirectionsField() {
-		findTaraVertical.checkSecondCoordinates(new Coordinates (0,1));
+		findTaraVertical.checkSecondCoordinates(new Coordinates (0,0));
 		Direction actual = findTaraVertical.getDirections().get(0);
 		Direction actual2 = findTaraVertical.getDirections().get(1);
 		Direction expected = Direction.HORIZONTAL;

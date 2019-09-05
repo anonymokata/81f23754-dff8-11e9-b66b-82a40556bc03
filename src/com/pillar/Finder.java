@@ -61,7 +61,8 @@ public class Finder {
 	}
 
 	private Boolean checkHorizontal(Coordinates coordinates) {
-		return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow()][coordinates.getCol() + 1]));
+		return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow()][coordinates.getCol() + 1])) 
+				&& keyword.getLength() <= grid.length - coordinates.getCol();
 	}
 	
 	private Boolean checkVertical(Coordinates coordinates) {
