@@ -145,6 +145,13 @@ public class WordSearchTest {
 		assertEquals(expected2, actual2);
 	}
 	
+	@Test
+	public void whenCheckSecondCoordinatesIsPassedADiagnalDownClueItAddsDiagnalDownToDirectionsField() {
+		findTaraVertical.checkSecondCoordinates(new Coordinates (0,0));
+		Direction actual = findTaraVertical.getDirections().get(2); 
+		Direction expected = Direction.DIAGNAL_DOWN;
+		assertEquals(expected, actual);
+	}
 
 
 }

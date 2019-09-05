@@ -56,6 +56,9 @@ public class Finder {
 		}
 		if (checkVertical(coordinates)) {
 			tempDirections.add(Direction.VERTICAL);
+		}
+		if (checkDiagnalDown(coordinates)) {
+			tempDirections.add(Direction.DIAGNAL_DOWN);
 		}	
 		setDirections(tempDirections);
 	}
@@ -66,7 +69,13 @@ public class Finder {
 	}
 	
 	private Boolean checkVertical(Coordinates coordinates) {
-		return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow() + 1][coordinates.getCol()]));
+		return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow() + 1][coordinates.getCol()]))
+				&& keyword.getLength() <= grid.length - coordinates.getRow();
+	}
+	
+	private Boolean checkDiagnalDown(Coordinates coordinates) {
+		return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow() + 1][coordinates.getCol() + 1]))
+				&& keyword.getLength() <= grid.length - coordinates.getRow();
 	}
 
 }

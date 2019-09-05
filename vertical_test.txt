@@ -1,5 +1,5 @@
 TARA,DAWN
 T,A,A,Z
-A,B,D,A
-H,R,B,D
+A,A,D,A
+H,R,R,D
 D,A,W,N
