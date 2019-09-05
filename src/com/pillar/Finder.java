@@ -110,7 +110,7 @@ public class Finder {
 	}
 	
 	
-	private String getKeywordSubstring(Direction direction) {
+	public String getKeywordSubstring(Direction direction) {
 		String keywordSubstring;
 		switch (direction) {
 		case HORIZONTAL:

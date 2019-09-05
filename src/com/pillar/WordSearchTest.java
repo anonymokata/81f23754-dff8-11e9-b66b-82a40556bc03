@@ -160,7 +160,12 @@ public class WordSearchTest {
 		assertEquals(expected2, actual2);
 	}
 	
-
+	@Test
+	public void whenGetKeywordSubstringIsPassedADirectionItReturnsSubstring() {
+		String actual = findTaraShort.getKeywordSubstring(Direction.HORIZONTAL);
+		String expected = "RA";
+		assertEquals(expected, actual);
+	}
 	
 
 }
