@@ -19,12 +19,14 @@ public class WordSearchTest {
 	WordSearchReader puzzleTest;
 	WordSearchReader puzzleTestGridSmall;
 	WordSearchReader puzzleTestGridMed;
+	WordSearchReader verticalTest;
 	
 	Finder finder;
 	Finder findTaraShort;
 	Finder findDawnShort;
 	Finder findDawnLong;
 	Finder findXander;
+	Finder findTaraVertical;
 
 	@BeforeEach
 	public void setup() {
@@ -35,11 +37,13 @@ public class WordSearchTest {
 		puzzleTestGridMed = new WordSearchReader("puzzle_grid_test_medium.txt");
 		horizontalReader = new WordSearchReader("horizontal_test.txt");
 		horizontalReaderLong = new WordSearchReader("horizontal_test_long.txt");
+		verticalTest = new WordSearchReader("vertical_test.txt");
 		
 		findTaraShort = new Finder(horizontalReader.getAllKeywords().get(0), horizontalReader.makeGrid());
 		findDawnShort = new Finder(horizontalReader.getAllKeywords().get(1), horizontalReader.makeGrid());
 		findDawnLong = new Finder(horizontalReaderLong.getAllKeywords().get(1), horizontalReaderLong.makeGrid());
 		findXander = new Finder(mainReader.getAllKeywords().get(1), mainReader.makeGrid());
+		findTaraVertical = new Finder(verticalTest.getAllKeywords().get(1), verticalTest.makeGrid());
 	}
 
 	@Test
@@ -119,6 +123,14 @@ public class WordSearchTest {
 		findTaraShort.checkSecondCoordinates(new Coordinates (1,0));
 		Direction actual = findTaraShort.getDirections().get(0); 
 		Direction expected = Direction.HORIZONTAL;
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void whenCheckSecondCoordinatesIsPassedAVerticalClueItAddsVerticalToDirectionsField() {
+		findTaraVertical.checkSecondCoordinates(new Coordinates (0,1));
+		Direction actual = findTaraVertical.getDirections().get(0); 
+		Direction expected = Direction.VERTICAL;
 		assertEquals(expected, actual);
 	}
 	

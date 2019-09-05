@@ -51,10 +51,21 @@ public class Finder {
 
 	public void checkSecondCoordinates(Coordinates coordinates) {
 		List<Direction> tempDirections = new ArrayList<>();
-		if (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow()][coordinates.getCol()+1])) {	
+		if (checkHorizontal(coordinates)) {
 			tempDirections.add(Direction.HORIZONTAL);
 		}
+		if (checkVertical(coordinates)) {
+			tempDirections.add(Direction.VERTICAL);
+		}	
 		setDirections(tempDirections);
 	}
+
+	private Boolean checkHorizontal(Coordinates coordinates) {
+		return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow()][coordinates.getCol() + 1]));
+	}
 	
+	private Boolean checkVertical(Coordinates coordinates) {
+		return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow() + 1][coordinates.getCol()]));
+	}
+
 }
