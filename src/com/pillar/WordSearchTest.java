@@ -162,7 +162,7 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenGetKeywordSubstringIsPassedADirectionItReturnsSubstring() {
-		String actual = findTaraShort.getKeywordSubstring(Direction.HORIZONTAL);
+		String actual = findTaraShort.getKeyword().getKeywordSubstring();
 		String expected = "RA";
 		assertEquals(expected, actual);
 	}

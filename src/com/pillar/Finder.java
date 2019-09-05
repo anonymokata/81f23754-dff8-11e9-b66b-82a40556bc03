@@ -107,6 +107,8 @@ public class Finder {
 				case HORIZONTAL:
 					directionType = new Horizontal(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
 					break;
+				case VERTICAL:
+					directionType = new Horizontal(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
 				default:
 					directionType = null;
 					break;
@@ -118,7 +120,6 @@ public class Finder {
 	}
 
 	public void testDirection(Direction direction, Coordinates coordinates) {
-		String keywordSubstring = getKeywordSubstring(direction);
 		String gridSubstring = "";
 
 		List<Coordinates> foundCoordinates;
@@ -126,27 +127,14 @@ public class Finder {
 			foundCoordinates = new ArrayList<>();
 			foundCoordinates.add(coordinates);
 			foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() + 1));
-			for (int i = 0; i < keywordSubstring.length(); i++) {
+			for (int i = 0; i < keyword.getKeywordSubstring().length(); i++) {
 				gridSubstring += grid[coordinates.getRow()][coordinates.getCol() + 2 + i];
 				foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() + 2 + i));
 			}
-			if (keywordSubstring.equals(gridSubstring)) {
+			if (keyword.getKeywordSubstring().equals(gridSubstring)) {
 				keyword.setIsFound(true);
 				keyword.setCoordinates(foundCoordinates);
 			}
 		}
-	}
-
-	public String getKeywordSubstring(Direction direction) {
-		String keywordSubstring;
-		switch (direction) {
-		case HORIZONTAL:
-			keywordSubstring = keyword.getWord().substring(2, keyword.getLength());
-			break;
-		default:
-			keywordSubstring = "Not_Found";
-			break;
-		}
-		return keywordSubstring;
 	}
 }

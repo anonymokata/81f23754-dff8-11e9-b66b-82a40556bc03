@@ -3,7 +3,7 @@ package com.pillar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Horizontal extends Keyword implements DirectionType {
+public class Horizontal extends Keyword  {
 
 	public Horizontal() {
 		super();
@@ -13,11 +13,6 @@ public class Horizontal extends Keyword implements DirectionType {
 		super();
 		this.word = word;
 		this.potentialStartCoordinates = potentialStartCoordinates;
-	}
-
-	public String getKeywordSubstring() {
-		String keywordSubstring = getWord().substring(2, getLength());
-		return keywordSubstring;
 	}
 
 	@Override

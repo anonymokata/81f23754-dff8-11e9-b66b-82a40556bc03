@@ -6,10 +6,10 @@ import java.util.List;
 public class Keyword {
 	
 	protected String word;
-	private Integer length;
 	private Boolean isFound = false;
 	protected List<PotentialStartCoordinates> potentialStartCoordinates;
 	private List<Coordinates> coordinates;
+	
 
 
 	public Keyword() {
@@ -45,6 +45,10 @@ public class Keyword {
 
 	public void setIsFound(Boolean isFound) {
 		this.isFound = isFound;
+	}
+
+	public String getKeywordSubstring() {
+		return word.substring(2, word.length());
 	}
 
 	public List<PotentialStartCoordinates> getPotentialStartCoordinates() {

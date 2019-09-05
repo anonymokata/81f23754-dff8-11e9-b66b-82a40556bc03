@@ -1,7 +1,7 @@
-package com.pillar;
-
-public interface DirectionType {
-
-	String getKeywordSubstring();
-	
-}
+//package com.pillar;
+//
+//public interface DirectionType {
+//
+//	String getKeywordSubstring();
+//	
+//}
