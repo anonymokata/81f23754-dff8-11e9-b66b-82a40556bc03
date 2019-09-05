@@ -90,11 +90,11 @@ public class Finder {
 	}
 
 	public void testDirection(Direction direction, Coordinates coordinates) {
-		String keywordSubstring;
+		String keywordSubstring = getKeywordSubstring(direction);
 		String gridSubstring = "";
+		
 		List<Coordinates> foundCoordinates;
 		if (direction == Direction.HORIZONTAL) {
-			keywordSubstring = keyword.getWord().substring(2, keyword.getLength());
 			foundCoordinates = new ArrayList<>();
 			foundCoordinates.add(coordinates);
 			foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol()+1));
@@ -107,5 +107,19 @@ public class Finder {
 				keyword.setCoordinates(foundCoordinates);
 			}
 		}
+	}
+	
+	
+	private String getKeywordSubstring(Direction direction) {
+		String keywordSubstring;
+		switch (direction) {
+		case HORIZONTAL:
+			keywordSubstring = keyword.getWord().substring(2, keyword.getLength());
+			break;
+		 default:
+			keywordSubstring = "Not_Found";
+			break;
+		}
+		return keywordSubstring;
 	}
 }
