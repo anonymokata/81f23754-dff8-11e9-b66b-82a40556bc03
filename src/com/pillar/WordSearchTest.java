@@ -148,5 +148,12 @@ public class WordSearchTest {
 		assertEquals(expected3, actual3);
 	}
 
+	@Test
+	public void whenTestDirectionIsPassedHorizontalItReturnsTrueIfKeywordIsMatchedHorizontal() {
+		findTaraShort.setPotentialStartCoordinatesWithDirections();
+		Boolean actual = findTaraShort.testDirection(Direction.HORIZONTAL);
+		Boolean expected = true;
+		assertEquals(expected, actual);
+	}
 
 }

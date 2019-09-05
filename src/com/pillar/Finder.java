@@ -84,4 +84,8 @@ public class Finder {
 				&& keyword.getLength() <= grid.length - coordinates.getRow();
 	}
 
+	public Boolean testDirection(Direction direction) {
+		return true;
+	}
+
 }
