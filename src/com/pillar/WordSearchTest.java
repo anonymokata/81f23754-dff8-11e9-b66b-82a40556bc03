@@ -129,26 +129,21 @@ public class WordSearchTest {
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAVerticalClueItAddsVerticalToDirectionsField() {
 		findTaraVertical.checkSecondCoordinates(new Coordinates (0,1));
-		Direction actual = findTaraVertical.getDirections().get(0); 
+		Direction actual = findTaraVertical.getDirections().get(1); 
 		Direction expected = Direction.VERTICAL;
 		assertEquals(expected, actual);
 	}
 	
-//	@Test
-//	public void whenCheckNextCoordinatesIsPassedItReturnsNullKeywordIfNextCoordinateDoesNotMatchKeyword() {
-//		String actual = findDawnShort.checkSecondCoordinates(new Coordinates (2,0)).getWord();
-//		String expected = null;
-//		assertEquals(expected, actual);
-//	}
-	
-	
-	
-//	@Test
-//	public void whenGetSurroundingLettersIsPassedACoordinatesItReturnsAListOfMatchingGridStrings() {
-//		List<String> actual = findDawnShort.getSurroundingLetters(new Coordinates (3,0));
-//		List<String> expected = "A";
-//		assertEquals(expected, actual);
-//	}
+	@Test
+	public void whenCheckSecondCoordinatesIsPassedAHorizontalAndVerticalClueItAddsHorizontalAndVerticalToDirectionsField() {
+		findTaraVertical.checkSecondCoordinates(new Coordinates (0,1));
+		Direction actual = findTaraVertical.getDirections().get(0);
+		Direction actual2 = findTaraVertical.getDirections().get(1);
+		Direction expected = Direction.HORIZONTAL;
+		Direction expected2 = Direction.VERTICAL;
+		assertEquals(expected, actual);
+		assertEquals(expected2, actual2);
+	}
 	
 
 
