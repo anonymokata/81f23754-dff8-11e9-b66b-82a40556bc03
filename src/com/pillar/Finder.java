@@ -41,6 +41,7 @@ public class Finder {
 	}
 
 	public void setPotentialStartCoordinatesWithDirections() {
+		findPotentialStartingCoordinates();
 		keyword.setPotentialStartCoordinates(getDirectionsForPotentialStartCoordinates());
 	}
 	
