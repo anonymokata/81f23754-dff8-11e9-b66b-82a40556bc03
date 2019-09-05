@@ -121,7 +121,7 @@ public class WordSearchTest {
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAHorizontalClueItAddsHorizontalToDirectionsField() {
 		findTaraShort.findPotentialStartingCoordinates();
-		findTaraShort.getDirectionsForPotentialStartingCoordinates();
+		findTaraShort.setPotentialStartCoordinatesWithDirections();
 		Direction actual = findTaraShort.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0); 
 		Direction expected = Direction.HORIZONTAL;
 		assertEquals(expected, actual);
@@ -130,7 +130,7 @@ public class WordSearchTest {
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAVerticalClueItAddsVerticalToDirectionsField() {
 		findTaraVertical.findPotentialStartingCoordinates();
-		findTaraVertical.getDirectionsForPotentialStartingCoordinates();
+		findTaraVertical.setPotentialStartCoordinatesWithDirections();
 		Direction actual = findTaraVertical.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(1); 
 		Direction expected = Direction.VERTICAL;
 		assertEquals(expected, actual);
@@ -139,7 +139,7 @@ public class WordSearchTest {
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAHorizontalAndVerticalClueItAddsHorizontalAndVerticalToDirectionsField() {
 		findTaraVertical.findPotentialStartingCoordinates();
-		findTaraVertical.getDirectionsForPotentialStartingCoordinates();
+		findTaraVertical.setPotentialStartCoordinatesWithDirections();
 		Direction actual = findTaraVertical.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0);
 		Direction actual2 = findTaraVertical.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(1);
 		Direction actual3 = findTaraVertical.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(2);

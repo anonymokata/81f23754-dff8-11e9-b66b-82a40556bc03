@@ -40,28 +40,34 @@ public class Finder {
 		keyword.setPotentialStartCoordinates(potentials);
 	}
 
-	public void getDirectionsForPotentialStartingCoordinates() {
+	public void setPotentialStartCoordinatesWithDirections() {
+		keyword.setPotentialStartCoordinates(getDirectionsForPotentialStartCoordinates());
+	}
+	
+	public List<PotentialStartCoordinates> getDirectionsForPotentialStartCoordinates() {
 		List<PotentialStartCoordinates> allKeywordPotentials = new ArrayList<>();
 		for (int i = 0; i < keyword.getPotentialStartCoordinates().size(); i++) {
 			Coordinates coordinates = keyword.getPotentialStartCoordinates().get(i).getStartCoordinates();
-			PotentialStartCoordinates potentials;
-			
-			List<Direction> tempDirections = new ArrayList<>();
-			if (checkHorizontal(coordinates)) {
-				tempDirections.add(Direction.HORIZONTAL);
-			}
-			if (checkVertical(coordinates)) {
-				tempDirections.add(Direction.VERTICAL);
-			}
-			if (checkDiagonalDown(coordinates)) {
-				tempDirections.add(Direction.DIAGONAL_DOWN);
-			}
-			potentials = new PotentialStartCoordinates(coordinates, tempDirections);
+			PotentialStartCoordinates potentials = new PotentialStartCoordinates(coordinates, getDirections(coordinates));
 			allKeywordPotentials.add(potentials);
 		}
-		keyword.setPotentialStartCoordinates(allKeywordPotentials);
+		return allKeywordPotentials;
 	}
 
+	private List<Direction> getDirections(Coordinates coordinates) {
+		List<Direction> directions = new ArrayList<>();
+		if (checkHorizontal(coordinates)) {
+			directions.add(Direction.HORIZONTAL);
+		}
+		if (checkVertical(coordinates)) {
+			directions.add(Direction.VERTICAL);
+		}
+		if (checkDiagonalDown(coordinates)) {
+			directions.add(Direction.DIAGONAL_DOWN);
+		}
+		return directions;
+	}
+	
 	private Boolean checkHorizontal(Coordinates coordinates) {
 		return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow()][coordinates.getCol() + 1]))
 				&& keyword.getLength() <= grid.length - coordinates.getCol();
