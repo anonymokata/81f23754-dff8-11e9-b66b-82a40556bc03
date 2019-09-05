@@ -37,7 +37,7 @@ public class Finder {
 		this.directions = directions;
 	}
 
-	public List<Coordinates> findPotentialStartingCoordinates() {
+	public void findPotentialStartingCoordinates() {
 		List<Coordinates> potentials = new ArrayList<>();
 		for (int row = 0; row < grid.length; row++) {
 			for (int col = 0; col < grid.length; col++) {
@@ -46,15 +46,15 @@ public class Finder {
 				}
 			}
 		}
-		return potentials;
+		keyword.setPotentialStartCoordinates(potentials);
 	}
 
-	public List<Direction> checkSecondCoordinates(Coordinates coordinates) {
+	public void checkSecondCoordinates(Coordinates coordinates) {
 		List<Direction> tempDirections = new ArrayList<>();
 		if (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow()][coordinates.getCol()+1])) {	
 			tempDirections.add(Direction.HORIZONTAL);
 		}
-		return tempDirections;
+		setDirections(tempDirections);
 	}
 	
 }
