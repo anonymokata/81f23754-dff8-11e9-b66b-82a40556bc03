@@ -8,7 +8,7 @@ public class Keyword {
 	private String word;
 	private Integer length;
 	private Boolean isFound = false;
-	private List<Coordinates> potentialStartCoordinates;
+	private List<PotentialStartCoordinates> potentialStartCoordinates;
 	private Coordinates startCoordinates;
 	private List<Coordinates> midCoordinates;
 	private Coordinates endCoordinates;
@@ -57,11 +57,11 @@ public class Keyword {
 		this.isFound = isFound;
 	}
 
-	public List<Coordinates> getPotentialStartCoordinates() {
+	public List<PotentialStartCoordinates> getPotentialStartCoordinates() {
 		return potentialStartCoordinates;
 	}
 
-	public void setPotentialStartCoordinates(List<Coordinates> potentialStartCoordinates) {
+	public void setPotentialStartCoordinates(List<PotentialStartCoordinates> potentialStartCoordinates) {
 		this.potentialStartCoordinates = potentialStartCoordinates;
 	}
 
