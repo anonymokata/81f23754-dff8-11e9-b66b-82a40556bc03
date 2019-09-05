@@ -9,6 +9,7 @@ public class Finder {
 
 	private Keyword keyword;
 	private String[][] grid;
+	private List<Direction> directions;
 
 	public Finder(Keyword keyword, String[][] grid) {
 		super();
@@ -28,6 +29,14 @@ public class Finder {
 		return grid;
 	}
 
+	public List<Direction> getDirections() {
+		return directions;
+	}
+
+	public void setDirections(List<Direction> directions) {
+		this.directions = directions;
+	}
+
 	public List<Coordinates> findPotentialStartingCoordinates() {
 		List<Coordinates> potentials = new ArrayList<>();
 		for (int row = 0; row < grid.length; row++) {
@@ -40,16 +49,12 @@ public class Finder {
 		return potentials;
 	}
 
-	public Keyword checkSecondCoordinates(Coordinates coordinates) {
-		List<Coordinates> midCoordinates = new ArrayList<>();
-		Keyword typeKeyword;
+	public List<Direction> checkSecondCoordinates(Coordinates coordinates) {
+		List<Direction> tempDirections = new ArrayList<>();
 		if (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow()][coordinates.getCol()+1])) {	
-			midCoordinates.add(new Coordinates(coordinates.getRow(),coordinates.getCol()+1));
-			typeKeyword = new Horizontal(keyword.getWord(), coordinates, midCoordinates); 
-		} else {
-			typeKeyword = new Horizontal();
+			tempDirections.add(Direction.HORIZONTAL);
 		}
-		return typeKeyword;
+		return tempDirections;
 	}
 	
 }

@@ -115,18 +115,19 @@ public class WordSearchTest {
 	}
 	
 	@Test
-	public void whenCheckNextCoordinatesIsPassedItReturnsKeywordIfNextCoordinateMatchesKeyword() {
-		String actual = findTaraShort.checkSecondCoordinates(new Coordinates (1,0)).getWord();
-		String expected = "TARA";
+	public void whenCheckSecondCoordinatesIsPassedAHorizontalClueItAddsHorizontalToDirectionsField() {
+		
+		Direction actual = findTaraShort.checkSecondCoordinates(new Coordinates (1,0)).get(0); 
+		Direction expected = Direction.HORIZONTAL;
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	public void whenCheckNextCoordinatesIsPassedItReturnsNullKeywordIfNextCoordinateDoesNotMatchKeyword() {
-		String actual = findDawnShort.checkSecondCoordinates(new Coordinates (2,0)).getWord();
-		String expected = null;
-		assertEquals(expected, actual);
-	}
+//	@Test
+//	public void whenCheckNextCoordinatesIsPassedItReturnsNullKeywordIfNextCoordinateDoesNotMatchKeyword() {
+//		String actual = findDawnShort.checkSecondCoordinates(new Coordinates (2,0)).getWord();
+//		String expected = null;
+//		assertEquals(expected, actual);
+//	}
 	
 	
 	

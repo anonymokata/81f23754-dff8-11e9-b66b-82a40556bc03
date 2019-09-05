@@ -1,0 +1,9 @@
+package com.pillar;
+
+
+public enum Direction {
+
+	HORIZONTAL, VERTICAL, DIAGNAL_DOWN, DIAGNAL_UP, 
+	BW_HORIZONTAL, BW_VERTICAL, BW_DIAGNAL_DOWN, BW_DIAGNAL_UP; 
+	
+}
