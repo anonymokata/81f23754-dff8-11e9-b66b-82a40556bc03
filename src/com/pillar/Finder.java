@@ -44,12 +44,13 @@ public class Finder {
 		findPotentialStartingCoordinates();
 		keyword.setPotentialStartCoordinates(getDirectionsForPotentialStartCoordinates());
 	}
-	
+
 	public List<PotentialStartCoordinates> getDirectionsForPotentialStartCoordinates() {
 		List<PotentialStartCoordinates> allKeywordPotentials = new ArrayList<>();
 		for (int i = 0; i < keyword.getPotentialStartCoordinates().size(); i++) {
 			Coordinates coordinates = keyword.getPotentialStartCoordinates().get(i).getStartCoordinates();
-			PotentialStartCoordinates potentials = new PotentialStartCoordinates(coordinates, getDirections(coordinates));
+			PotentialStartCoordinates potentials = new PotentialStartCoordinates(coordinates,
+					getDirections(coordinates));
 			allKeywordPotentials.add(potentials);
 		}
 		return allKeywordPotentials;
@@ -68,7 +69,7 @@ public class Finder {
 		}
 		return directions;
 	}
-	
+
 	private Boolean checkHorizontal(Coordinates coordinates) {
 		return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow()][coordinates.getCol() + 1]))
 				&& keyword.getLength() <= grid.length - coordinates.getCol();
@@ -84,8 +85,25 @@ public class Finder {
 				&& keyword.getLength() <= grid.length - coordinates.getRow();
 	}
 
-	public Boolean testDirection(Direction direction) {
-		return true;
+	private Boolean checkIfWordIsLongerThanTwoLetters() {
+		return (keyword.getLength() > 2);
 	}
 
+	public void testDirection(Direction direction, Coordinates coordinates) {
+		String keywordSubstring;
+		String gridSubstring = "";
+		List<Coordinates> foundCoordinates;
+		if (direction == Direction.HORIZONTAL) {
+			keywordSubstring = keyword.getWord().substring(2, keyword.getLength());
+			foundCoordinates = new ArrayList<>();
+			for (int i = 0; i < keywordSubstring.length(); i++) {
+				gridSubstring += grid[coordinates.getRow()][coordinates.getCol() + 2 + i];
+				foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() + 2 + i));
+			}
+			if (keywordSubstring.equals(gridSubstring)) {
+				keyword.setIsFound(true);
+				keyword.setRemainingCoordinates(foundCoordinates);
+			}
+		}
+	}
 }

@@ -149,11 +149,15 @@ public class WordSearchTest {
 	}
 
 	@Test
-	public void whenTestDirectionIsPassedHorizontalItReturnsTrueIfKeywordIsMatchedHorizontal() {
+	public void whenTestDirectionIsPassedAHorizontalMatchItSetsIsFoundToTrue() {
 		findTaraShort.setPotentialStartCoordinatesWithDirections();
-		Boolean actual = findTaraShort.testDirection(Direction.HORIZONTAL);
+		findTaraShort.testDirection(Direction.HORIZONTAL, new Coordinates(1, 0));
+		Boolean actual = findTaraShort.getKeyword().getIsFound(); 
 		Boolean expected = true;
 		assertEquals(expected, actual);
 	}
+	
+
+	
 
 }

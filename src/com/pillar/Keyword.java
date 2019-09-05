@@ -10,8 +10,8 @@ public class Keyword {
 	private Boolean isFound = false;
 	private List<PotentialStartCoordinates> potentialStartCoordinates;
 	private Coordinates startCoordinates;
-	private List<Coordinates> midCoordinates;
-	private Coordinates endCoordinates;
+	private List<Coordinates> remainingCoordinates;
+
 
 	public Keyword() {
 		super();
@@ -22,19 +22,11 @@ public class Keyword {
 		this.word = word;
 	}
 	
-	public Keyword(String word, Coordinates startCoordinates, List<Coordinates> midCoordinates) {
+	public Keyword(String word, Coordinates startCoordinates, List<Coordinates> remainingCoordinates) {
 		super();
 		this.word = word;
 		this.startCoordinates = startCoordinates;
-		this.midCoordinates = midCoordinates;
-	}
-
-	public Keyword(String word, Boolean isFound, Coordinates startCoordinates, Coordinates endCoordinates) {
-		super();
-		this.word = word;
-		this.isFound = isFound;
-		this.startCoordinates = startCoordinates;
-		this.endCoordinates = endCoordinates;
+		this.remainingCoordinates = remainingCoordinates;
 	}
 
 	public String getWord() {
@@ -73,28 +65,22 @@ public class Keyword {
 		this.startCoordinates = startCoordinates;
 	}
 
-	public List<Coordinates> getMidCoordinates() {
-		return midCoordinates;
+
+	public List<Coordinates> getRemainingCoordinates() {
+		return remainingCoordinates;
 	}
 
-	public void setMidCoordinates(List<Coordinates> midCoordinates) {
-		this.midCoordinates = midCoordinates;
+	public void setRemainingCoordinates(List<Coordinates> remainingCoordinates) {
+		this.remainingCoordinates = remainingCoordinates;
 	}
 
-	public Coordinates getEndCoordinates() {
-		return endCoordinates;
-	}
-
-	public void setEndCoordinates(Coordinates endCoordinates) {
-		this.endCoordinates = endCoordinates;
-	}
-
+	//fix ending ","
 	public String writeCoordinatesString() {
 		String coordinates = word + ": " + startCoordinates.toString() + ",";
-		for (Coordinates each : midCoordinates) {
+		for (Coordinates each : remainingCoordinates) {
 			coordinates += each.toString() + ",";
 		}
-		return coordinates += endCoordinates.toString();
+		return coordinates;
 	}
 	
 
