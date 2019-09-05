@@ -1,5 +1,6 @@
 package com.pillar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Keyword {
@@ -87,7 +88,7 @@ public class Keyword {
 	public void setEndCoordinates(Coordinates endCoordinates) {
 		this.endCoordinates = endCoordinates;
 	}
-	
+
 	public String writeCoordinatesString() {
 		String coordinates = word + ": " + startCoordinates.toString() + ",";
 		for (Coordinates each : midCoordinates) {
@@ -95,6 +96,7 @@ public class Keyword {
 		}
 		return coordinates += endCoordinates.toString();
 	}
+	
 
 	@Override
 	public String toString() {
