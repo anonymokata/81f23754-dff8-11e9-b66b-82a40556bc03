@@ -1,7 +1,9 @@
 package com.pillar;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Finder {
 
@@ -38,16 +40,16 @@ public class Finder {
 		return potentials;
 	}
 
-	public Boolean checkNextCoordinates(Coordinates coordinates) {
-		if (keyword.getWord().substring(1, 2).equals(getHorizontalGridString(coordinates))) {
-			return true;
+	public Keyword checkSecondCoordinates(Coordinates coordinates) {
+		List<Coordinates> midCoordinates = new ArrayList<>();
+		Keyword typeKeyword;
+		if (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow()][coordinates.getCol()+1])) {	
+			midCoordinates.add(new Coordinates(coordinates.getRow(),coordinates.getCol()+1));
+			typeKeyword = new Horizontal(keyword.getWord(), coordinates, midCoordinates); 
 		} else {
-			return false;
-		}	
+			typeKeyword = new Horizontal();
+		}
+		return typeKeyword;
 	}
 	
-	public String getHorizontalGridString(Coordinates coordinates) {
-		String gridString = grid[coordinates.getRow()][coordinates.getCol()+1];
-		return gridString;
-	}
 }

@@ -115,24 +115,28 @@ public class WordSearchTest {
 	}
 	
 	@Test
-	public void whenCheckNextCoordinatesIsPassedItReturnsTrueIfNextCoordinateMatchesKeyword() {
-		Boolean actual = findTaraShort.checkNextCoordinates(new Coordinates (1,0));
-		Boolean expected = true;
+	public void whenCheckNextCoordinatesIsPassedItReturnsKeywordIfNextCoordinateMatchesKeyword() {
+		String actual = findTaraShort.checkSecondCoordinates(new Coordinates (1,0)).getWord();
+		String expected = "TARA";
 		assertEquals(expected, actual);
 	}
 	
 	@Test
-	public void whenCheckNextCoordinatesIsPassedItReturnsFalseIfNextCoordinateDoesNotMatchKeyword() {
-		Boolean actual = findDawnShort.checkNextCoordinates(new Coordinates (2,0));
-		Boolean expected = false;
+	public void whenCheckNextCoordinatesIsPassedItReturnsNullKeywordIfNextCoordinateDoesNotMatchKeyword() {
+		String actual = findDawnShort.checkSecondCoordinates(new Coordinates (2,0)).getWord();
+		String expected = null;
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	public void whenGetGridStringIsPassedACoordinatesItReturnsAMatchingGridString() {
-		String actual = findDawnShort.getHorizontalGridString(new Coordinates (3,0));
-		String expected = "A";
-		assertEquals(expected, actual);
-	}
+	
+	
+//	@Test
+//	public void whenGetSurroundingLettersIsPassedACoordinatesItReturnsAListOfMatchingGridStrings() {
+//		List<String> actual = findDawnShort.getSurroundingLetters(new Coordinates (3,0));
+//		List<String> expected = "A";
+//		assertEquals(expected, actual);
+//	}
+	
+
 
 }

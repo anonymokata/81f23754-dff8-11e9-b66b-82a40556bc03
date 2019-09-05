@@ -6,16 +6,34 @@ public class Keyword {
 	
 	private String word;
 	private Integer length;
-	private Boolean isFound;
+	private Boolean isFound = false;
 	private List<Coordinates> potentialStartCoordinates;
 	private Coordinates startCoordinates;
 	private List<Coordinates> midCoordinates;
 	private Coordinates endCoordinates;
 
-	public Keyword(String word, Boolean isFound) {
+	public Keyword() {
+		super();
+	}
+
+	public Keyword(String word) {
+		super();
+		this.word = word;
+	}
+	
+	public Keyword(String word, Coordinates startCoordinates, List<Coordinates> midCoordinates) {
+		super();
+		this.word = word;
+		this.startCoordinates = startCoordinates;
+		this.midCoordinates = midCoordinates;
+	}
+
+	public Keyword(String word, Boolean isFound, Coordinates startCoordinates, Coordinates endCoordinates) {
 		super();
 		this.word = word;
 		this.isFound = isFound;
+		this.startCoordinates = startCoordinates;
+		this.endCoordinates = endCoordinates;
 	}
 
 	public String getWord() {

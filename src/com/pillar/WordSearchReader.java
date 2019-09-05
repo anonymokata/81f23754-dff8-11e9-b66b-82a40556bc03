@@ -23,7 +23,7 @@ public class WordSearchReader {
 		String[] splitKeywords = splitKeywords();
 		List<Keyword> keywords = new ArrayList<>();
 		for (String each : splitKeywords) {
-			keywords.add(new Keyword(each, false));
+			keywords.add(new Keyword(each));
 		}
 		return keywords;
 	}
@@ -67,40 +67,4 @@ public class WordSearchReader {
 			return new ArrayList<>();
 		}
 	}
-	
-//	public String findFirstLetterCoordinates(Keyword keyword) {
-//		String[][] grid = makeGrid();
-//		String coordinates = keyword.getWord() + ": ";
-//		for (int row = 0; row < grid.length; row++) {
-//			for (int col = 0; col < grid.length; col++) {
-//			if (keyword.getWord().startsWith(grid[row][col]) 
-//					&& (keyword.getLength() <= (grid[0].length - col)))  {
-//					coordinates += "(" + row + "," + col + ")";
-//				}
-//			}
-//		}
-//		return coordinates;
-//	}
-
-//	public String findKeywordCoordinatesHorizontal(Keyword keyword) {
-//		String[][] grid = makeGrid();
-//		String coordinates = keyword.getWord() + ": ";
-//		for (int row = 0; row < grid[0].length; row++) {
-//			for (int col = 0; col < grid.length; col++) {
-//				if (keyword.getLength() < (grid[0].length - col) 
-//						&& (keyword.getWord().startsWith(grid[row][col]))) {
-//					coordinates += "(" + row + "," + col + "),";
-//					for (int i = 1; i < keyword.getLength() - 1; i++) {
-//
-//						if (keyword.getWord().substring(i, i + 1).equals(grid[row][col + i])) {
-//							coordinates += "(" + row + "," + (col + i) + "),";
-//
-//						} 
-//						
-//					}
-//				}
-//			}
-//		}
-//		return coordinates;
-//	}
 }
