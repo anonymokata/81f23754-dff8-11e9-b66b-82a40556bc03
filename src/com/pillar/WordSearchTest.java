@@ -153,8 +153,11 @@ public class WordSearchTest {
 		findTaraShort.setPotentialStartCoordinatesWithDirections();
 		findTaraShort.testDirection(Direction.HORIZONTAL, new Coordinates(1, 0));
 		Boolean actual = findTaraShort.getKeyword().getIsFound(); 
+		String actual2 = findTaraShort.getKeyword().getRemainingCoordinates().toString();
 		Boolean expected = true;
+		String expected2 = "[(1,2), (1,3)]";
 		assertEquals(expected, actual);
+		assertEquals(expected2, actual2);
 	}
 	
 
