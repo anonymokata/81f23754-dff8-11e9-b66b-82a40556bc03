@@ -20,6 +20,7 @@ public class WordSearchTest {
 	WordSearchReader puzzleTestGridSmall;
 	WordSearchReader puzzleTestGridMed;
 	WordSearchReader verticalTest;
+	WordSearchReader verticalTest2;
 	
 	Finder finder;
 	Finder findTaraShort;
@@ -27,6 +28,7 @@ public class WordSearchTest {
 	Finder findDawnLong;
 	Finder findXander;
 	Finder findTaraVertical;
+	Finder findDawnVertical;
 
 	@BeforeEach
 	public void setup() {
@@ -38,12 +40,14 @@ public class WordSearchTest {
 		horizontalReader = new WordSearchReader("horizontal_test.txt");
 		horizontalReaderLong = new WordSearchReader("horizontal_test_long.txt");
 		verticalTest = new WordSearchReader("vertical_test.txt");
+		verticalTest2 = new WordSearchReader("vertical_test2.txt");
 		
 		findTaraShort = new Finder(horizontalReader.getAllKeywords().get(0), horizontalReader.makeGrid());
 		findDawnShort = new Finder(horizontalReader.getAllKeywords().get(1), horizontalReader.makeGrid());
 		findDawnLong = new Finder(horizontalReaderLong.getAllKeywords().get(1), horizontalReaderLong.makeGrid());
 		findXander = new Finder(mainReader.getAllKeywords().get(1), mainReader.makeGrid());
 		findTaraVertical = new Finder(verticalTest.getAllKeywords().get(0), verticalTest.makeGrid());
+		findDawnVertical = new Finder(verticalTest2.getAllKeywords().get(1), verticalTest2.makeGrid());
 	}
 
 	@Test
@@ -112,7 +116,7 @@ public class WordSearchTest {
 		findXander.findPotentialStartingCoordinates();
 		String actual = findDawnLong.getKeyword().getPotentialStartCoordinates().get(0).getStartCoordinates().toString();
 		String actual2 = findXander.getKeyword().getPotentialStartCoordinates().get(0).getStartCoordinates().toString();
-		String expected = "(2,3)";
+		String expected = "(0,4)";
 		String expected2 = "(4,11)";
 		assertEquals(expected, actual);
 		assertEquals(expected2, actual2);
@@ -151,7 +155,7 @@ public class WordSearchTest {
 	@Test
 	public void whenTestDirectionIsPassedAHorizontalMatchItSetsIsFoundToTrue() {
 		findTaraShort.setPotentialStartCoordinatesWithDirections();
-		findTaraShort.testDirection(Direction.HORIZONTAL, new Coordinates(1, 0));
+		findTaraShort.setKeywordToDirectionType();
 		Boolean actual = findTaraShort.getKeyword().getIsFound(); 
 		String actual2 = findTaraShort.getKeyword().getCoordinates().toString();
 		Boolean expected = true;
@@ -168,12 +172,27 @@ public class WordSearchTest {
 	}
 	
 	@Test
-	public void whenSetKeywordToDirectionTypeIsPassedAHorizontalKeywordItAHorizontalObjectToField() {
-		findTaraShort.setPotentialStartCoordinatesWithDirections();
-		findTaraShort.setKeywordToDirectionType();
-		String actual = findTaraShort.getDirectionTypes().get(0).toString();
-		String expected = "Horizontal";
+	public void whenSetKeywordToDirectionTypeIsPassedAHorizontalKeywordItCreatesAHorizontalSubtypeAndReturnsHorizontalCoordinates() {
+		findDawnShort.setPotentialStartCoordinatesWithDirections();
+		findDawnShort.setKeywordToDirectionType();
+		Boolean actual = findDawnShort.getKeyword().getIsFound();
+		String actual2 = findDawnShort.getKeyword().getCoordinates().toString();
+		Boolean expected = true;
+		String expected2 = "[(3,0), (3,1), (3,2), (3,3)]";
 		assertEquals(expected, actual);
+		assertEquals(expected2, actual2);
+	}
+	
+	@Test
+	public void whenSetKeywordToDirectionTypeIsPassedAVerticalKeywordItCreatesAVerticallSubtypeAndReturnsHorizontalCoordinates() {
+		findDawnVertical.setPotentialStartCoordinatesWithDirections();
+		findDawnVertical.setKeywordToDirectionType();
+		Boolean actual = findDawnVertical.getKeyword().getIsFound();
+		String actual2 = findDawnVertical.getKeyword().getCoordinates().toString();
+		Boolean expected = true;
+		String expected2 = "[(0,1), (1,1), (2,1), (3,1)]";
+		assertEquals(expected, actual);
+		assertEquals(expected2, actual2);
 	}
 
 }

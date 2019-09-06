@@ -80,61 +80,66 @@ public class Finder {
 	}
 
 	private Boolean checkHorizontal(Coordinates coordinates) {
-		return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow()][coordinates.getCol() + 1]))
-				&& keyword.getLength() <= grid.length - coordinates.getCol();
+		if (keyword.getLength() <= grid.length - coordinates.getCol()) {
+			return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow()][coordinates.getCol() + 1]));
+		} else {
+			return false;
+		}
 	}
 
 	private Boolean checkVertical(Coordinates coordinates) {
-		return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow() + 1][coordinates.getCol()]))
-				&& keyword.getLength() <= grid.length - coordinates.getRow();
+		if (keyword.getLength() <= grid.length - coordinates.getRow()) {
+			return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow() + 1][coordinates.getCol()]));
+		} else {
+			return false;
+		}
 	}
 
 	private Boolean checkDiagonalDown(Coordinates coordinates) {
-		return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow() + 1][coordinates.getCol() + 1]))
-				&& keyword.getLength() <= grid.length - coordinates.getRow();
-	}
-
-	private Boolean checkIfWordIsLongerThanTwoLetters() {
-		return (keyword.getLength() > 2);
+		if ((keyword.getLength() <= grid.length - coordinates.getCol())
+				&& (keyword.getLength() <= grid.length - coordinates.getRow())) {
+			return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow() + 1][coordinates.getCol() + 1]));
+		} else {
+			return false;
+		}
 	}
 
 	public void setKeywordToDirectionType() {
-		List<Keyword> directionTypes = new ArrayList<>();
 		Keyword directionType;
 		for (int i = 0; i < keyword.getPotentialStartCoordinates().size(); i++) {
 			for (Direction each : keyword.getPotentialStartCoordinates().get(i).getDirections()) {
 				switch (each) {
 				case HORIZONTAL:
 					directionType = new Horizontal(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
+					directionType.findRemainingCoordinates(grid,
+							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
 					break;
 				case VERTICAL:
-					directionType = new Horizontal(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
+					directionType = new Vertical(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());;
+					directionType.findRemainingCoordinates(grid,
+							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
+					break;
 				default:
 					directionType = null;
 					break;
 				}
-				directionTypes.add(directionType);
+				keyword.setIsFound(directionType.getIsFound());
+				keyword.setCoordinates(directionType.getCoordinates());
 			}
+
 		}
 		setDirectionTypes(directionTypes);
 	}
 
-	public void testDirection(Direction direction, Coordinates coordinates) {
-		String gridSubstring = "";
-
-		List<Coordinates> foundCoordinates;
-		if (direction == Direction.HORIZONTAL) {
-			foundCoordinates = new ArrayList<>();
-			foundCoordinates.add(coordinates);
-			foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() + 1));
-			for (int i = 0; i < keyword.getKeywordSubstring().length(); i++) {
-				gridSubstring += grid[coordinates.getRow()][coordinates.getCol() + 2 + i];
-				foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() + 2 + i));
-			}
-			if (keyword.getKeywordSubstring().equals(gridSubstring)) {
-				keyword.setIsFound(true);
-				keyword.setCoordinates(foundCoordinates);
-			}
+	public void testDirection(Coordinates coordinates) {
+		setKeywordToDirectionType();
+		for (Keyword each : directionTypes) {
+			each.findRemainingCoordinates(grid, coordinates);
 		}
 	}
+
+	private Boolean checkIfWordIsLongerThanTwoLetters() {
+		return (keyword.getLength() > 2);
+	}
+
 }

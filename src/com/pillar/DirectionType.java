@@ -1,7 +1,9 @@
 //package com.pillar;
 //
+//import java.util.List;
+//
 //public interface DirectionType {
 //
-//	String getKeywordSubstring();
+//	void findRemainingCoordinates(String[][] grid, Coordinates coordinates);
 //	
 //}
