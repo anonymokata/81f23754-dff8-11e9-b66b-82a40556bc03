@@ -1,21 +1,18 @@
 package com.pillar;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Finder {
 	public static String[][] grid;
-	
+
 	private Keyword keyword;
 	private List<Keyword> directionTypes;
-//	private String[][] grid;
 
 	public Finder(Keyword keyword, String[][] grid) {
 		super();
 		this.keyword = keyword;
-		this.grid = grid;
+		Finder.grid = grid;
 	}
 
 	public Keyword getKeyword() {
@@ -77,6 +74,9 @@ public class Finder {
 		if (checkDiagonalDown(coordinates)) {
 			directions.add(Direction.DIAGONAL_DOWN);
 		}
+		if (checkDiagonalUp(coordinates)) {
+			directions.add(Direction.DIAGONAL_UP);
+		}
 		return directions;
 	}
 
@@ -105,6 +105,15 @@ public class Finder {
 		}
 	}
 
+	private Boolean checkDiagonalUp(Coordinates coordinates) {
+		if ((keyword.getLength() <= grid.length - coordinates.getCol())
+				&& (keyword.getLength() <= (coordinates.getRow()) + 1)) {
+			return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow() - 1][coordinates.getCol() + 1]));
+		} else {
+			return false;
+		}
+	}
+
 	public void setKeywordToDirectionType() {
 		Keyword directionType;
 		for (int i = 0; i < keyword.getPotentialStartCoordinates().size(); i++) {
@@ -112,14 +121,14 @@ public class Finder {
 				switch (each) {
 				case HORIZONTAL:
 					directionType = new Horizontal(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
-					directionType.findRemainingCoordinates(grid,
+					directionType.findRemainingCoordinates(
 							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
 					break;
 				case VERTICAL:
 					directionType = new Vertical(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
-					directionType.findRemainingCoordinates(grid,
+					directionType.findRemainingCoordinates(
 							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
-					
+
 					break;
 				default:
 					directionType = null;
@@ -127,16 +136,16 @@ public class Finder {
 				}
 				keyword.setIsFound(directionType.getIsFound());
 				keyword.setCoordinates(directionType.getCoordinates());
-				if (keyword.getIsFound()) break;
+				if (keyword.getIsFound())
+					break;
 			}
 
 		}
 		setDirectionTypes(directionTypes);
 	}
-	
-	
-	private Boolean checkIfWordIsLongerThanTwoLetters() {
-		return (keyword.getLength() > 2);
-	}
+
+//	private Boolean checkIfWordIsLongerThanTwoLetters() {
+//		return (keyword.getLength() > 2);
+//	}
 
 }

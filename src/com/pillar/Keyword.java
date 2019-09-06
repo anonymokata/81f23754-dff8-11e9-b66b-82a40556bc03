@@ -1,13 +1,11 @@
 package com.pillar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Keyword {
 	
 	
 	protected String word;
-	private Integer length;
 	private Boolean isFound = false;
 	protected List<PotentialStartCoordinates> potentialStartCoordinates;
 	private List<Coordinates> coordinates;
@@ -81,9 +79,9 @@ public class Keyword {
 		return word;
 	}
 
-	public void findRemainingCoordinates(String[][] grid, Coordinates coordinates) {
-		ifKeywordEqualsSubstringSetCoordinates(getGridSubstring(grid, coordinates),
-				getRemainingCoordinates(grid, coordinates));
+	public void findRemainingCoordinates(Coordinates coordinates) {
+		ifKeywordEqualsSubstringSetCoordinates(getGridSubstring(coordinates),
+				getRemainingCoordinates(coordinates));
 	}
 
 	public void ifKeywordEqualsSubstringSetCoordinates(String gridSubstring, List<Coordinates> foundCoordinates) {
@@ -93,11 +91,11 @@ public class Keyword {
 		}
 	}
 
-	public String getGridSubstring(String[][] grid, Coordinates coordinates) {
+	public String getGridSubstring(Coordinates coordinates) {
 		return null;
 	}
 
-	public List<Coordinates> getRemainingCoordinates(String[][] grid, Coordinates coordinates) {
+	public List<Coordinates> getRemainingCoordinates(Coordinates coordinates) {
 		return null;
 	}
 

@@ -17,16 +17,16 @@ public class Vertical extends Keyword  {
 
 		
 		@Override
-		public String getGridSubstring(String[][] grid, Coordinates coordinates) {
+		public String getGridSubstring(Coordinates coordinates) {
 			String gridSubstring = "";
 			for (int i = 0; i < getKeywordSubstring().length(); i++) {
-				gridSubstring += grid[coordinates.getRow() + 2 + i][coordinates.getCol()];
+				gridSubstring += Finder.grid[coordinates.getRow() + 2 + i][coordinates.getCol()];
 			}
 			return gridSubstring;
 		}
 		
 		@Override
-		public List<Coordinates> getRemainingCoordinates(String[][] grid, Coordinates coordinates) {
+		public List<Coordinates> getRemainingCoordinates(Coordinates coordinates) {
 			List<Coordinates> foundCoordinates = new ArrayList<>();
 			foundCoordinates.add(coordinates);
 			foundCoordinates.add(new Coordinates(coordinates.getRow() + 1, coordinates.getCol()));

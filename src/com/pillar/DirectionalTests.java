@@ -11,6 +11,7 @@ public class DirectionalTests {
 	Finder findTara;
 	Finder findDawn;
 	Finder findBuffyVertical;
+	Finder findYdoa;
 
 	@BeforeEach
 	public void setup() {
@@ -19,6 +20,7 @@ public class DirectionalTests {
 		findTara = new Finder(directionalReader.getAllKeywords().get(0), directionalReader.makeGrid());
 		findDawn = new Finder(directionalReader.getAllKeywords().get(1), directionalReader.makeGrid());
 		findBuffyVertical = new Finder(directionalReader.getAllKeywords().get(2), directionalReader.makeGrid());
+		findYdoa = new Finder(directionalReader.getAllKeywords().get(3), directionalReader.makeGrid());
 	}
 	
 	
@@ -52,6 +54,14 @@ public class DirectionalTests {
 	}
 	
 	@Test
+	public void whenCheckSecondCoordinatesIsPassedADiagonalUpItAddsDiagonalUpToDirectionsField() {
+		findYdoa.setPotentialStartCoordinatesWithDirections();
+		Direction actual = findYdoa.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0); 
+		Direction expected = Direction.DIAGONAL_UP;
+		assertEquals(expected, actual);
+	}
+	
+	@Test
 	public void whenCheckSecondCoordinatesIsPassedAVerticalAndDiagnalDownClueItAddserticalAndDiagonalDownToDirectionsField() {
 		findBuffyVertical.setPotentialStartCoordinatesWithDirections();
 		Direction actual = findBuffyVertical.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0);
@@ -63,7 +73,7 @@ public class DirectionalTests {
 	}
 
 	@Test
-	public void whenTestDirectionIsPassedAHorizontalMatchItSetsIsFoundToTrue() {
+	public void whenSetKeywordToDirectionTypeIsPassedAHorizontalMatchItSetsIsFoundToTrue() {
 		findTara.setPotentialStartCoordinatesWithDirections();
 		findTara.setKeywordToDirectionType();
 		Boolean actual = findTara.getKeyword().getIsFound(); 
@@ -104,6 +114,8 @@ public class DirectionalTests {
 		assertEquals(expected, actual);
 		assertEquals(expected2, actual2);
 	}
+	
+	
 
 	
 }

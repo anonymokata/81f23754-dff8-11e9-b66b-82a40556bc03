@@ -16,16 +16,16 @@ public class Horizontal extends Keyword {
 	}
 	
 	@Override
-	public String getGridSubstring(String[][] grid, Coordinates coordinates) {
+	public String getGridSubstring(Coordinates coordinates) {
 		String gridSubstring = "";
 		for (int i = 0; i < getKeywordSubstring().length(); i++) {
-			gridSubstring += grid[coordinates.getRow()][coordinates.getCol() + 2 + i];
+			gridSubstring += Finder.grid[coordinates.getRow()][coordinates.getCol() + 2 + i];
 		}
 		return gridSubstring;
 	}
 	
 	@Override
-	public List<Coordinates> getRemainingCoordinates(String[][] grid, Coordinates coordinates) {
+	public List<Coordinates> getRemainingCoordinates(Coordinates coordinates) {
 		List<Coordinates> foundCoordinates = new ArrayList<>();
 		foundCoordinates.add(coordinates);
 		foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() + 1));

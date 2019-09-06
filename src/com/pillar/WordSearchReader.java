@@ -10,6 +10,7 @@ import java.util.List;
 
 public class WordSearchReader {
 	private Path filePath;
+	
 
 	public WordSearchReader(Path filePath) {
 		this.filePath = filePath;
