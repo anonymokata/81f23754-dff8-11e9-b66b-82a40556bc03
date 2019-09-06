@@ -60,5 +60,14 @@ public class MainReaderTests {
 		Direction actual = findXander.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0);
 		Direction expected = Direction.BW_HORIZONTAL;
 		assertEquals(expected, actual);
-	} 
+	}
+	
+	@Test
+	public void whenSetKeywordToDirectionTypeIsPassedABwHorizontallKeywordItCreatesABwHorizontalSubtype() {
+		findXander.setDirectionsToPotentialStartCoordinates();
+		findXander.setKeywordToDirectionType();
+		String actual = findXander.getKeyword().getCoordinates().toString();
+		String expected = "[(14,5), (14,4), (14,3), (14,2), (14,1), (14,0)]";
+		assertEquals(expected, actual);
+	}
 }

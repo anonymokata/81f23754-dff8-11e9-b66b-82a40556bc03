@@ -77,9 +77,6 @@ public class Finder {
 		if (checkBwHorizontal(coordinates)) {
 			directions.add(Direction.BW_HORIZONTAL);
 		}
-		if (directions.isEmpty()) {
-			
-		}
 		return directions;
 	}
 	
@@ -106,6 +103,11 @@ public class Finder {
 					break;
 				case DIAGONAL_UP:
 					directionType = new DiagonalUp(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());					
+					directionType.findRemainingCoordinates(
+							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
+					break;
+				case BW_HORIZONTAL:
+					directionType = new BwHorizontal(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());					
 					directionType.findRemainingCoordinates(
 							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
 					break;

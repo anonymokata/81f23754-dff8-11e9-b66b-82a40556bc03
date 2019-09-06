@@ -136,8 +136,6 @@ public class DirectionalTests {
 		assertEquals(expected, actual);
 	}
 
-
-
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedADiagonalUpItKeywordItCreatesADiagonalUpSubtype() {
 		findYdoa.setDirectionsToPotentialStartCoordinates();
@@ -148,6 +146,15 @@ public class DirectionalTests {
 		String expected2 = "[(4,0), (3,1), (2,2), (1,3)]";
 		assertEquals(expected, actual);
 		assertEquals(expected2, actual2);
+	}
+	
+	@Test
+	public void whenSetKeywordToDirectionTypeIsPassedABwHorizontallKeywordItCreatesABwHorizontalSubtype() {
+		findRaru.setDirectionsToPotentialStartCoordinates();
+		findRaru.setKeywordToDirectionType();
+		String actual = findRaru.getKeyword().getCoordinates().toString();
+		String expected = "[(1,4), (1,3), (1,2), (1,1)]";
+		assertEquals(expected, actual);
 	}
 	
 	
