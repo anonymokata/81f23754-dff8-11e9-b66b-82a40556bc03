@@ -124,7 +124,7 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAHorizontalClueItAddsHorizontalToDirectionsField() {
-		findTaraShort.setPotentialStartCoordinatesWithDirections();
+		findTaraShort.setDirectionsToPotentialStartCoordinates();
 		Direction actual = findTaraShort.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0); 
 		Direction expected = Direction.HORIZONTAL;
 		assertEquals(expected, actual);
@@ -132,7 +132,7 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAVerticalClueItAddsVerticalToDirectionsField() {
-		findTaraVertical.setPotentialStartCoordinatesWithDirections();
+		findTaraVertical.setDirectionsToPotentialStartCoordinates();
 		Direction actual = findTaraVertical.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(1); 
 		Direction expected = Direction.VERTICAL;
 		assertEquals(expected, actual);
@@ -140,7 +140,7 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAHorizontalAndVerticalClueItAddsHorizontalAndVerticalToDirectionsField() {
-		findTaraVertical.setPotentialStartCoordinatesWithDirections();
+		findTaraVertical.setDirectionsToPotentialStartCoordinates();
 		Direction actual = findTaraVertical.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0);
 		Direction actual2 = findTaraVertical.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(1);
 		Direction actual3 = findTaraVertical.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(2);
@@ -154,7 +154,7 @@ public class WordSearchTest {
 
 	@Test
 	public void whenTestDirectionIsPassedAHorizontalMatchItSetsIsFoundToTrue() {
-		findTaraShort.setPotentialStartCoordinatesWithDirections();
+		findTaraShort.setDirectionsToPotentialStartCoordinates();
 		findTaraShort.setKeywordToDirectionType();
 		Boolean actual = findTaraShort.getKeyword().getIsFound(); 
 		String actual2 = findTaraShort.getKeyword().getCoordinates().toString();
@@ -173,7 +173,7 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedAHorizontalKeywordItCreatesAHorizontalSubtypeAndReturnsHorizontalCoordinates() {
-		findDawnShort.setPotentialStartCoordinatesWithDirections();
+		findDawnShort.setDirectionsToPotentialStartCoordinates();
 		findDawnShort.setKeywordToDirectionType();
 		Boolean actual = findDawnShort.getKeyword().getIsFound();
 		String actual2 = findDawnShort.getKeyword().getCoordinates().toString();
@@ -185,7 +185,7 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedAVerticalKeywordItCreatesAVerticallSubtypeAndReturnsHorizontalCoordinates() {
-		findDawnVertical.setPotentialStartCoordinatesWithDirections();
+		findDawnVertical.setDirectionsToPotentialStartCoordinates();
 		findDawnVertical.setKeywordToDirectionType();
 		Boolean actual = findDawnVertical.getKeyword().getIsFound();
 		String actual2 = findDawnVertical.getKeyword().getCoordinates().toString();

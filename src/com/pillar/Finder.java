@@ -26,6 +26,13 @@ public class Finder {
 		return grid;
 	}
 
+	public void setDirectionsToPotentialStartCoordinates() {
+		findPotentialStartingCoordinates();
+		keyword.setPotentialStartCoordinates(getDirectionsForPotentialStartCoordinates());
+		System.out.println(keyword.getPotentialStartCoordinates());
+	}
+	
+	
 	public void findPotentialStartingCoordinates() {
 		List<PotentialStartCoordinates> potentials = new ArrayList<>();
 		for (int row = 0; row < grid.length; row++) {
@@ -36,22 +43,21 @@ public class Finder {
 			}
 		}
 		keyword.setPotentialStartCoordinates(potentials);
-	}
-
-	public void setPotentialStartCoordinatesWithDirections() {
-		findPotentialStartingCoordinates();
-		keyword.setPotentialStartCoordinates(getDirectionsForPotentialStartCoordinates());
+		System.out.println(keyword.getPotentialStartCoordinates());
 	}
 
 	public List<PotentialStartCoordinates> getDirectionsForPotentialStartCoordinates() {
-		List<PotentialStartCoordinates> allKeywordPotentials = new ArrayList<>();
+		List<PotentialStartCoordinates> culledKeywordPotentials = new ArrayList<>();
 		for (int i = 0; i < keyword.getPotentialStartCoordinates().size(); i++) {
 			Coordinates coordinates = keyword.getPotentialStartCoordinates().get(i).getStartCoordinates();
+			List<Direction> directions = getDirections(coordinates);
+			if (!directions.isEmpty()) {
 			PotentialStartCoordinates potentials = new PotentialStartCoordinates(coordinates,
-					getDirections(coordinates));
-			allKeywordPotentials.add(potentials);
+					directions);
+			culledKeywordPotentials.add(potentials);
+			}
 		}
-		return allKeywordPotentials;
+		return culledKeywordPotentials;
 	}
 
 	private List<Direction> getDirections(Coordinates coordinates) {
@@ -71,51 +77,13 @@ public class Finder {
 		if (checkBwHorizontal(coordinates)) {
 			directions.add(Direction.BW_HORIZONTAL);
 		}
+		if (directions.isEmpty()) {
+			
+		}
 		return directions;
 	}
-
-	private Boolean checkHorizontal(Coordinates coordinates) {
-		if (keyword.getLength() <= grid.length - coordinates.getCol()) {
-			return (keyword.getSecondLetter().equals(grid[coordinates.getRow()][coordinates.getCol() + 1]));
-		} else {
-			return false;
-		}
-	}
-
-	private Boolean checkVertical(Coordinates coordinates) {
-		if (keyword.getLength() <= grid.length - coordinates.getRow()) {
-			return (keyword.getSecondLetter().equals(grid[coordinates.getRow() + 1][coordinates.getCol()]));
-		} else {
-			return false;
-		}
-	}
-
-	private Boolean checkDiagonalDown(Coordinates coordinates) {
-		if ((keyword.getLength() <= grid.length - coordinates.getCol())
-				&& (keyword.getLength() <= grid.length - coordinates.getRow())) {
-			return (keyword.getSecondLetter().equals(grid[coordinates.getRow() + 1][coordinates.getCol() + 1]));
-		} else {
-			return false;
-		}
-	}
-
-	private Boolean checkDiagonalUp(Coordinates coordinates) {
-		if (keyword.getLength() <= grid.length - coordinates.getCol()
-				&& keyword.getLength() <= (coordinates.getRow()) + 1) {
-			return (keyword.getSecondLetter().equals(grid[coordinates.getRow() - 1][coordinates.getCol() + 1]));
-		} else {
-			return false;
-		}
-	}
 	
-	private Boolean checkBwHorizontal(Coordinates coordinates) {
-		if ((keyword.getLength() <= coordinates.getCol() + 1)) {
-			return (keyword.getSecondLetter().equals(grid[coordinates.getRow()][coordinates.getCol() - 1]));
-		} else {
-			return false;
-		}
-	}
-
+	
 	public void setKeywordToDirectionType() {
 		Keyword directionType;
 		for (int i = 0; i < keyword.getPotentialStartCoordinates().size(); i++) {
@@ -154,6 +122,52 @@ public class Finder {
 
 		}
 	}
+	
+
+
+	private Boolean checkHorizontal(Coordinates coordinates) {
+		if (keyword.getLength() <= grid.length - coordinates.getCol()) {
+			return (keyword.getSecondLetter().equals(grid[coordinates.getRow()][coordinates.getCol() + 1]));
+		} else {
+			return false;
+		}
+	}
+
+	private Boolean checkVertical(Coordinates coordinates) {
+		if (keyword.getLength() <= grid.length - coordinates.getRow()) {
+			return (keyword.getSecondLetter().equals(grid[coordinates.getRow() + 1][coordinates.getCol()]));
+		} else {
+			return false;
+		}
+	}
+
+	private Boolean checkDiagonalDown(Coordinates coordinates) {
+		if ((keyword.getLength() <= grid.length - coordinates.getCol())
+				&& (keyword.getLength() <= grid.length - coordinates.getRow())) {
+			return (keyword.getSecondLetter().equals(grid[coordinates.getRow() + 1][coordinates.getCol() + 1]));
+		} else {
+			return false;
+		}
+	}
+
+	private Boolean checkDiagonalUp(Coordinates coordinates) {
+		if (keyword.getLength() <= grid.length - coordinates.getCol()
+				&& keyword.getLength() <= (coordinates.getRow()) + 1) {
+			return (keyword.getSecondLetter().equals(grid[coordinates.getRow() - 1][coordinates.getCol() + 1]));
+		} else {
+			return false;
+		}
+	}
+	
+	Boolean checkBwHorizontal(Coordinates coordinates) {
+		if ((keyword.getLength() <= coordinates.getCol() + 1)) {
+			return (keyword.getSecondLetter().equals(grid[coordinates.getRow()][coordinates.getCol() - 1]));
+		} else {
+			return false;
+		}
+	}
+
+	
 
 //	private Boolean checkIfWordIsLongerThanTwoLetters() {
 //		return (keyword.getLength() > 2);
