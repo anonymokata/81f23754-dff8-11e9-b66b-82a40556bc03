@@ -166,7 +166,7 @@ public class WordSearchTest {
 	
 	@Test
 	public void whenGetKeywordSubstringIsPassedADirectionItReturnsSubstring() {
-		String actual = findTaraShort.getKeyword().getKeywordSubstring();
+		String actual = findTaraShort.getKeyword().getRemainingLetters();
 		String expected = "RA";
 		assertEquals(expected, actual);
 	}

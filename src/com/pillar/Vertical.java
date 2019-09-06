@@ -19,7 +19,7 @@ public class Vertical extends Keyword  {
 		@Override
 		public String getGridSubstring(Coordinates coordinates) {
 			String gridSubstring = "";
-			for (int i = 0; i < getKeywordSubstring().length(); i++) {
+			for (int i = 0; i < getRemainingLetters().length(); i++) {
 				gridSubstring += Finder.grid[coordinates.getRow() + 2 + i][coordinates.getCol()];
 			}
 			return gridSubstring;
@@ -30,7 +30,7 @@ public class Vertical extends Keyword  {
 			List<Coordinates> foundCoordinates = new ArrayList<>();
 			foundCoordinates.add(coordinates);
 			foundCoordinates.add(new Coordinates(coordinates.getRow() + 1, coordinates.getCol()));
-			for (int i = 0; i < getKeywordSubstring().length(); i++) {
+			for (int i = 0; i < getRemainingLetters().length(); i++) {
 				foundCoordinates.add(new Coordinates(coordinates.getRow() + 2 + i, coordinates.getCol()));
 			}
 			return foundCoordinates;

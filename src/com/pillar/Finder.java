@@ -76,7 +76,7 @@ public class Finder {
 
 	private Boolean checkHorizontal(Coordinates coordinates) {
 		if (keyword.getLength() <= grid.length - coordinates.getCol()) {
-			return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow()][coordinates.getCol() + 1]));
+			return (keyword.getSecondLetter().equals(grid[coordinates.getRow()][coordinates.getCol() + 1]));
 		} else {
 			return false;
 		}
@@ -84,7 +84,7 @@ public class Finder {
 
 	private Boolean checkVertical(Coordinates coordinates) {
 		if (keyword.getLength() <= grid.length - coordinates.getRow()) {
-			return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow() + 1][coordinates.getCol()]));
+			return (keyword.getSecondLetter().equals(grid[coordinates.getRow() + 1][coordinates.getCol()]));
 		} else {
 			return false;
 		}
@@ -93,7 +93,7 @@ public class Finder {
 	private Boolean checkDiagonalDown(Coordinates coordinates) {
 		if ((keyword.getLength() <= grid.length - coordinates.getCol())
 				&& (keyword.getLength() <= grid.length - coordinates.getRow())) {
-			return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow() + 1][coordinates.getCol() + 1]));
+			return (keyword.getSecondLetter().equals(grid[coordinates.getRow() + 1][coordinates.getCol() + 1]));
 		} else {
 			return false;
 		}
@@ -102,7 +102,7 @@ public class Finder {
 	private Boolean checkDiagonalUp(Coordinates coordinates) {
 		if (keyword.getLength() <= grid.length - coordinates.getCol()
 				&& keyword.getLength() <= (coordinates.getRow()) + 1) {
-			return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow() - 1][coordinates.getCol() + 1]));
+			return (keyword.getSecondLetter().equals(grid[coordinates.getRow() - 1][coordinates.getCol() + 1]));
 		} else {
 			return false;
 		}
@@ -110,7 +110,7 @@ public class Finder {
 	
 	private Boolean checkBwHorizontal(Coordinates coordinates) {
 		if ((keyword.getLength() <= coordinates.getCol() + 1)) {
-			return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow()][coordinates.getCol() - 1]));
+			return (keyword.getSecondLetter().equals(grid[coordinates.getRow()][coordinates.getCol() - 1]));
 		} else {
 			return false;
 		}

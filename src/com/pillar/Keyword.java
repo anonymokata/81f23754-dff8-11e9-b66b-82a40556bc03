@@ -36,6 +36,10 @@ public class Keyword {
 	public Integer getLength() {
 		return getWord().length();
 	}
+	
+	public String getSecondLetter() {
+		return word.substring(1, 2);
+	}
 
 	public Boolean getIsFound() {
 		return isFound;
@@ -45,7 +49,7 @@ public class Keyword {
 		this.isFound = isFound;
 	}
 
-	public String getKeywordSubstring() {
+	public String getRemainingLetters() {
 		return word.substring(2, word.length());
 	}
 
@@ -85,7 +89,7 @@ public class Keyword {
 	}
 
 	public void ifKeywordEqualsSubstringSetCoordinates(String gridSubstring, List<Coordinates> foundCoordinates) {
-		if (getKeywordSubstring().equals(gridSubstring)) {
+		if (getRemainingLetters().equals(gridSubstring)) {
 			setIsFound(true);
 			setCoordinates(foundCoordinates);
 		}
