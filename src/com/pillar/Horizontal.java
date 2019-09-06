@@ -16,21 +16,39 @@ public class Horizontal extends Keyword {
 	}
 	
 	@Override
-	public void findRemainingCoordinates(String[][] grid, Coordinates coordinates) {
-	String gridSubstring = "";
-	List<Coordinates> foundCoordinates;
-		foundCoordinates = new ArrayList<>();
+	public String getGridSubstring(String[][] grid, Coordinates coordinates) {
+		String gridSubstring = "";
+		for (int i = 0; i < getKeywordSubstring().length(); i++) {
+			gridSubstring += grid[coordinates.getRow()][coordinates.getCol() + 2 + i];
+		}
+		return gridSubstring;
+	}
+	
+	@Override
+	public List<Coordinates> getRemainingCoordinates(String[][] grid, Coordinates coordinates) {
+		List<Coordinates> foundCoordinates = new ArrayList<>();
 		foundCoordinates.add(coordinates);
 		foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() + 1));
 		for (int i = 0; i < getKeywordSubstring().length(); i++) {
-			gridSubstring += grid[coordinates.getRow()][coordinates.getCol() + 2 + i];
 			foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() + 2 + i));
 		}
-		if (getKeywordSubstring().equals(gridSubstring)) {
-			setIsFound(true);
-			setCoordinates(foundCoordinates);
-		}
+		return foundCoordinates;
 	}
+	
+	
+//	@Override
+//	public void findRemainingCoordinates(String[][] grid, Coordinates coordinates) {
+//	String gridSubstring = "";
+//	List<Coordinates> foundCoordinates;
+//		foundCoordinates = new ArrayList<>();
+//		foundCoordinates.add(coordinates);
+//		foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() + 1));
+//		for (int i = 0; i < getKeywordSubstring().length(); i++) {
+//			gridSubstring += grid[coordinates.getRow()][coordinates.getCol() + 2 + i];
+//			foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() + 2 + i));
+//		}
+//		ifKeywordEqualsSubstringSetIsFoundAndCoordinates(gridSubstring, foundCoordinates);
+//	}
 
 	@Override
 	public String toString() {

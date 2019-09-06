@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Keyword {
-	
+
 	protected String word;
+	private Integer length;
 	private Boolean isFound = false;
 	protected List<PotentialStartCoordinates> potentialStartCoordinates;
 	private List<Coordinates> coordinates;
-	
-
 
 	public Keyword() {
 		super();
@@ -67,7 +66,7 @@ public class Keyword {
 		this.coordinates = coordinates;
 	}
 
-	//fix ending ","
+	// fix ending ","
 	public String writeCoordinatesString() {
 		String coordinatesString = word + ": ";
 		for (Coordinates each : coordinates) {
@@ -75,14 +74,30 @@ public class Keyword {
 		}
 		return coordinatesString;
 	}
-	
 
 	@Override
 	public String toString() {
 		return word;
 	}
 
-	public void findRemainingCoordinates(String[][] grid, Coordinates theseCoordinates) {	
+	public void findRemainingCoordinates(String[][] grid, Coordinates coordinates) {
+		ifKeywordEqualsSubstringSetCoordinates(getGridSubstring(grid, coordinates),
+				getRemainingCoordinates(grid, coordinates));
+	}
+
+	public void ifKeywordEqualsSubstringSetCoordinates(String gridSubstring, List<Coordinates> foundCoordinates) {
+		if (getKeywordSubstring().equals(gridSubstring)) {
+			setIsFound(true);
+			setCoordinates(foundCoordinates);
+		}
+	}
+
+	public String getGridSubstring(String[][] grid, Coordinates coordinates) {
+		return null;
+	}
+
+	public List<Coordinates> getRemainingCoordinates(String[][] grid, Coordinates coordinates) {
+		return null;
 	}
 
 }

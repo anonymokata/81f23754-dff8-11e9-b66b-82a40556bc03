@@ -15,22 +15,25 @@ public class Vertical extends Keyword  {
 			this.potentialStartCoordinates = potentialStartCoordinates;
 		}
 
-
+		
 		@Override
-		public void findRemainingCoordinates(String[][] grid, Coordinates coordinates) {
-		String gridSubstring = "";
-		List<Coordinates> foundCoordinates;
-			foundCoordinates = new ArrayList<>();
+		public String getGridSubstring(String[][] grid, Coordinates coordinates) {
+			String gridSubstring = "";
+			for (int i = 0; i < getKeywordSubstring().length(); i++) {
+				gridSubstring += grid[coordinates.getRow() + 2 + i][coordinates.getCol()];
+			}
+			return gridSubstring;
+		}
+		
+		@Override
+		public List<Coordinates> getRemainingCoordinates(String[][] grid, Coordinates coordinates) {
+			List<Coordinates> foundCoordinates = new ArrayList<>();
 			foundCoordinates.add(coordinates);
 			foundCoordinates.add(new Coordinates(coordinates.getRow() + 1, coordinates.getCol()));
 			for (int i = 0; i < getKeywordSubstring().length(); i++) {
-				gridSubstring += grid[coordinates.getRow() + 2 + i][coordinates.getCol()];
 				foundCoordinates.add(new Coordinates(coordinates.getRow() + 2 + i, coordinates.getCol()));
 			}
-			if (getKeywordSubstring().equals(gridSubstring)) {
-				setIsFound(true);
-				setCoordinates(foundCoordinates);
-			}
+			return foundCoordinates;
 		}
 		
 		

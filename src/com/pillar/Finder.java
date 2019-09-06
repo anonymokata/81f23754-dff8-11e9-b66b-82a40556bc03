@@ -137,7 +137,8 @@ public class Finder {
 			each.findRemainingCoordinates(grid, coordinates);
 		}
 	}
-
+	
+	
 	private Boolean checkIfWordIsLongerThanTwoLetters() {
 		return (keyword.getLength() > 2);
 	}
