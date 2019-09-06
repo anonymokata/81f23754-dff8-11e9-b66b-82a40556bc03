@@ -6,10 +6,11 @@ import java.util.List;
 import java.util.Set;
 
 public class Finder {
-
+	public static String[][] grid;
+	
 	private Keyword keyword;
 	private List<Keyword> directionTypes;
-	private String[][] grid;
+//	private String[][] grid;
 
 	public Finder(Keyword keyword, String[][] grid) {
 		super();
@@ -115,9 +116,10 @@ public class Finder {
 							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
 					break;
 				case VERTICAL:
-					directionType = new Vertical(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());;
+					directionType = new Vertical(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
 					directionType.findRemainingCoordinates(grid,
 							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
+					
 					break;
 				default:
 					directionType = null;
@@ -125,17 +127,11 @@ public class Finder {
 				}
 				keyword.setIsFound(directionType.getIsFound());
 				keyword.setCoordinates(directionType.getCoordinates());
+				if (keyword.getIsFound()) break;
 			}
 
 		}
 		setDirectionTypes(directionTypes);
-	}
-
-	public void testDirection(Coordinates coordinates) {
-		setKeywordToDirectionType();
-		for (Keyword each : directionTypes) {
-			each.findRemainingCoordinates(grid, coordinates);
-		}
 	}
 	
 	

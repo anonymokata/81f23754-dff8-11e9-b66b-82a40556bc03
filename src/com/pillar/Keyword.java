@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Keyword {
-
+	
+	
 	protected String word;
 	private Integer length;
 	private Boolean isFound = false;

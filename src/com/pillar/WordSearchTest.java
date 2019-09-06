@@ -116,7 +116,7 @@ public class WordSearchTest {
 		findXander.findPotentialStartingCoordinates();
 		String actual = findDawnLong.getKeyword().getPotentialStartCoordinates().get(0).getStartCoordinates().toString();
 		String actual2 = findXander.getKeyword().getPotentialStartCoordinates().get(0).getStartCoordinates().toString();
-		String expected = "(0,4)";
+		String expected = "(2,3)";
 		String expected2 = "(4,11)";
 		assertEquals(expected, actual);
 		assertEquals(expected2, actual2);
