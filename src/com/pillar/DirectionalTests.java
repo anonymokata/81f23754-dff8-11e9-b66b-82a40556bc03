@@ -13,6 +13,7 @@ public class DirectionalTests {
 	Finder findBuffyVertical;
 	Finder findYdoa;
 	Finder findBuow;
+	Finder findRaru;
 
 	@BeforeEach
 	public void setup() {
@@ -23,6 +24,7 @@ public class DirectionalTests {
 		findBuffyVertical = new Finder(directionalReader.getAllKeywords().get(2), directionalReader.makeGrid());
 		findYdoa = new Finder(directionalReader.getAllKeywords().get(3), directionalReader.makeGrid());
 		findBuow = new Finder(directionalReader.getAllKeywords().get(4), directionalReader.makeGrid());
+		findRaru = new Finder(directionalReader.getAllKeywords().get(5), directionalReader.makeGrid());
 	}
 
 	@Test
@@ -66,6 +68,22 @@ public class DirectionalTests {
 		assertEquals(expected2, actual2);;
 	}
 
+	@Test
+	public void whenCheckSecondCoordinatesIsPassedADiagonalUpItAddsDiagonalUpToDirectionsField() {
+		findYdoa.setPotentialStartCoordinatesWithDirections();
+		Direction actual = findYdoa.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0);
+		Direction expected = Direction.DIAGONAL_UP;
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void whenCheckSecondCoordinatesIsPassedABwHorizontalItAddsBwHorizontalToDirectionsField2() {
+		findRaru.setPotentialStartCoordinatesWithDirections();
+		Direction actual = findRaru.getKeyword().getPotentialStartCoordinates().get(2).getDirections().get(0);
+		Direction expected = Direction.BW_HORIZONTAL;
+		assertEquals(expected, actual);
+	} 
+	
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedAHorizontalMatchItSetsIsFoundToTrue() {
 		findTara.setPotentialStartCoordinatesWithDirections();
@@ -118,17 +136,10 @@ public class DirectionalTests {
 		assertEquals(expected, actual);
 	}
 
-	@Test
-	public void whenCheckSecondCoordinatesIsPassedADiagonalUpItAddsDiagonalUpToDirectionsField2() {
-		findYdoa.setPotentialStartCoordinatesWithDirections();
-		Direction actual = findYdoa.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0);
-		Direction expected = Direction.DIAGONAL_UP;
-		assertEquals(expected, actual);
 
-	}
 
 	@Test
-	public void whenCheckSecondCoordinatesIsPassedADiagonalUpItAddsDiagonalUpToDirectionsField() {
+	public void whenCheckSecondCoordinatesIsPassedADiagonalUpItKeywordItCreatesADiagonalUpSubtype() {
 		findYdoa.setPotentialStartCoordinatesWithDirections();
 		findYdoa.setKeywordToDirectionType();
 		Boolean actual = findYdoa.getKeyword().getIsFound();
@@ -138,4 +149,6 @@ public class DirectionalTests {
 		assertEquals(expected, actual);
 		assertEquals(expected2, actual2);
 	}
+	
+	
 }

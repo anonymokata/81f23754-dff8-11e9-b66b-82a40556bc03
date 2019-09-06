@@ -68,6 +68,9 @@ public class Finder {
 		if (checkDiagonalUp(coordinates)) {
 			directions.add(Direction.DIAGONAL_UP);
 		}
+		if (checkBwHorizontal(coordinates)) {
+			directions.add(Direction.BW_HORIZONTAL);
+		}
 		return directions;
 	}
 
@@ -97,9 +100,17 @@ public class Finder {
 	}
 
 	private Boolean checkDiagonalUp(Coordinates coordinates) {
-		if ((keyword.getLength() <= grid.length - coordinates.getCol())
-				&& (keyword.getLength() <= (coordinates.getRow()) + 1)) {
+		if (keyword.getLength() <= grid.length - coordinates.getCol()
+				&& keyword.getLength() <= (coordinates.getRow()) + 1) {
 			return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow() - 1][coordinates.getCol() + 1]));
+		} else {
+			return false;
+		}
+	}
+	
+	private Boolean checkBwHorizontal(Coordinates coordinates) {
+		if ((keyword.getLength() <= coordinates.getCol() + 1)) {
+			return (keyword.getWord().substring(1, 2).equals(grid[coordinates.getRow()][coordinates.getCol() - 1]));
 		} else {
 			return false;
 		}
