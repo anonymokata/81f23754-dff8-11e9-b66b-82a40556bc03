@@ -15,7 +15,7 @@ public class EarlyTests {
 
 	@BeforeEach
 	public void setup() {	
-		smallTest = new WordSearchReader("puzzle_grid_test_medium.txt");
+		smallTest = new WordSearchReader("early_tests.txt");
 	}
 
 	@Test

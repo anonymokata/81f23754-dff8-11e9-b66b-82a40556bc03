@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class EarlyDirectionTests {
+public class DirectionalTests {
 
 	WordSearchReader directionalReader;
 	Finder findTara;
@@ -15,7 +15,7 @@ public class EarlyDirectionTests {
 	@BeforeEach
 	public void setup() {
 		
-		directionalReader = new WordSearchReader("horizontal_test_long.txt");	
+		directionalReader = new WordSearchReader("directional_tests.txt");	
 		findTara = new Finder(directionalReader.getAllKeywords().get(0), directionalReader.makeGrid());
 		findDawn = new Finder(directionalReader.getAllKeywords().get(1), directionalReader.makeGrid());
 		findBuffyVertical = new Finder(directionalReader.getAllKeywords().get(2), directionalReader.makeGrid());

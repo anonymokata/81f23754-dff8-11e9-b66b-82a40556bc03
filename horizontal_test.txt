@@ -1,5 +1,0 @@
-TARA,DAWN
-Y,G,M,Z
-T,A,R,A
-H,O,B,D
-D,A,W,N

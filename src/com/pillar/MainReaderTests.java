@@ -9,11 +9,13 @@ public class MainReaderTests {
 
 	WordSearchReader mainReader;
 	Finder findXander;
+	Finder findGiles;
 
 	@BeforeEach
 	public void setup() {
 		mainReader = new WordSearchReader("word_search.txt");
-		findXander = new Finder(mainReader.getAllKeywords().get(1), mainReader.makeGrid());		
+		findXander = new Finder(mainReader.getAllKeywords().get(1), mainReader.makeGrid());	
+		findGiles = new Finder(mainReader.getAllKeywords().get(2), mainReader.makeGrid());
 	}
 	
 	@Test
@@ -29,6 +31,18 @@ public class MainReaderTests {
 		String actual2 = mainReader.getAllKeywords().get(2).getWord();
 		String expected = "BUFFY";
 		String expected2 = "GILES";
+		assertEquals(expected, actual);
+		assertEquals(expected2, actual2);
+	}
+	
+	@Test
+	public void whenSetKeywordToDirectionTypeIsPassedAHorizontalKeywordItCreatesAHorizontalSubtypeAndReturnsHorizontalCoordinates() {
+		findGiles.setPotentialStartCoordinatesWithDirections();
+		findGiles.setKeywordToDirectionType();
+		Boolean actual = findGiles.getKeyword().getIsFound();
+		String actual2 = findGiles.getKeyword().getCoordinates().toString();
+		Boolean expected = true;
+		String expected2 = "[(13,0), (13,1), (13,2), (13,3), (13,4)]";
 		assertEquals(expected, actual);
 		assertEquals(expected2, actual2);
 	}
