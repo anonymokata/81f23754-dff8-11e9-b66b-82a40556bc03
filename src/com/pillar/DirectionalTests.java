@@ -79,7 +79,7 @@ public class DirectionalTests {
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedABwHorizontalItAddsBwHorizontalToDirectionsField2() {
 		findRaru.setDirectionsToPotentialStartCoordinates();
-		Direction actual = findRaru.getKeyword().getPotentialStartCoordinates().get(2).getDirections().get(0);
+		Direction actual = findRaru.getKeyword().getPotentialStartCoordinates().get(1).getDirections().get(0);
 		Direction expected = Direction.BW_HORIZONTAL;
 		assertEquals(expected, actual);
 	} 
