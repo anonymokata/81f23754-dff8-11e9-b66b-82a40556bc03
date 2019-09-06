@@ -16,16 +16,15 @@ public class DirectionalTests {
 
 	@BeforeEach
 	public void setup() {
-		
-		directionalReader = new WordSearchReader("directional_tests.txt");	
+
+		directionalReader = new WordSearchReader("directional_tests.txt");
 		findTara = new Finder(directionalReader.getAllKeywords().get(0), directionalReader.makeGrid());
 		findDawn = new Finder(directionalReader.getAllKeywords().get(1), directionalReader.makeGrid());
 		findBuffyVertical = new Finder(directionalReader.getAllKeywords().get(2), directionalReader.makeGrid());
 		findYdoa = new Finder(directionalReader.getAllKeywords().get(3), directionalReader.makeGrid());
 		findBuow = new Finder(directionalReader.getAllKeywords().get(4), directionalReader.makeGrid());
 	}
-	
-	
+
 	@Test
 	public void whenFindPotentialStartCoordinatesIsPassedItSetsTheKeywordPotentalStartCoordinates() {
 		findTara.findPotentialStartingCoordinates();
@@ -55,13 +54,6 @@ public class DirectionalTests {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	public void whenCheckSecondCoordinatesIsPassedADiagonalUpItAddsDiagonalUpToDirectionsField() {
-		findYdoa.setPotentialStartCoordinatesWithDirections();
-		Direction actual = findYdoa.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0); 
-		Direction expected = Direction.DIAGONAL_UP;
-		assertEquals(expected, actual);
-	}
 	
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAVerticalAndDiagnalDownClueItAddserticalAndDiagonalDownToDirectionsField() {
@@ -125,7 +117,25 @@ public class DirectionalTests {
 		String expected = "[(0,0), (1,1), (2,2), (3,3)]";
 		assertEquals(expected, actual);
 	}
-	
+
+	@Test
+	public void whenCheckSecondCoordinatesIsPassedADiagonalUpItAddsDiagonalUpToDirectionsField2() {
+		findYdoa.setPotentialStartCoordinatesWithDirections();
+		Direction actual = findYdoa.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0);
+		Direction expected = Direction.DIAGONAL_UP;
+		assertEquals(expected, actual);
+
+	}
+
+	@Test
+	public void whenCheckSecondCoordinatesIsPassedADiagonalUpItAddsDiagonalUpToDirectionsField() {
+		findYdoa.setPotentialStartCoordinatesWithDirections();
+		findYdoa.setKeywordToDirectionType();
+		Boolean actual = findYdoa.getKeyword().getIsFound();
+		String actual2 = findYdoa.getKeyword().getCoordinates().toString();
+		Boolean expected = true;
+		String expected2 = "[(4,0), (3,1), (2,2), (1,3)]";
+		assertEquals(expected, actual);
+		assertEquals(expected2, actual2);
+	}
 }
-
-

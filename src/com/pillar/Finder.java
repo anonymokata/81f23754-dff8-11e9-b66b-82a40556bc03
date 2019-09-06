@@ -125,10 +125,16 @@ public class Finder {
 					directionType.findRemainingCoordinates(
 							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
 					break;
+				case DIAGONAL_UP:
+					directionType = new DiagonalUp(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());					
+					directionType.findRemainingCoordinates(
+							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
+					break;
 				default:
 					directionType = null;
 					break;
 				}
+	
 				keyword.setIsFound(directionType.getIsFound());
 				keyword.setCoordinates(directionType.getCoordinates());
 				if (keyword.getIsFound())
