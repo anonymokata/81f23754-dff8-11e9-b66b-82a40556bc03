@@ -12,6 +12,7 @@ public class DirectionalTests {
 	Finder findDawn;
 	Finder findBuffyVertical;
 	Finder findYdoa;
+	Finder findBuow;
 
 	@BeforeEach
 	public void setup() {
@@ -21,6 +22,7 @@ public class DirectionalTests {
 		findDawn = new Finder(directionalReader.getAllKeywords().get(1), directionalReader.makeGrid());
 		findBuffyVertical = new Finder(directionalReader.getAllKeywords().get(2), directionalReader.makeGrid());
 		findYdoa = new Finder(directionalReader.getAllKeywords().get(3), directionalReader.makeGrid());
+		findBuow = new Finder(directionalReader.getAllKeywords().get(4), directionalReader.makeGrid());
 	}
 	
 	
@@ -104,7 +106,7 @@ public class DirectionalTests {
 	}
 	
 	@Test
-	public void whenSetKeywordToDirectionTypeIsPassedAVerticalKeywordItCreatesAVerticallSubtypeAndReturnsVeritcalCoordinates() {
+	public void whenSetKeywordToDirectionTypeIsPassedAVerticalKeywordItCreatesAVerticallSubtypeAndReturnsCoordinates() {
 		findBuffyVertical.setPotentialStartCoordinatesWithDirections();
 		findBuffyVertical.setKeywordToDirectionType();
 		Boolean actual = findBuffyVertical.getKeyword().getIsFound();
@@ -115,8 +117,14 @@ public class DirectionalTests {
 		assertEquals(expected2, actual2);
 	}
 	
-	
-
+	@Test
+	public void whenSetKeywordToDirectionTypeIsPassedADiagonalDownlKeywordItCreatesADiagonalDownlSubtypeAndReturnsCoordinates() {
+		findBuow.setPotentialStartCoordinatesWithDirections();
+		findBuow.setKeywordToDirectionType();
+		String actual = findBuow.getKeyword().getCoordinates().toString();
+		String expected = "[(0,0), (1,1), (2,2), (3,3)]";
+		assertEquals(expected, actual);
+	}
 	
 }
 

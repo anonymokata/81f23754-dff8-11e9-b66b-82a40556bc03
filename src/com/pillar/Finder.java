@@ -7,7 +7,6 @@ public class Finder {
 	public static String[][] grid;
 
 	private Keyword keyword;
-	private List<Keyword> directionTypes;
 
 	public Finder(Keyword keyword, String[][] grid) {
 		super();
@@ -25,14 +24,6 @@ public class Finder {
 
 	public String[][] getGrid() {
 		return grid;
-	}
-
-	public List<Keyword> getDirectionTypes() {
-		return directionTypes;
-	}
-
-	public void setDirectionTypes(List<Keyword> directionTypes) {
-		this.directionTypes = directionTypes;
 	}
 
 	public void findPotentialStartingCoordinates() {
@@ -128,7 +119,11 @@ public class Finder {
 					directionType = new Vertical(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
 					directionType.findRemainingCoordinates(
 							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
-
+					break;
+				case DIAGONAL_DOWN:
+					directionType = new DiagonalDown(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
+					directionType.findRemainingCoordinates(
+							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
 					break;
 				default:
 					directionType = null;
@@ -141,7 +136,6 @@ public class Finder {
 			}
 
 		}
-		setDirectionTypes(directionTypes);
 	}
 
 //	private Boolean checkIfWordIsLongerThanTwoLetters() {
