@@ -15,6 +15,7 @@ public class DirectionalTests {
 	Finder findBuow;
 	Finder findRaru;
 	Finder findBaora;
+	Finder findAaody;
 
 	@BeforeEach
 	public void setup() {
@@ -27,6 +28,7 @@ public class DirectionalTests {
 		findBuow = new Finder(directionalReader.getAllKeywords().get(4), directionalReader.makeGrid());
 		findRaru = new Finder(directionalReader.getAllKeywords().get(5), directionalReader.makeGrid());
 		findBaora = new Finder(directionalReader.getAllKeywords().get(6), directionalReader.makeGrid());
+		findAaody = new Finder(directionalReader.getAllKeywords().get(7), directionalReader.makeGrid());
 	}
 
 	@Test
@@ -79,7 +81,7 @@ public class DirectionalTests {
 	}
 	
 	@Test
-	public void whenCheckSecondCoordinatesIsPassedABwHorizontalItAddsBwHorizontalToDirectionsField2() {
+	public void whenCheckSecondCoordinatesIsPassedABwHorizontalItAddsBwHorizontalToDirectionsField() {
 		findRaru.setDirectionsToPotentialStartCoordinates();
 		Direction actual = findRaru.getKeyword().getPotentialStartCoordinates().get(1).getDirections().get(0);
 		Direction expected = Direction.BW_HORIZONTAL;
@@ -87,11 +89,22 @@ public class DirectionalTests {
 	} 
 	
 	@Test
-	public void whenCheckSecondCoordinatesIsPassedABwVerticalItAddsBwVerticalToDirectionsField2() {
+	public void whenCheckSecondCoordinatesIsPassedABwVerticalItAddsBwVerticalToDirectionsField() {
 		findBaora.setDirectionsToPotentialStartCoordinates();	
 		Direction actual = findBaora.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0);
 		Direction expected = Direction.BW_VERTICAL;
 		assertEquals(expected, actual);
+	} 
+	
+	@Test
+	public void whenCheckSecondCoordinatesIsPassedABwDiagonalDownItAddsBwDiagonalDownToDirectionsField() {
+		findAaody.setDirectionsToPotentialStartCoordinates();	
+		Boolean actual = findAaody.checkBwDiagonalDown(new Coordinates(0,4));
+		Direction actual2 = findAaody.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0);
+		Boolean expected = true;
+		Direction expected2 = Direction.BW_DIAGONAL_DOWN;
+		assertEquals(expected, actual);
+		assertEquals(expected2, actual2);
 	} 
 	
 	@Test

@@ -29,10 +29,8 @@ public class Finder {
 	public void setDirectionsToPotentialStartCoordinates() {
 		findPotentialStartingCoordinates();
 		keyword.setPotentialStartCoordinates(getDirectionsForPotentialStartCoordinates());
-		System.out.println(keyword.getPotentialStartCoordinates());
 	}
-	
-	
+
 	public void findPotentialStartingCoordinates() {
 		List<PotentialStartCoordinates> potentials = new ArrayList<>();
 		for (int row = 0; row < grid.length; row++) {
@@ -43,7 +41,6 @@ public class Finder {
 			}
 		}
 		keyword.setPotentialStartCoordinates(potentials);
-		System.out.println(keyword.getPotentialStartCoordinates());
 	}
 
 	public List<PotentialStartCoordinates> getDirectionsForPotentialStartCoordinates() {
@@ -52,12 +49,10 @@ public class Finder {
 			Coordinates coordinates = keyword.getPotentialStartCoordinates().get(i).getStartCoordinates();
 			List<Direction> directions = getDirections(coordinates);
 			if (!directions.isEmpty()) {
-			PotentialStartCoordinates potentials = new PotentialStartCoordinates(coordinates,
-					directions);
-			culledKeywordPotentials.add(potentials);
+				PotentialStartCoordinates potentials = new PotentialStartCoordinates(coordinates, directions);
+				culledKeywordPotentials.add(potentials);
 			}
 		}
-		System.out.println("Culls: " + culledKeywordPotentials);
 		return culledKeywordPotentials;
 	}
 
@@ -81,10 +76,13 @@ public class Finder {
 		if (checkBwVertical(coordinates)) {
 			directions.add(Direction.BW_VERTICAL);
 		}
+		if (checkBwDiagonalDown(coordinates)) {
+			directions.add(Direction.BW_DIAGONAL_DOWN);
+		}
 		return directions;
 	}
 	
-	
+
 	public void setKeywordToDirectionType() {
 		Keyword directionType;
 		for (int i = 0; i < keyword.getPotentialStartCoordinates().size(); i++) {
@@ -101,22 +99,24 @@ public class Finder {
 							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
 					break;
 				case DIAGONAL_DOWN:
-					directionType = new DiagonalDown(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
+					directionType = new DiagonalDown(getKeyword().getWord(),
+							getKeyword().getPotentialStartCoordinates());
 					directionType.findRemainingCoordinates(
 							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
 					break;
 				case DIAGONAL_UP:
-					directionType = new DiagonalUp(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());					
+					directionType = new DiagonalUp(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
 					directionType.findRemainingCoordinates(
 							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
 					break;
 				case BW_HORIZONTAL:
-					directionType = new BwHorizontal(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());					
+					directionType = new BwHorizontal(getKeyword().getWord(),
+							getKeyword().getPotentialStartCoordinates());
 					directionType.findRemainingCoordinates(
 							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
 					break;
 				case BW_VERTICAL:
-					directionType = new BwVertical(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());					
+					directionType = new BwVertical(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
 					directionType.findRemainingCoordinates(
 							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
 					break;
@@ -124,7 +124,7 @@ public class Finder {
 					directionType = null;
 					break;
 				}
-	
+
 				keyword.setIsFound(directionType.getIsFound());
 				keyword.setCoordinates(directionType.getCoordinates());
 				if (keyword.getIsFound())
@@ -133,8 +133,6 @@ public class Finder {
 
 		}
 	}
-	
-
 
 	private Boolean checkHorizontal(Coordinates coordinates) {
 		if (keyword.getLength() <= grid.length - coordinates.getCol()) {
@@ -169,7 +167,7 @@ public class Finder {
 			return false;
 		}
 	}
-	
+
 	Boolean checkBwHorizontal(Coordinates coordinates) {
 		if ((keyword.getLength() <= coordinates.getCol() + 1)) {
 			return (keyword.getSecondLetter().equals(grid[coordinates.getRow()][coordinates.getCol() - 1]));
@@ -177,7 +175,7 @@ public class Finder {
 			return false;
 		}
 	}
-	
+
 	Boolean checkBwVertical(Coordinates coordinates) {
 		if ((keyword.getLength() <= coordinates.getRow() + 1)) {
 			return (keyword.getSecondLetter().equals(grid[coordinates.getRow() - 1][coordinates.getCol()]));
@@ -186,7 +184,15 @@ public class Finder {
 		}
 	}
 
-	
+	Boolean checkBwDiagonalDown(Coordinates coordinates) {
+		if ((keyword.getLength() <= coordinates.getCol() + 1) 
+			&& keyword.getLength() <= grid.length - coordinates.getRow()) {
+			return (keyword.getSecondLetter().equals(grid[coordinates.getRow() + 1][coordinates.getCol() - 1]));
+		} else {
+			return false;
+		}
+
+	}
 
 //	private Boolean checkIfWordIsLongerThanTwoLetters() {
 //		return (keyword.getLength() > 2);
