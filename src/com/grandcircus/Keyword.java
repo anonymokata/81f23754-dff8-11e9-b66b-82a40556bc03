@@ -32,10 +32,6 @@ public class Keyword {
 		this.word = word;
 	}
 
-	public Integer getLength() {
-		return getWord().length();
-	}
-
 	public String getSecondLetter() {
 		return word.substring(1, 2);
 	}
@@ -46,10 +42,6 @@ public class Keyword {
 
 	public void setIsFound(Boolean isFound) {
 		this.isFound = isFound;
-	}
-
-	public String getRemainingLetters() {
-		return word.substring(1, word.length());
 	}
 
 	public List<PotentialStartCoordinates> getPotentialStartCoordinates() {
@@ -68,6 +60,37 @@ public class Keyword {
 		this.coordinates = coordinates;
 	}
 
+	public Integer getLength() {
+		return getWord().length();
+	}
+	
+	public String getRemainingLetters() {
+		return word.substring(1, word.length());
+	}
+
+	public void findRemainingCoordinates(Coordinates coordinates) {
+		setCoordinatesOfRemainingLetters(getGridSubstring(coordinates), getRemainingCoordinates(coordinates));
+	}
+	
+	public void setCoordinatesOfRemainingLetters(String gridSubstring, List<Coordinates> foundCoordinates) {
+		if (keywordEqualsSubsubtring(gridSubstring)) {
+			setIsFound(true);
+			setCoordinates(foundCoordinates);
+		}
+	}
+	
+	public Boolean keywordEqualsSubsubtring(String gridSubstring) {
+		return getRemainingLetters().equals(gridSubstring);
+	}
+
+	public String getGridSubstring(Coordinates coordinates) {
+		return null;
+	}
+
+	public List<Coordinates> getRemainingCoordinates(Coordinates coordinates) {
+		return null;
+	}
+	
 	public String writeCoordinatesString() {
 		String coordinatesString = word + ": ";
 		if (word.length() > 2) {
@@ -81,29 +104,10 @@ public class Keyword {
 
 		return coordinatesString;
 	}
-
+	
 	@Override
 	public String toString() {
 		return word;
-	}
-
-	public void findRemainingCoordinates(Coordinates coordinates) {
-		ifKeywordEqualsSubstringSetCoordinates(getGridSubstring(coordinates), getRemainingCoordinates(coordinates));
-	}
-
-	public void ifKeywordEqualsSubstringSetCoordinates(String gridSubstring, List<Coordinates> foundCoordinates) {
-		if (getRemainingLetters().equals(gridSubstring)) {
-			setIsFound(true);
-			setCoordinates(foundCoordinates);
-		}
-	}
-
-	public String getGridSubstring(Coordinates coordinates) {
-		return null;
-	}
-
-	public List<Coordinates> getRemainingCoordinates(Coordinates coordinates) {
-		return null;
 	}
 
 }

@@ -29,16 +29,8 @@ public class Finder {
 		this.keyword = keyword;
 	}
 
-	public String[][] getGrid() {
-		return grid;
-	}
-
 	public List<Keyword> getAllKeywords() {
 		return allKeywords;
-	}
-
-	public void setAllKeywords(List<Keyword> allKeywords) {
-		this.allKeywords = allKeywords;
 	}
 
 	public String printAllKeywordCoordinates(List<String> allKeywordCoordinates) {
