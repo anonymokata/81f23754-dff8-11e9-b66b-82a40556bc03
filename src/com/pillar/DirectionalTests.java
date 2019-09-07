@@ -16,6 +16,7 @@ public class DirectionalTests {
 	Finder findRaru;
 	Finder findBaora;
 	Finder findAaody;
+	Finder findCwou;
 
 	@BeforeEach
 	public void setup() {
@@ -29,6 +30,7 @@ public class DirectionalTests {
 		findRaru = new Finder(directionalReader.getAllKeywords().get(5), directionalReader.makeGrid());
 		findBaora = new Finder(directionalReader.getAllKeywords().get(6), directionalReader.makeGrid());
 		findAaody = new Finder(directionalReader.getAllKeywords().get(7), directionalReader.makeGrid());
+		findCwou = new Finder(directionalReader.getAllKeywords().get(8), directionalReader.makeGrid());
 	}
 
 	@Test
@@ -108,6 +110,17 @@ public class DirectionalTests {
 	} 
 	
 	@Test
+	public void whenCheckSecondCoordinatesIsPassedABwDiagonalUpItAddsBwDiagonalUpToDirectionsField() {
+		findCwou.setDirectionsToPotentialStartCoordinates();	
+		Boolean actual = findCwou.checkBwDiagonalUp(new Coordinates(4,4));
+		Direction actual2 = findCwou.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0);
+		Boolean expected = true;
+		Direction expected2 = Direction.BW_DIAGONAL_UP;
+		assertEquals(expected, actual);
+		assertEquals(expected2, actual2);
+	} 
+	
+	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedAHorizontalMatchItSetsIsFoundToTrue() {
 		findTara.setDirectionsToPotentialStartCoordinates();
 		findTara.setKeywordToDirectionType();
@@ -127,7 +140,7 @@ public class DirectionalTests {
 	}
 	
 	@Test
-	public void whenSetKeywordToDirectionTypeIsPassedAHorizontalKeywordItCreatesAHorizontalSubtypeAndReturnsHorizontalCoordinates() {
+	public void whenSetKeywordToDirectionTypeIsPassedAHorizontalKeywordItCreatesAHorizontalSubtype() {
 		findDawn.setDirectionsToPotentialStartCoordinates();
 		findDawn.setKeywordToDirectionType();
 		Boolean actual = findDawn.getKeyword().getIsFound();
@@ -195,6 +208,15 @@ public class DirectionalTests {
 		findAaody.setKeywordToDirectionType();
 		String actual = findAaody.getKeyword().getCoordinates().toString();
 		String expected = "[(0,4), (1,3), (2,2), (3,1), (4,0)]";
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void whenSetKeywordToDirectionTypeIsPassedABwDiagonalUPItCreatesABwDiagonalUpSubtype() {
+		findCwou.setDirectionsToPotentialStartCoordinates();
+		findCwou.setKeywordToDirectionType();
+		String actual = findCwou.getKeyword().getCoordinates().toString();
+		String expected = "[(4,4), (3,3), (2,2), (1,1)]";
 		assertEquals(expected, actual);
 	}
 	
