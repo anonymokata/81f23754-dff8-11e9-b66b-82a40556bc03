@@ -14,6 +14,7 @@ public class DirectionalTests {
 	Finder findYdoa;
 	Finder findBuow;
 	Finder findRaru;
+	Finder findBaora;
 
 	@BeforeEach
 	public void setup() {
@@ -25,6 +26,7 @@ public class DirectionalTests {
 		findYdoa = new Finder(directionalReader.getAllKeywords().get(3), directionalReader.makeGrid());
 		findBuow = new Finder(directionalReader.getAllKeywords().get(4), directionalReader.makeGrid());
 		findRaru = new Finder(directionalReader.getAllKeywords().get(5), directionalReader.makeGrid());
+		findBaora = new Finder(directionalReader.getAllKeywords().get(6), directionalReader.makeGrid());
 	}
 
 	@Test
@@ -156,6 +158,16 @@ public class DirectionalTests {
 		String expected = "[(1,4), (1,3), (1,2), (1,1)]";
 		assertEquals(expected, actual);
 	}
+	
+
+	
+	@Test
+	public void whenCheckSecondCoordinatesIsPassedABwVerticalItAddsBwVerticalToDirectionsField2() {
+		findBaora.setDirectionsToPotentialStartCoordinates();	
+		Direction actual = findBaora.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0);
+		Direction expected = Direction.BW_VERTICAL;
+		assertEquals(expected, actual);
+	} 
 	
 	
 }
