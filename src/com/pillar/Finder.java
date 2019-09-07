@@ -41,6 +41,14 @@ public class Finder {
 		this.allKeywords = allKeywords;
 	}
 
+	public String printAllKeywordCoordinates(List<String> allKeywordCoordinates) {
+		String formattedPrintout = "\n\nWord Search Coordinates: \n\n";
+		for (String each : allKeywordCoordinates) {
+			formattedPrintout += each + "\n";
+		}
+		return formattedPrintout;
+	}
+	
 	public List<String> findAllKeywordCoordinates() {
 		List<String> allKeywordCoordinates = new ArrayList<>();
 		for (Keyword each : allKeywords) {
@@ -246,15 +254,5 @@ public class Finder {
 		}
 
 	}
-	
-//	private void setFinalCoordinatesForTwoLetterWord() {
-//	if(!checkIfWordIsLongerThanTwoLetters()) {
-//		keyword.setIsFound(true);
-//		keyword.setCoordinates(keyword.getPotentialStartCoordinates().get(0).getStartCoordinates(), new Coordinates);
-//	}
-//	
-//	private Boolean checkIfWordIsLongerThanTwoLetters() {
-//		return (keyword.getLength() > 2);
-//	}
 
 }
