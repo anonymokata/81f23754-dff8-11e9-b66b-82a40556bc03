@@ -7,6 +7,13 @@ public class Finder {
 	public static String[][] grid;
 
 	private Keyword keyword;
+	private List<Keyword> allKeywords;
+
+	public Finder(List<Keyword> allKeywords, String[][] grid) {
+		super();
+		this.allKeywords = allKeywords;
+		Finder.grid = grid;
+	}
 
 	public Finder(Keyword keyword, String[][] grid) {
 		super();
@@ -26,6 +33,23 @@ public class Finder {
 		return grid;
 	}
 
+	public List<Keyword> getAllKeywords() {
+		return allKeywords;
+	}
+
+	public void setAllKeywords(List<Keyword> allKeywords) {
+		this.allKeywords = allKeywords;
+	}
+
+	public List<String> findAllKeywords() {
+		List<String> allKeywordCoordinates = new ArrayList<>();
+		for (Keyword each : allKeywords) {
+			setKeyword(each);
+			allKeywordCoordinates.add(findKeyword());
+		}
+		return allKeywordCoordinates;
+	}
+	
 	public String findKeyword() {
 		setDirectionsToPotentialStartCoordinates();
 		setKeywordToDirectionType();
@@ -222,6 +246,8 @@ public class Finder {
 		}
 
 	}
+
+
 
 	
 

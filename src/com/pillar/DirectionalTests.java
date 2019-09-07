@@ -2,6 +2,8 @@ package com.pillar;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,6 +19,7 @@ public class DirectionalTests {
 	Finder findBaora;
 	Finder findAaody;
 	Finder findCwou;
+	Finder findAll;
 
 	@BeforeEach
 	public void setup() {
@@ -31,6 +34,7 @@ public class DirectionalTests {
 		findBaora = new Finder(directionalReader.getAllKeywords().get(6), directionalReader.makeGrid());
 		findAaody = new Finder(directionalReader.getAllKeywords().get(7), directionalReader.makeGrid());
 		findCwou = new Finder(directionalReader.getAllKeywords().get(8), directionalReader.makeGrid());
+		findAll = new Finder(directionalReader.getAllKeywords(), directionalReader.makeGrid());
 	}
 
 	@Test
@@ -225,7 +229,17 @@ public class DirectionalTests {
 		String actual = findBuffyVertical.findKeyword();
 		String expected = "BUFFY: (0,0),(1,0),(2,0),(3,0),(4,0)";
 		assertEquals(expected, actual);
-		
+	}
+	
+	@Test
+	public void whenFindAllKeywordsIsPassedItReturnsAListOfPrintedCoordinates() {
+		String actual = findAll.findAllKeywords().toString();
+		String expected = "[TARA: (0,1),(0,2),(0,3),(0,4), DAWN: (3,1),(3,2),(3,3),(3,4), "
+				+ "BUFFY: (0,0),(1,0),(2,0),(3,0),(4,0), YDOA: (4,0),(3,1),(2,2),(1,3), "
+				+ "BUOW: (0,0),(1,1),(2,2),(3,3), RARU: (1,4),(1,3),(1,2),(1,1), "
+				+ "BAORA: (4,2),(3,2),(2,2),(1,2),(0,2), AAODY: (0,4),(1,3),(2,2),(3,1),(4,0), "
+				+ "CWOU: (4,4),(3,3),(2,2),(1,1)]";
+		assertEquals(expected, actual);
 	}
 	
 
