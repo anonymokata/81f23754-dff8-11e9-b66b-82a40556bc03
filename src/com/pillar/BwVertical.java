@@ -3,13 +3,13 @@ package com.pillar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BwHorizontal extends Keyword {
+public class BwVertical extends Keyword {
 
-	public BwHorizontal() {
+	public BwVertical() {
 		super();
 	}
 
-	public BwHorizontal(String word, List<PotentialStartCoordinates> potentialStartCoordinates) {
+	public BwVertical(String word, List<PotentialStartCoordinates> potentialStartCoordinates) {
 		super();
 		this.word = word;
 		this.potentialStartCoordinates = potentialStartCoordinates;
@@ -19,7 +19,7 @@ public class BwHorizontal extends Keyword {
 	public String getGridSubstring(Coordinates coordinates) {
 		String gridSubstring = "";
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			gridSubstring += Finder.grid[coordinates.getRow()][coordinates.getCol() - 2 - i];
+			gridSubstring += Finder.grid[coordinates.getRow() - 2 - i][coordinates.getCol()];
 		}
 		return gridSubstring;
 	}
@@ -28,16 +28,16 @@ public class BwHorizontal extends Keyword {
 	public List<Coordinates> getRemainingCoordinates(Coordinates coordinates) {
 		List<Coordinates> foundCoordinates = new ArrayList<>();
 		foundCoordinates.add(coordinates);
-		foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() - 1));
+		foundCoordinates.add(new Coordinates(coordinates.getRow() - 1, coordinates.getCol()));
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() - 2 - i));
+			foundCoordinates.add(new Coordinates(coordinates.getRow()  - 2 - i, coordinates.getCol()));
 		}
 		return foundCoordinates;
 	}
 
 	@Override
 	public String toString() {
-		return "BwHorizontal";
+		return "BwVertical";
 	}
 
 }

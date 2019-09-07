@@ -115,11 +115,11 @@ public class Finder {
 					directionType.findRemainingCoordinates(
 							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
 					break;
-//				case BW_VERTICAL:
-//					directionType = new BwVertical(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());					
-//					directionType.findRemainingCoordinates(
-//							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
-//					break;
+				case BW_VERTICAL:
+					directionType = new BwVertical(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());					
+					directionType.findRemainingCoordinates(
+							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
+					break;
 				default:
 					directionType = null;
 					break;

@@ -87,6 +87,14 @@ public class DirectionalTests {
 	} 
 	
 	@Test
+	public void whenCheckSecondCoordinatesIsPassedABwVerticalItAddsBwVerticalToDirectionsField2() {
+		findBaora.setDirectionsToPotentialStartCoordinates();	
+		Direction actual = findBaora.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0);
+		Direction expected = Direction.BW_VERTICAL;
+		assertEquals(expected, actual);
+	} 
+	
+	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedAHorizontalMatchItSetsIsFoundToTrue() {
 		findTara.setDirectionsToPotentialStartCoordinates();
 		findTara.setKeywordToDirectionType();
@@ -159,15 +167,18 @@ public class DirectionalTests {
 		assertEquals(expected, actual);
 	}
 	
+	@Test
+	public void whenSetKeywordToDirectionTypeIsPassedABwVerticalItCreatesABwVerticalSubtype() {
+		findBaora.setDirectionsToPotentialStartCoordinates();
+		findBaora.setKeywordToDirectionType();
+		String actual = findBaora.getKeyword().getCoordinates().toString();
+		String expected = "[(4,2), (3,2), (2,2), (1,2), (0,2)]";
+		assertEquals(expected, actual);
+	}
+	
 
 	
-	@Test
-	public void whenCheckSecondCoordinatesIsPassedABwVerticalItAddsBwVerticalToDirectionsField2() {
-		findBaora.setDirectionsToPotentialStartCoordinates();	
-		Direction actual = findBaora.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0);
-		Direction expected = Direction.BW_VERTICAL;
-		assertEquals(expected, actual);
-	} 
+	
 	
 	
 }
