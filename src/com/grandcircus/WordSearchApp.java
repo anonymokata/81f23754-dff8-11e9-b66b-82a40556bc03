@@ -1,4 +1,4 @@
-package com.pillar;
+package com.grandcircus;
 
 public class WordSearchApp {
 

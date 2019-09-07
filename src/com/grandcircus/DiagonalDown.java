@@ -1,15 +1,15 @@
-package com.pillar;
+package com.grandcircus;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DiagonalUp extends Keyword {
+public class DiagonalDown extends Keyword {
 
-	public DiagonalUp() {
+	public DiagonalDown() {
 		super();
 	}
 
-	public DiagonalUp(String word, List<PotentialStartCoordinates> potentialStartCoordinates) {
+	public DiagonalDown(String word, List<PotentialStartCoordinates> potentialStartCoordinates) {
 		super();
 		this.word = word;
 		this.potentialStartCoordinates = potentialStartCoordinates;
@@ -19,7 +19,7 @@ public class DiagonalUp extends Keyword {
 	public String getGridSubstring(Coordinates coordinates) {
 		String gridSubstring = "";
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			gridSubstring += Finder.grid[coordinates.getRow() - 1 - i][coordinates.getCol() + 1 + i];
+			gridSubstring += Finder.grid[coordinates.getRow() + 1 + i][coordinates.getCol() + 1 + i];
 		}
 		return gridSubstring;
 	}
@@ -29,7 +29,7 @@ public class DiagonalUp extends Keyword {
 		List<Coordinates> foundCoordinates = new ArrayList<>();
 		foundCoordinates.add(coordinates);
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			foundCoordinates.add(new Coordinates(coordinates.getRow() - 1 - i, coordinates.getCol() + 1 + i));
+			foundCoordinates.add(new Coordinates(coordinates.getRow() + 1 + i, coordinates.getCol() + 1 + i));
 		}
 		return foundCoordinates;
 	}
@@ -37,7 +37,6 @@ public class DiagonalUp extends Keyword {
 	
 	@Override
 	public String toString() {
-		return "DiagonalUp";
+		return "DiagonalDown";
 	}
-	
 }

@@ -1,15 +1,15 @@
-package com.pillar;
+package com.grandcircus;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BwDiagonalUp extends Keyword {
+public class BwVertical extends Keyword {
 
-	public BwDiagonalUp() {
+	public BwVertical() {
 		super();
 	}
 
-	public BwDiagonalUp(String word, List<PotentialStartCoordinates> potentialStartCoordinates) {
+	public BwVertical(String word, List<PotentialStartCoordinates> potentialStartCoordinates) {
 		super();
 		this.word = word;
 		this.potentialStartCoordinates = potentialStartCoordinates;
@@ -19,7 +19,7 @@ public class BwDiagonalUp extends Keyword {
 	public String getGridSubstring(Coordinates coordinates) {
 		String gridSubstring = "";
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			gridSubstring += Finder.grid[coordinates.getRow() - 1 - i][coordinates.getCol() - 1 - i];
+			gridSubstring += Finder.grid[coordinates.getRow() - 1 - i][coordinates.getCol()];
 		}
 		return gridSubstring;
 	}
@@ -29,14 +29,14 @@ public class BwDiagonalUp extends Keyword {
 		List<Coordinates> foundCoordinates = new ArrayList<>();
 		foundCoordinates.add(coordinates);
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			foundCoordinates.add(new Coordinates(coordinates.getRow()  - 1 - i, coordinates.getCol() - 1 - i));
+			foundCoordinates.add(new Coordinates(coordinates.getRow()  - 1 - i, coordinates.getCol()));
 		}
 		return foundCoordinates;
 	}
 
 	@Override
 	public String toString() {
-		return "BwDiagonalUp";
+		return "BwVertical";
 	}
 
 }
