@@ -3,8 +3,7 @@ package com.pillar;
 import java.util.List;
 
 public class Keyword {
-	
-	
+
 	protected String word;
 	private Boolean isFound = false;
 	protected List<PotentialStartCoordinates> potentialStartCoordinates;
@@ -36,7 +35,7 @@ public class Keyword {
 	public Integer getLength() {
 		return getWord().length();
 	}
-	
+
 	public String getSecondLetter() {
 		return word.substring(1, 2);
 	}
@@ -50,7 +49,7 @@ public class Keyword {
 	}
 
 	public String getRemainingLetters() {
-		return word.substring(2, word.length());
+		return word.substring(1, word.length());
 	}
 
 	public List<PotentialStartCoordinates> getPotentialStartCoordinates() {
@@ -69,13 +68,17 @@ public class Keyword {
 		this.coordinates = coordinates;
 	}
 
-	// fix ending ","
 	public String writeCoordinatesString() {
 		String coordinatesString = word + ": ";
-		for (int i = 0; i < coordinates.size() - 1; i++) {
-			coordinatesString += coordinates.get(i).toString() + ",";
+		if (word.length() > 2) {
+			for (int i = 0; i < coordinates.size() - 1; i++) {
+				coordinatesString += coordinates.get(i) + ",";
+			}
+			coordinatesString += coordinates.get(coordinates.size() - 1);
+		} else {
+			coordinatesString += coordinates.get(0) + "," + coordinates.get(1);
 		}
-		coordinatesString += coordinates.get(coordinates.size() - 1);
+
 		return coordinatesString;
 	}
 
@@ -85,8 +88,7 @@ public class Keyword {
 	}
 
 	public void findRemainingCoordinates(Coordinates coordinates) {
-		ifKeywordEqualsSubstringSetCoordinates(getGridSubstring(coordinates),
-				getRemainingCoordinates(coordinates));
+		ifKeywordEqualsSubstringSetCoordinates(getGridSubstring(coordinates), getRemainingCoordinates(coordinates));
 	}
 
 	public void ifKeywordEqualsSubstringSetCoordinates(String gridSubstring, List<Coordinates> foundCoordinates) {

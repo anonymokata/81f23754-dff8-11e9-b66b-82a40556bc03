@@ -19,7 +19,7 @@ public class Horizontal extends Keyword {
 	public String getGridSubstring(Coordinates coordinates) {
 		String gridSubstring = "";
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			gridSubstring += Finder.grid[coordinates.getRow()][coordinates.getCol() + 2 + i];
+			gridSubstring += Finder.grid[coordinates.getRow()][coordinates.getCol() + 1 + i];
 		}
 		return gridSubstring;
 	}
@@ -28,9 +28,8 @@ public class Horizontal extends Keyword {
 	public List<Coordinates> getRemainingCoordinates(Coordinates coordinates) {
 		List<Coordinates> foundCoordinates = new ArrayList<>();
 		foundCoordinates.add(coordinates);
-		foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() + 1));
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() + 2 + i));
+			foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() + 1 + i));
 		}
 		return foundCoordinates;
 	}

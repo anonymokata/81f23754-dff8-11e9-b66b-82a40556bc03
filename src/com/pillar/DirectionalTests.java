@@ -139,7 +139,7 @@ public class DirectionalTests {
 	@Test
 	public void whenGetKeywordSubstringIsPassedADirectionItReturnsSubstring() {
 		String actual = findTara.getKeyword().getRemainingLetters();
-		String expected = "RA";
+		String expected = "ARA";
 		assertEquals(expected, actual);
 	}
 	
@@ -232,8 +232,8 @@ public class DirectionalTests {
 	}
 	
 	@Test
-	public void whenFindAllKeywordsIsPassedItReturnsAListOfPrintedCoordinates() {
-		String actual = findAll.findAllKeywords().toString();
+	public void whenFindAllKeywordCoordinatesIsPassedItReturnsAListOfPrintedCoordinates() {
+		String actual = findAll.findAllKeywordCoordinates().toString();
 		String expected = "[TARA: (0,1),(0,2),(0,3),(0,4), DAWN: (3,1),(3,2),(3,3),(3,4), "
 				+ "BUFFY: (0,0),(1,0),(2,0),(3,0),(4,0), YDOA: (4,0),(3,1),(2,2),(1,3), "
 				+ "BUOW: (0,0),(1,1),(2,2),(3,3), RARU: (1,4),(1,3),(1,2),(1,1), "
