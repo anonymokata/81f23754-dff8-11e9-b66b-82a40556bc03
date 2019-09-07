@@ -24,21 +24,21 @@ public class BigTest {
 	@Test
 	public void whenReadKeywordsIsPassedItReturnsAStringOfKeywords() {
 		String actual = mainReader.readKeywords();
-		String expected = "BUFFY, XANDER, GILES, ANGEL, WILLOW, DAWN, SPIKE, HELLMOUTH, SLAYER, TARA";
+		String expected = "BUFFY,XANDER,GILES,ANGEL,WILLOW,DAWN,SPIKE,HELLMOUTH,SLAYER,OZ,TARA";
 	    assertEquals(expected, actual);
 	}
 	
 	@Test
 	public void whenFindKeywordIsPassedCoordinatesAreReturned() {
 		String actual = findXander.findKeyword();
-		String expected = "BUFFY: (0,0),(1,0),(2,0),(3,0),(4,0)";
+		String expected = "XANDER: (13,15),(14,16),(15,17),(16,18),(17,19),(18,20)";
 		assertEquals(expected, actual);
 	}
 	
 	@Test
 	public void whenFindKeywordIsPassedGilesIsReturned() {
 		String actual = findGiles.findKeyword();
-		String expected = "BUFFY: (0,0),(1,0),(2,0),(3,0),(4,0)";
+		String expected = "GILES: (1,23),(2,24),(3,25),(4,26),(5,27)";
 		assertEquals(expected, actual);
 	}
 	
@@ -46,18 +46,18 @@ public class BigTest {
 	public void whenPrintAllKeywordsIsPassedItPrintsAPrettyList() {
 		String actual = findAll.printAllKeywordCoordinates(findAll.findAllKeywordCoordinates());
 		String expected = 
-				"\n\nWord Search Coordinates: \n\n" + 		  
-				"BUFFY: (4,7),(3,8),(2,9),(1,10),(0,11)\n" + 
-				"XANDER: (14,5),(14,4),(14,3),(14,2),(14,1),(14,0)\n" + 
-				"GILES: (13,0),(13,1),(13,2),(13,3),(13,4)\n" + 
-				"ANGEL: (10,2),(11,3),(12,4),(13,5),(14,6)\n" + 
-				"WILLOW: (9,6),(8,5),(7,4),(6,3),(5,2),(4,1)\n" + 
-				"DAWN: (0,9),(1,8),(2,7),(3,6)\n" + 
-				"SPIKE: (7,9),(8,9),(9,9),(10,9),(11,9)\n" + 
-				"HELLMOUTH: (2,8),(3,7),(4,6),(5,5),(6,4),(7,3),(8,2),(9,1),(10,0)\n" + 
-				"SLAYER: (11,11),(10,11),(9,11),(8,11),(7,11),(6,11)\n" + 
-				"OZ: (8,8),(7,8)\n" + 
-				"TARA: (13,10),(13,9),(13,8),(13,7)\n";
+				"\n\nWord Search Coordinates: \n\n" +  
+				"BUFFY: (13,5),(13,6),(13,7),(13,8),(13,9)\n" + 
+				"XANDER: (13,15),(14,16),(15,17),(16,18),(17,19),(18,20)\n" + 
+				"GILES: (1,23),(2,24),(3,25),(4,26),(5,27)\n" + 
+				"ANGEL: (18,9),(19,9),(20,9),(21,9),(22,9)\n" + 
+				"WILLOW: (24,23),(23,23),(22,23),(21,23),(20,23),(19,23)\n" + 
+				"DAWN: (17,13),(17,12),(17,11),(17,10)\n" + 
+				"SPIKE: (22,26),(23,25),(24,24),(25,23),(26,22)\n" + 
+				"HELLMOUTH: (11,8),(11,7),(11,6),(11,5),(11,4),(11,3),(11,2),(11,1),(11,0)\n" + 
+				"SLAYER: (20,0),(19,1),(18,2),(17,3),(16,4),(15,5)\n" + 
+				"OZ: (9,27),(10,28)\n" + 
+				"TARA: (22,3),(21,2),(20,1),(19,0)\n";
 		assertEquals(expected, actual);
 	}
 }
