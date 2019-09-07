@@ -26,6 +26,12 @@ public class Finder {
 		return grid;
 	}
 
+	public String findKeyword() {
+		setDirectionsToPotentialStartCoordinates();
+		setKeywordToDirectionType();
+		return keyword.writeCoordinatesString();
+	}
+	
 	public void setDirectionsToPotentialStartCoordinates() {
 		findPotentialStartingCoordinates();
 		keyword.setPotentialStartCoordinates(getDirectionsForPotentialStartCoordinates());
@@ -216,6 +222,8 @@ public class Finder {
 		}
 
 	}
+
+	
 
 //	private Boolean checkIfWordIsLongerThanTwoLetters() {
 //		return (keyword.getLength() > 2);

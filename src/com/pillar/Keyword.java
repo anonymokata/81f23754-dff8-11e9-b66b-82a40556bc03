@@ -72,9 +72,10 @@ public class Keyword {
 	// fix ending ","
 	public String writeCoordinatesString() {
 		String coordinatesString = word + ": ";
-		for (Coordinates each : coordinates) {
-			coordinatesString += each.toString() + ",";
+		for (int i = 0; i < coordinates.size() - 1; i++) {
+			coordinatesString += coordinates.get(i).toString() + ",";
 		}
+		coordinatesString += coordinates.get(coordinates.size() - 1);
 		return coordinatesString;
 	}
 
