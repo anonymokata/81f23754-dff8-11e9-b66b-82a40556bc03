@@ -77,7 +77,8 @@ public class Finder {
 		List<PotentialStartCoordinates> culledKeywordPotentials = new ArrayList<>();
 		for (int i = 0; i < keyword.getPotentialStartCoordinates().size(); i++) {
 			Coordinates coordinates = keyword.getPotentialStartCoordinates().get(i).getStartCoordinates();
-			List<Direction> directions = getDirections(coordinates);
+			Compass compass = new Compass(keyword, coordinates);
+			List<Direction> directions = compass.getDirections();
 			if (!directions.isEmpty()) {
 				PotentialStartCoordinates potentials = new PotentialStartCoordinates(coordinates, directions);
 				culledKeywordPotentials.add(potentials);
