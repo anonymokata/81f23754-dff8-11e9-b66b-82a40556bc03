@@ -13,7 +13,7 @@ public class Vertical extends Compass  {
 //		thisRow = coordinates.getRow();
 		thisCol = coordinates.getCol();
 //		oneAhead = coordinates.getCol() + 1;
-		oneBelow = coordinates.getRow() + 1;
+		oneDown = coordinates.getRow() + 1;
 //		oneAbove = coordinates.getRow() - 1;
 //		oneBehind = coordinates.getCol() - 1;
 	}
@@ -22,7 +22,7 @@ public class Vertical extends Compass  {
 		public String getGridSubstring() {
 			String gridSubstring = "";
 			for (int i = 0; i < getRemainingLetters().length(); i++) {
-				gridSubstring += grid[oneBelow + i][thisCol];
+				gridSubstring += grid[oneDown + i][thisCol];
 			}
 			return gridSubstring;
 		}
@@ -32,7 +32,7 @@ public class Vertical extends Compass  {
 			List<Coordinates> foundCoordinates = new ArrayList<>();
 			foundCoordinates.add(coordinates);
 			for (int i = 0; i < getRemainingLetters().length(); i++) {
-				foundCoordinates.add(new Coordinates(oneBelow + i, thisCol));
+				foundCoordinates.add(new Coordinates(oneDown + i, thisCol));
 			}
 			return foundCoordinates;
 		}

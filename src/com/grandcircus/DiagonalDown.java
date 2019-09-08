@@ -10,14 +10,14 @@ public class DiagonalDown extends Compass {
 		this.keyword = keyword;
 		this.coordinates = coordinates;
 		oneAhead = coordinates.getCol() + 1;
-		oneBelow = coordinates.getRow() + 1;
+		oneDown = coordinates.getRow() + 1;
 	}
 	
 	@Override
 	public String getGridSubstring() {
 		String gridSubstring = "";
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			gridSubstring += grid[oneBelow + i][oneAhead + i];
+			gridSubstring += grid[oneDown + i][oneAhead + i];
 		}
 		return gridSubstring;
 	}
@@ -27,7 +27,7 @@ public class DiagonalDown extends Compass {
 		List<Coordinates> foundCoordinates = new ArrayList<>();
 		foundCoordinates.add(coordinates);
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			foundCoordinates.add(new Coordinates(oneBelow + i, oneAhead + i));
+			foundCoordinates.add(new Coordinates(oneDown + i, oneAhead + i));
 		}
 		return foundCoordinates;
 	}

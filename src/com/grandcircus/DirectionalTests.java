@@ -182,27 +182,27 @@ public class DirectionalTests {
 		assertEquals(expected, actual);
 	}
 
-//	@Test
-//	public void whenCheckSecondCoordinatesIsPassedADiagonalUpItKeywordItCreatesADiagonalUpSubtype() {
-//		findYdoa.setDirectionsToPotentialCoordinates();
-//		findYdoa.setKeywordToDirectionType();
-//		Boolean actual = findYdoa.getKeyword().getIsFound();
-//		String actual2 = findYdoa.getKeyword().getCoordinates().toString();
-//		Boolean expected = true;
-//		String expected2 = "[(4,0), (3,1), (2,2), (1,3)]";
-//		assertEquals(expected, actual);
-//		assertEquals(expected2, actual2);
-//	}
-//	
-//	@Test
-//	public void whenSetKeywordToDirectionTypeIsPassedABwHorizontallKeywordItCreatesABwHorizontalSubtype() {
-//		findRaru.setDirectionsToPotentialCoordinates();
-//		findRaru.setKeywordToDirectionType();
-//		String actual = findRaru.getKeyword().getCoordinates().toString();
-//		String expected = "[(1,4), (1,3), (1,2), (1,1)]";
-//		assertEquals(expected, actual);
-//	}
-//	
+	@Test
+	public void whenCheckSecondCoordinatesIsPassedADiagonalUpItKeywordItCreatesADiagonalUpSubtype() {
+		findYdoa.setDirectionsToPotentialCoordinates();
+		findYdoa.setKeywordToDirectionType();
+		Boolean actual = findYdoa.getKeyword().getIsFound();
+		String actual2 = findYdoa.getKeyword().getCoordinates().toString();
+		Boolean expected = true;
+		String expected2 = "[(4,0), (3,1), (2,2), (1,3)]";
+		assertEquals(expected, actual);
+		assertEquals(expected2, actual2);
+	}
+	
+	@Test
+	public void whenSetKeywordToDirectionTypeIsPassedABwHorizontallKeywordItCreatesABwHorizontalSubtype() {
+		findRaru.setDirectionsToPotentialCoordinates();
+		findRaru.setKeywordToDirectionType();
+		String actual = findRaru.getKeyword().getCoordinates().toString();
+		String expected = "[(1,4), (1,3), (1,2), (1,1)]";
+		assertEquals(expected, actual);
+	}
+	
 //	@Test
 //	public void whenSetKeywordToDirectionTypeIsPassedABwVerticalItCreatesABwVerticalSubtype() {
 //		findBaora.setDirectionsToPotentialCoordinates();
