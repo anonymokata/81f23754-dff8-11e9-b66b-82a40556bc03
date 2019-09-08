@@ -3,23 +3,21 @@ package com.grandcircus;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DiagonalDown extends Keyword {
+public class DiagonalDown extends Compass {
 
-	public DiagonalDown() {
+	public DiagonalDown (Keyword keyword, Coordinates coordinates) {
 		super();
-	}
-
-	public DiagonalDown (String word, Coordinates tempCoordinates) {
-		super();
-		this.word = word;
-		this.tempCoordinates = tempCoordinates;
+		this.keyword = keyword;
+		this.coordinates = coordinates;
+		oneAhead = coordinates.getCol() + 1;
+		oneBelow = coordinates.getRow() + 1;
 	}
 	
 	@Override
 	public String getGridSubstring() {
 		String gridSubstring = "";
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			gridSubstring += Finder.grid[tempCoordinates.getRow() + 1 + i][tempCoordinates.getCol() + 1 + i];
+			gridSubstring += grid[oneBelow + i][oneAhead + i];
 		}
 		return gridSubstring;
 	}
@@ -27,9 +25,9 @@ public class DiagonalDown extends Keyword {
 	@Override
 	public List<Coordinates> getRemainingCoordinates() {
 		List<Coordinates> foundCoordinates = new ArrayList<>();
-		foundCoordinates.add(tempCoordinates);
+		foundCoordinates.add(coordinates);
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			foundCoordinates.add(new Coordinates(tempCoordinates.getRow() + 1 + i, tempCoordinates.getCol() + 1 + i));
+			foundCoordinates.add(new Coordinates(oneBelow + i, oneAhead + i));
 		}
 		return foundCoordinates;
 	}

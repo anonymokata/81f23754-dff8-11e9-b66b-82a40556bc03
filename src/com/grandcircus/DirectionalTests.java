@@ -172,16 +172,16 @@ public class DirectionalTests {
 		assertEquals(expected, actual);
 		assertEquals(expected2, actual2);
 	}
-//	
-//	@Test
-//	public void whenSetKeywordToDirectionTypeIsPassedADiagonalDownlKeywordItCreatesADiagonalDownlSubtypeAndReturnsCoordinates() {
-//		findBuow.setDirectionsToPotentialCoordinates();
-//		findBuow.setKeywordToDirectionType();
-//		String actual = findBuow.getKeyword().getCoordinates().toString();
-//		String expected = "[(0,0), (1,1), (2,2), (3,3)]";
-//		assertEquals(expected, actual);
-//	}
-//
+	
+	@Test
+	public void whenSetKeywordToDirectionTypeIsPassedADiagonalDownlKeywordItCreatesADiagonalDownlSubtypeAndReturnsCoordinates() {
+		findBuow.setDirectionsToPotentialCoordinates();
+		findBuow.setKeywordToDirectionType();
+		String actual = findBuow.getKeyword().getCoordinates().toString();
+		String expected = "[(0,0), (1,1), (2,2), (3,3)]";
+		assertEquals(expected, actual);
+	}
+
 //	@Test
 //	public void whenCheckSecondCoordinatesIsPassedADiagonalUpItKeywordItCreatesADiagonalUpSubtype() {
 //		findYdoa.setDirectionsToPotentialCoordinates();
