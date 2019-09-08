@@ -9,10 +9,10 @@ public class Horizontal extends Keyword {
 		super();
 	}
 
-	public Horizontal(String word, List<PotentialStartCoordinates> potentialStartCoordinates) {
+	public Horizontal(String word, List<PotentialCoordinates> potentialStartCoordinates) {
 		super();
 		this.word = word;
-		this.potentialStartCoordinates = potentialStartCoordinates;
+		this.potentialCoordinates = potentialStartCoordinates;
 	}
 	
 	@Override

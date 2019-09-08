@@ -9,10 +9,10 @@ public class BwHorizontal extends Keyword {
 		super();
 	}
 
-	public BwHorizontal(String word, List<PotentialStartCoordinates> potentialStartCoordinates) {
+	public BwHorizontal(String word, List<PotentialCoordinates> potentialStartCoordinates) {
 		super();
 		this.word = word;
-		this.potentialStartCoordinates = potentialStartCoordinates;
+		this.potentialCoordinates = potentialStartCoordinates;
 	}
 	
 	@Override

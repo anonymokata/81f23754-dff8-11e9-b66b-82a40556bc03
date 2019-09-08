@@ -2,21 +2,21 @@ package com.grandcircus;
 
 import java.util.List;
 
-public class PotentialStartCoordinates {
+public class PotentialCoordinates {
 
 	private Coordinates startCoordinates;
 	private List<Direction> directions;
 
-	public PotentialStartCoordinates() {
+	public PotentialCoordinates() {
 		super();
 	}
 
-	public PotentialStartCoordinates(Coordinates startCoordinates) {
+	public PotentialCoordinates(Coordinates startCoordinates) {
 		super();
 		this.startCoordinates = startCoordinates;
 	}
 
-	public PotentialStartCoordinates(Coordinates startCoordinates, List<Direction> directions) {
+	public PotentialCoordinates(Coordinates startCoordinates, List<Direction> directions) {
 		super();
 		this.startCoordinates = startCoordinates;
 		this.directions = directions;

@@ -9,13 +9,12 @@ public class Vertical extends Keyword  {
 			super();
 		}
 
-		public Vertical(String word, List<PotentialStartCoordinates> potentialStartCoordinates) {
+		public Vertical(String word, List<PotentialCoordinates> potentialStartCoordinates) {
 			super();
 			this.word = word;
-			this.potentialStartCoordinates = potentialStartCoordinates;
+			this.potentialCoordinates = potentialStartCoordinates;
 		}
 
-		
 		@Override
 		public String getGridSubstring(Coordinates coordinates) {
 			String gridSubstring = "";
@@ -35,10 +34,8 @@ public class Vertical extends Keyword  {
 			return foundCoordinates;
 		}
 		
-		
 		@Override
 		public String toString() {
 			return "Vertical";
 		}
-	
 }

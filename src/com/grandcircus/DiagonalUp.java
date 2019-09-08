@@ -9,10 +9,10 @@ public class DiagonalUp extends Keyword {
 		super();
 	}
 
-	public DiagonalUp(String word, List<PotentialStartCoordinates> potentialStartCoordinates) {
+	public DiagonalUp(String word, List<PotentialCoordinates> potentialStartCoordinates) {
 		super();
 		this.word = word;
-		this.potentialStartCoordinates = potentialStartCoordinates;
+		this.potentialCoordinates = potentialStartCoordinates;
 	}
 	
 	@Override

@@ -51,88 +51,88 @@ public class Finder {
 	}
 	
 	public String findKeyword() {
-		setDirectionsToPotentialStartCoordinates();
+		setDirectionsToPotentialCoordinates();
 		setKeywordToDirectionType();
 		return keyword.writeCoordinatesString();
 	}
 	
-	public void setDirectionsToPotentialStartCoordinates() {
-		findPotentialStartingCoordinates();
-		keyword.setPotentialStartCoordinates(getDirectionsForPotentialStartCoordinates());
+	public void setDirectionsToPotentialCoordinates() {
+		keyword.setPotentialCoordinates(findFirstPotentials());
+		keyword.setPotentialCoordinates(findGoodPotentials());
 	}
 
-	public void findPotentialStartingCoordinates() {
-		List<PotentialStartCoordinates> potentials = new ArrayList<>();
+	public List<PotentialCoordinates> findFirstPotentials() {
+		List<PotentialCoordinates> potentials = new ArrayList<>();
 		for (int row = 0; row < grid.length; row++) {
 			for (int col = 0; col < grid.length; col++) {
 				if (keyword.getWord().startsWith(grid[row][col])) {
-					potentials.add(new PotentialStartCoordinates(new Coordinates(row, col)));
+					potentials.add(new PotentialCoordinates(new Coordinates(row, col)));
 				}
 			}
 		}
-		keyword.setPotentialStartCoordinates(potentials);
+		return potentials;
 	}
 
-	public List<PotentialStartCoordinates> getDirectionsForPotentialStartCoordinates() {
-		List<PotentialStartCoordinates> culledKeywordPotentials = new ArrayList<>();
-		for (int i = 0; i < keyword.getPotentialStartCoordinates().size(); i++) {
-			Coordinates coordinates = keyword.getPotentialStartCoordinates().get(i).getStartCoordinates();
-			Compass compass = new Compass(keyword, coordinates);
-			List<Direction> directions = compass.getDirections();
-			if (!directions.isEmpty()) {
-				PotentialStartCoordinates potentials = new PotentialStartCoordinates(coordinates, directions);
-				culledKeywordPotentials.add(potentials);
+	public List<PotentialCoordinates> findGoodPotentials() {
+		Compass compass;
+		PotentialCoordinates potentials;
+		List<PotentialCoordinates> goodPotentials = new ArrayList<>();
+		for (PotentialCoordinates each : keyword.getPotentialCoordinates()) {
+			 compass = new Compass(keyword, each.getStartCoordinates());
+			if (!compass.getDirections().isEmpty()) {
+				potentials = new PotentialCoordinates(each.getStartCoordinates(), compass.getDirections());
+				goodPotentials.add(potentials);
 			}
 		}
-		return culledKeywordPotentials;
+		return goodPotentials;
 	}	
 
 	public void setKeywordToDirectionType() {
 		Keyword directionType;
-		for (int i = 0; i < keyword.getPotentialStartCoordinates().size(); i++) {
-			for (Direction each : keyword.getPotentialStartCoordinates().get(i).getDirections()) {
+		for (int i = 0; i < keyword.getPotentialCoordinates().size(); i++) {
+			for (Direction each : keyword.getPotentialCoordinates().get(i).getDirections()) {
 				switch (each) {
 				case HORIZONTAL:
-					directionType = new Horizontal(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
+					directionType = new Horizontal(getKeyword().getWord(), getKeyword().getPotentialCoordinates());
 					directionType.findRemainingCoordinates(
-							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
+							keyword.getPotentialCoordinates().get(i).getStartCoordinates());
 					break;
 				case VERTICAL:
-					directionType = new Vertical(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
+					directionType = new Vertical(getKeyword().getWord(), getKeyword().getPotentialCoordinates());
 					directionType.findRemainingCoordinates(
-							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
+							keyword.getPotentialCoordinates().get(i).getStartCoordinates());
 					break;
 				case DIAGONAL_DOWN:
 					directionType = new DiagonalDown(getKeyword().getWord(),
-							getKeyword().getPotentialStartCoordinates());
+							getKeyword().getPotentialCoordinates());
 					directionType.findRemainingCoordinates(
-							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
+							keyword.getPotentialCoordinates().get(i).getStartCoordinates());
 					break;
 				case DIAGONAL_UP:
-					directionType = new DiagonalUp(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
+					directionType = new DiagonalUp(getKeyword().getWord(), getKeyword().getPotentialCoordinates());
 					directionType.findRemainingCoordinates(
-							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
+							keyword.getPotentialCoordinates().get(i).getStartCoordinates());
 					break;
 				case BW_HORIZONTAL:
 					directionType = new BwHorizontal(getKeyword().getWord(),
-							getKeyword().getPotentialStartCoordinates());
+							getKeyword().getPotentialCoordinates());
 					directionType.findRemainingCoordinates(
-							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
+							keyword.getPotentialCoordinates().get(i).getStartCoordinates());
 					break;
 				case BW_VERTICAL:
-					directionType = new BwVertical(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
+					directionType = new BwVertical(getKeyword().getWord(), getKeyword().getPotentialCoordinates());
 					directionType.findRemainingCoordinates(
-							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
+							keyword.getPotentialCoordinates().get(i).getStartCoordinates());
 					break;
 				case BW_DIAGONAL_DOWN:
-					directionType = new BwDiagonalDown(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
+					directionType = new BwDiagonalDown(getKeyword().getWord(), getKeyword().getPotentialCoordinates());
 					directionType.findRemainingCoordinates(
-							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
+							keyword.getPotentialCoordinates().get(i).getStartCoordinates());
 					break;
 				case BW_DIAGONAL_UP:
-					directionType = new BwDiagonalUp(getKeyword().getWord(), getKeyword().getPotentialStartCoordinates());
+					directionType = new BwDiagonalUp(getKeyword().getWord(), getKeyword().getPotentialCoordinates());
 					directionType.findRemainingCoordinates(
-							keyword.getPotentialStartCoordinates().get(i).getStartCoordinates());
+							keyword.getPotentialCoordinates().get(i).getStartCoordinates());
 					break;
 				default:
 					directionType = null;

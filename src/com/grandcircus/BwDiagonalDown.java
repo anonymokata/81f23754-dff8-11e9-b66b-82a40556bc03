@@ -9,10 +9,10 @@ public class BwDiagonalDown extends Keyword {
 		super();
 	}
 
-	public BwDiagonalDown(String word, List<PotentialStartCoordinates> potentialStartCoordinates) {
+	public BwDiagonalDown(String word, List<PotentialCoordinates> potentialStartCoordinates) {
 		super();
 		this.word = word;
-		this.potentialStartCoordinates = potentialStartCoordinates;
+		this.potentialCoordinates = potentialStartCoordinates;
 	}
 	
 	@Override

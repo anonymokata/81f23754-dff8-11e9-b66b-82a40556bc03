@@ -9,10 +9,10 @@ public class BwVertical extends Keyword {
 		super();
 	}
 
-	public BwVertical(String word, List<PotentialStartCoordinates> potentialStartCoordinates) {
+	public BwVertical(String word, List<PotentialCoordinates> potentialStartCoordinates) {
 		super();
 		this.word = word;
-		this.potentialStartCoordinates = potentialStartCoordinates;
+		this.potentialCoordinates = potentialStartCoordinates;
 	}
 	
 	@Override
