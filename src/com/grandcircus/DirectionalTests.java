@@ -203,14 +203,14 @@ public class DirectionalTests {
 		assertEquals(expected, actual);
 	}
 	
-//	@Test
-//	public void whenSetKeywordToDirectionTypeIsPassedABwVerticalItCreatesABwVerticalSubtype() {
-//		findBaora.setDirectionsToPotentialCoordinates();
-//		findBaora.setKeywordToDirectionType();
-//		String actual = findBaora.getKeyword().getCoordinates().toString();
-//		String expected = "[(4,2), (3,2), (2,2), (1,2), (0,2)]";
-//		assertEquals(expected, actual);
-//	}
+	@Test
+	public void whenSetKeywordToDirectionTypeIsPassedABwVerticalItCreatesABwVerticalSubtype() {
+		findBaora.setDirectionsToPotentialCoordinates();
+		findBaora.setKeywordToDirectionType();
+		String actual = findBaora.getKeyword().getCoordinates().toString();
+		String expected = "[(4,2), (3,2), (2,2), (1,2), (0,2)]";
+		assertEquals(expected, actual);
+	}
 //	
 //	@Test
 //	public void whenSetKeywordToDirectionTypeIsPassedABwDiagonalDownItCreatesABwDiagonalDownSubtype() {

@@ -108,10 +108,10 @@ public class Finder {
 					directionType = new BwHorizontal(keyword, potential.getStartCoordinates());
 					directionType.findRemainingCoordinates();
 					break;
-//				case BW_VERTICAL:
-//					directionType = new BwVertical(keyword.getWord(), potential.getStartCoordinates());
-//					directionType.findRemainingCoordinates();
-//					break;
+				case BW_VERTICAL:
+					directionType = new BwVertical(keyword, potential.getStartCoordinates());
+					directionType.findRemainingCoordinates();
+					break;
 //				case BW_DIAGONAL_DOWN:
 //					directionType = new BwDiagonalDown(keyword.getWord(), potential.getStartCoordinates());
 //					directionType.findRemainingCoordinates();

@@ -3,23 +3,22 @@ package com.grandcircus;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BwVertical extends Keyword {
+public class BwVertical extends Compass {
 
-	public BwVertical() {
+	public BwVertical (Keyword keyword, Coordinates coordinates) {
 		super();
-	}
-
-	public BwVertical (String word, Coordinates tempCoordinates) {
-		super();
-		this.word = word;
-		this.tempCoordinates = tempCoordinates;
-	}
+		this.keyword = keyword;
+		this.coordinates = coordinates;
+		thisCol = coordinates.getCol();
+		oneUp = coordinates.getRow() - 1;
+		
+	}	
 	
 	@Override
 	public String getGridSubstring() {
 		String gridSubstring = "";
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			gridSubstring += Finder.grid[tempCoordinates.getRow() - 1 - i][tempCoordinates.getCol()];
+			gridSubstring += grid[oneUp - i][thisCol];
 		}
 		return gridSubstring;
 	}
@@ -27,9 +26,9 @@ public class BwVertical extends Keyword {
 	@Override
 	public List<Coordinates> getRemainingCoordinates() {
 		List<Coordinates> foundCoordinates = new ArrayList<>();
-		foundCoordinates.add(tempCoordinates);
+		foundCoordinates.add(coordinates);
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			foundCoordinates.add(new Coordinates(tempCoordinates.getRow()  - 1 - i, tempCoordinates.getCol()));
+			foundCoordinates.add(new Coordinates(oneUp - i, thisCol));
 		}
 		return foundCoordinates;
 	}
