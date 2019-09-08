@@ -178,73 +178,88 @@ public class Finder {
 		}
 	}
 
-	private Boolean checkHorizontal(Coordinates coordinates) {
-		if (keyword.getLength() <= grid.length - coordinates.getCol()) {
+	protected Boolean checkHorizontal(Coordinates coordinates) {
+		if (thereIsRoomAhead(coordinates)) {
 			return (keyword.getSecondLetter().equals(grid[coordinates.getRow()][coordinates.getCol() + 1]));	
 		} else {
 			return false;
 		}
 	}
 
-	private Boolean checkVertical(Coordinates coordinates) {
-		if (keyword.getLength() <= grid.length - coordinates.getRow()) {
+	protected Boolean checkVertical(Coordinates coordinates) {
+		if (thereIsRoomBelow(coordinates)) {
 			return (keyword.getSecondLetter().equals(grid[coordinates.getRow() + 1][coordinates.getCol()]));
 		} else {
 			return false;
 		}
 	}
 
-	private Boolean checkDiagonalDown(Coordinates coordinates) {
-		if ((keyword.getLength() <= grid.length - coordinates.getCol())
-				&& (keyword.getLength() <= grid.length - coordinates.getRow())) {
+	protected Boolean checkDiagonalDown(Coordinates coordinates) {
+		if (thereIsRoomAhead(coordinates)
+				&& thereIsRoomBelow(coordinates)) {
 			return (keyword.getSecondLetter().equals(grid[coordinates.getRow() + 1][coordinates.getCol() + 1]));
 		} else {
 			return false;
 		}
 	}
 
-	private Boolean checkDiagonalUp(Coordinates coordinates) {
-		if (keyword.getLength() <= grid.length - coordinates.getCol()
-				&& keyword.getLength() <= (coordinates.getRow()) + 1) {
+	protected Boolean checkDiagonalUp(Coordinates coordinates) {
+		if (thereIsRoomAhead(coordinates)
+				&& thereIsRoomAbove(coordinates)) {
 			return (keyword.getSecondLetter().equals(grid[coordinates.getRow() - 1][coordinates.getCol() + 1]));
 		} else {
 			return false;
 		}
 	}
 
-	Boolean checkBwHorizontal(Coordinates coordinates) {
-		if ((keyword.getLength() <= coordinates.getCol() + 1)) {
+	protected Boolean checkBwHorizontal(Coordinates coordinates) {
+		if (thereIsRoomBehind(coordinates)) {
 			return (keyword.getSecondLetter().equals(grid[coordinates.getRow()][coordinates.getCol() - 1]));
 		} else {
 			return false;
 		}
 	}
 
-	Boolean checkBwVertical(Coordinates coordinates) {
-		if ((keyword.getLength() <= coordinates.getRow() + 1)) {
+	protected Boolean checkBwVertical(Coordinates coordinates) {
+		if (thereIsRoomAbove(coordinates)) {
 			return (keyword.getSecondLetter().equals(grid[coordinates.getRow() - 1][coordinates.getCol()]));
 		} else {
 			return false;
 		}
 	}
 
-	Boolean checkBwDiagonalDown(Coordinates coordinates) {
-		if ((keyword.getLength() <= coordinates.getCol() + 1) 
-			&& keyword.getLength() <= grid.length - coordinates.getRow()) {
+	protected Boolean checkBwDiagonalDown(Coordinates coordinates) {
+		if (thereIsRoomBehind(coordinates)
+			&& thereIsRoomBelow(coordinates)) {
 			return (keyword.getSecondLetter().equals(grid[coordinates.getRow() + 1][coordinates.getCol() - 1]));
 		} else {
 			return false;
 		}
 	}
 	
-	Boolean checkBwDiagonalUp(Coordinates coordinates) {
-		if ((keyword.getLength() <= coordinates.getCol() + 1) 
-			&& keyword.getLength() <= coordinates.getRow() + 1)  {
+	protected Boolean checkBwDiagonalUp(Coordinates coordinates) {
+		if (thereIsRoomBehind(coordinates)
+			&& thereIsRoomAbove(coordinates))  {
 			return (keyword.getSecondLetter().equals(grid[coordinates.getRow() - 1][coordinates.getCol() - 1]));
 		} else {
 			return false;
 		}
+	}
+	
+	private Boolean thereIsRoomAhead(Coordinates coordinates) {
+		return keyword.getLength() <= grid.length - coordinates.getCol();
+	}
+	
+	private Boolean thereIsRoomBelow(Coordinates coordinates) {
+		return keyword.getLength() <= grid.length - coordinates.getRow();
+	}
 
+	private Boolean thereIsRoomAbove(Coordinates coordinates) {
+		return keyword.getLength() <= (coordinates.getRow()) + 1;
+	}
+	
+	private Boolean thereIsRoomBehind(Coordinates coordinates) {
+		return keyword.getLength() <= coordinates.getCol() + 1;
 	}
 
 }

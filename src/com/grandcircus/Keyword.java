@@ -32,10 +32,6 @@ public class Keyword {
 		this.word = word;
 	}
 
-	public String getSecondLetter() {
-		return word.substring(1, 2);
-	}
-
 	public Boolean getIsFound() {
 		return isFound;
 	}
@@ -62,6 +58,10 @@ public class Keyword {
 
 	public Integer getLength() {
 		return getWord().length();
+	}
+
+	public String getSecondLetter() {
+		return word.substring(1, 2);
 	}
 	
 	public String getRemainingLetters() {
