@@ -1,4 +1,4 @@
-package com.grandcircus;
+package com.grandcircus.wordsearch.keyword;
 
 import java.util.List;
 

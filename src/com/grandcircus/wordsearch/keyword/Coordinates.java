@@ -1,4 +1,4 @@
-package com.grandcircus;
+package com.grandcircus.wordsearch.keyword;
 
 public class Coordinates {
 

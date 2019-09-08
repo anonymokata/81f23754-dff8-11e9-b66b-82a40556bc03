@@ -1,4 +1,4 @@
-package com.grandcircus;
+package com.grandcircus.wordsearch.app;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,6 +7,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.grandcircus.wordsearch.keyword.Keyword;
 
 public class WordSearchReader {
 	private Path filePath;

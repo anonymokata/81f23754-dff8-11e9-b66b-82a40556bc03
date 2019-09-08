@@ -1,4 +1,6 @@
-package com.grandcircus;
+package com.grandcircus.wordsearch.app;
+
+import com.grandcircus.wordsearch.finder.Finder;
 
 public class WordSearchApp {
 

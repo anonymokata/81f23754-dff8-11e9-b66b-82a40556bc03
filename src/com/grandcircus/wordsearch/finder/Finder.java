@@ -1,7 +1,12 @@
-package com.grandcircus;
+package com.grandcircus.wordsearch.finder;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.grandcircus.wordsearch.keyword.Coordinates;
+import com.grandcircus.wordsearch.keyword.Direction;
+import com.grandcircus.wordsearch.keyword.Keyword;
+import com.grandcircus.wordsearch.keyword.PotentialCoordinates;
 
 public class Finder {
 	public static String[][] grid;

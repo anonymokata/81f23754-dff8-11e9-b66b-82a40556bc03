@@ -1,7 +1,11 @@
-package com.grandcircus;
+package com.grandcircus.wordsearch.finder;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.grandcircus.wordsearch.keyword.Coordinates;
+import com.grandcircus.wordsearch.keyword.Direction;
+import com.grandcircus.wordsearch.keyword.Keyword;
 
 public class Compass {
 
@@ -93,7 +97,7 @@ public class Compass {
 		return false;
 	}
 
-	protected Boolean checkBwHorizontal() {
+	public Boolean checkBwHorizontal() {
 		if (thereIsRoomBehind()) {
 			return (secondLetter.equals(grid[thisRow][oneBack]));
 		}
@@ -107,14 +111,14 @@ public class Compass {
 		return false;
 	}
 
-	protected Boolean checkBwDiagonalDown() {
+	public Boolean checkBwDiagonalDown() {
 		if (thereIsRoomBehind() && thereIsRoomBelow()) {
 			return (secondLetter.equals(grid[oneDown][oneBack]));
 		}
 		return false;
 	}
 
-	protected Boolean checkBwDiagonalUp() {
+	public Boolean checkBwDiagonalUp() {
 		if (thereIsRoomBehind() && thereIsRoomAbove()) {
 			return (secondLetter.equals(grid[oneUp][oneBack]));
 		}
@@ -138,7 +142,7 @@ public class Compass {
 	}
 	
 	public String getRemainingLetters() {
-		return keyword.word.substring(1, keyword.word.length());
+		return keyword.getWord().substring(1, keyword.getWord().length());
 	}
 	
 	public void findRemainingCoordinates() {
