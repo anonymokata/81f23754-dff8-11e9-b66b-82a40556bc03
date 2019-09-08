@@ -9,27 +9,27 @@ public class BwHorizontal extends Keyword {
 		super();
 	}
 
-	public BwHorizontal(String word, List<PotentialCoordinates> potentialStartCoordinates) {
+	public BwHorizontal (String word, Coordinates tempCoordinates) {
 		super();
 		this.word = word;
-		this.potentialCoordinates = potentialStartCoordinates;
+		this.tempCoordinates = tempCoordinates;
 	}
 	
 	@Override
-	public String getGridSubstring(Coordinates coordinates) {
+	public String getGridSubstring() {
 		String gridSubstring = "";
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			gridSubstring += Finder.grid[coordinates.getRow()][coordinates.getCol() - 1 - i];
+			gridSubstring += Finder.grid[tempCoordinates.getRow()][tempCoordinates.getCol() - 1 - i];
 		}
 		return gridSubstring;
 	}
 	
 	@Override
-	public List<Coordinates> getRemainingCoordinates(Coordinates coordinates) {
+	public List<Coordinates> getRemainingCoordinates() {
 		List<Coordinates> foundCoordinates = new ArrayList<>();
-		foundCoordinates.add(coordinates);
+		foundCoordinates.add(tempCoordinates);
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() - 1 - i));
+			foundCoordinates.add(new Coordinates(tempCoordinates.getRow(), tempCoordinates.getCol() - 1 - i));
 		}
 		return foundCoordinates;
 	}

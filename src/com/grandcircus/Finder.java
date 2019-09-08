@@ -89,50 +89,40 @@ public class Finder {
 
 	public void setKeywordToDirectionType() {
 		Keyword directionType;
-		for (int i = 0; i < keyword.getPotentialCoordinates().size(); i++) {
-			for (Direction each : keyword.getPotentialCoordinates().get(i).getDirections()) {
+		for (PotentialCoordinates potential : keyword.getPotentialCoordinates()) {
+			for (Direction each : potential.getDirections()) {
 				switch (each) {
 				case HORIZONTAL:
-					directionType = new Horizontal(getKeyword().getWord(), getKeyword().getPotentialCoordinates());
-					directionType.findRemainingCoordinates(
-							keyword.getPotentialCoordinates().get(i).getStartCoordinates());
+					directionType = new Horizontal(keyword.getWord(), potential.getStartCoordinates());
+					directionType.findRemainingCoordinates();
 					break;
 				case VERTICAL:
-					directionType = new Vertical(getKeyword().getWord(), getKeyword().getPotentialCoordinates());
-					directionType.findRemainingCoordinates(
-							keyword.getPotentialCoordinates().get(i).getStartCoordinates());
+					directionType = new Vertical(keyword.getWord(), potential.getStartCoordinates());
+					directionType.findRemainingCoordinates();
 					break;
 				case DIAGONAL_DOWN:
-					directionType = new DiagonalDown(getKeyword().getWord(),
-							getKeyword().getPotentialCoordinates());
-					directionType.findRemainingCoordinates(
-							keyword.getPotentialCoordinates().get(i).getStartCoordinates());
+					directionType = new DiagonalDown(keyword.getWord(), potential.getStartCoordinates());
+					directionType.findRemainingCoordinates();
 					break;
 				case DIAGONAL_UP:
-					directionType = new DiagonalUp(getKeyword().getWord(), getKeyword().getPotentialCoordinates());
-					directionType.findRemainingCoordinates(
-							keyword.getPotentialCoordinates().get(i).getStartCoordinates());
+					directionType = new DiagonalUp(keyword.getWord(), potential.getStartCoordinates());
+					directionType.findRemainingCoordinates();
 					break;
 				case BW_HORIZONTAL:
-					directionType = new BwHorizontal(getKeyword().getWord(),
-							getKeyword().getPotentialCoordinates());
-					directionType.findRemainingCoordinates(
-							keyword.getPotentialCoordinates().get(i).getStartCoordinates());
+					directionType = new BwHorizontal(keyword.getWord(), potential.getStartCoordinates());
+					directionType.findRemainingCoordinates();
 					break;
 				case BW_VERTICAL:
-					directionType = new BwVertical(getKeyword().getWord(), getKeyword().getPotentialCoordinates());
-					directionType.findRemainingCoordinates(
-							keyword.getPotentialCoordinates().get(i).getStartCoordinates());
+					directionType = new BwVertical(keyword.getWord(), potential.getStartCoordinates());
+					directionType.findRemainingCoordinates();
 					break;
 				case BW_DIAGONAL_DOWN:
-					directionType = new BwDiagonalDown(getKeyword().getWord(), getKeyword().getPotentialCoordinates());
-					directionType.findRemainingCoordinates(
-							keyword.getPotentialCoordinates().get(i).getStartCoordinates());
+					directionType = new BwDiagonalDown(keyword.getWord(), potential.getStartCoordinates());
+					directionType.findRemainingCoordinates();
 					break;
 				case BW_DIAGONAL_UP:
-					directionType = new BwDiagonalUp(getKeyword().getWord(), getKeyword().getPotentialCoordinates());
-					directionType.findRemainingCoordinates(
-							keyword.getPotentialCoordinates().get(i).getStartCoordinates());
+					directionType = new BwDiagonalUp(keyword.getWord(), potential.getStartCoordinates());
+					directionType.findRemainingCoordinates();
 					break;
 				default:
 					directionType = null;
@@ -142,10 +132,10 @@ public class Finder {
 				keyword.setIsFound(directionType.getIsFound());
 				keyword.setCoordinates(directionType.getCoordinates());
 				if (keyword.getIsFound())
-					break;
+					return;
 			}
 			if (keyword.getIsFound())
-				break;
+				return;
 		}
 	}
 }

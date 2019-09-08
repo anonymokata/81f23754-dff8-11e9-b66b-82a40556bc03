@@ -15,6 +15,10 @@ public class Compass {
 	private Integer oneBelow;
 	private Integer oneAbove;
 	private Integer oneBehind;
+	
+	public Coordinates getCoordinates() {
+		return coordinates;
+	}
 
 	public Compass(Keyword keyword, Coordinates coordinates) {
 		super();

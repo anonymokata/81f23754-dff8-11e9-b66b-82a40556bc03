@@ -6,6 +6,7 @@ public class Keyword {
 
 	protected String word;
 	private Boolean isFound = false;
+	protected Coordinates tempCoordinates;
 	protected List<PotentialCoordinates> potentialCoordinates;
 	private List<Coordinates> coordinates;
 
@@ -16,6 +17,12 @@ public class Keyword {
 	public Keyword(String word) {
 		super();
 		this.word = word;
+	}
+	
+	public Keyword(String word, Coordinates tempCoordinates) {
+		super();
+		this.word = word;
+		this.tempCoordinates = tempCoordinates;
 	}
 
 	public Keyword(String word, List<PotentialCoordinates> potentialCoordinates) {
@@ -38,6 +45,14 @@ public class Keyword {
 
 	public void setIsFound(Boolean isFound) {
 		this.isFound = isFound;
+	}
+	
+	public Coordinates getTempCoordinates() {
+		return tempCoordinates;
+	}
+
+	public void setTempCoordinates(Coordinates tempCoordinates) {
+		this.tempCoordinates = tempCoordinates;
 	}
 
 	public List<PotentialCoordinates> getPotentialCoordinates() {
@@ -68,8 +83,8 @@ public class Keyword {
 		return word.substring(1, word.length());
 	}
 
-	public void findRemainingCoordinates(Coordinates coordinates) {
-		setCoordinatesOfRemainingLetters(getGridSubstring(coordinates), getRemainingCoordinates(coordinates));
+	public void findRemainingCoordinates() {
+		setCoordinatesOfRemainingLetters(getGridSubstring(), getRemainingCoordinates());
 	}
 	
 	public void setCoordinatesOfRemainingLetters(String gridSubstring, List<Coordinates> foundCoordinates) {
@@ -83,11 +98,11 @@ public class Keyword {
 		return getRemainingLetters().equals(gridSubstring);
 	}
 
-	public String getGridSubstring(Coordinates coordinates) {
+	public String getGridSubstring() {
 		return null;
 	}
 
-	public List<Coordinates> getRemainingCoordinates(Coordinates coordinates) {
+	public List<Coordinates> getRemainingCoordinates() {
 		return null;
 	}
 	

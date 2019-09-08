@@ -9,27 +9,27 @@ public class BwVertical extends Keyword {
 		super();
 	}
 
-	public BwVertical(String word, List<PotentialCoordinates> potentialStartCoordinates) {
+	public BwVertical (String word, Coordinates tempCoordinates) {
 		super();
 		this.word = word;
-		this.potentialCoordinates = potentialStartCoordinates;
+		this.tempCoordinates = tempCoordinates;
 	}
 	
 	@Override
-	public String getGridSubstring(Coordinates coordinates) {
+	public String getGridSubstring() {
 		String gridSubstring = "";
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			gridSubstring += Finder.grid[coordinates.getRow() - 1 - i][coordinates.getCol()];
+			gridSubstring += Finder.grid[tempCoordinates.getRow() - 1 - i][tempCoordinates.getCol()];
 		}
 		return gridSubstring;
 	}
 	
 	@Override
-	public List<Coordinates> getRemainingCoordinates(Coordinates coordinates) {
+	public List<Coordinates> getRemainingCoordinates() {
 		List<Coordinates> foundCoordinates = new ArrayList<>();
-		foundCoordinates.add(coordinates);
+		foundCoordinates.add(tempCoordinates);
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			foundCoordinates.add(new Coordinates(coordinates.getRow()  - 1 - i, coordinates.getCol()));
+			foundCoordinates.add(new Coordinates(tempCoordinates.getRow()  - 1 - i, tempCoordinates.getCol()));
 		}
 		return foundCoordinates;
 	}
