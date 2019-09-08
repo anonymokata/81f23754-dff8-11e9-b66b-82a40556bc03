@@ -20,6 +20,8 @@ public class DirectionalTests {
 	Finder findAaody;
 	Finder findCwou;
 	Finder findAll;
+	Compass compassAaody;
+	Compass compassCwou;
 
 	@BeforeEach
 	public void setup() {
@@ -35,6 +37,8 @@ public class DirectionalTests {
 		findAaody = new Finder(directionalReader.getAllKeywords().get(7), directionalReader.makeGrid());
 		findCwou = new Finder(directionalReader.getAllKeywords().get(8), directionalReader.makeGrid());
 		findAll = new Finder(directionalReader.getAllKeywords(), directionalReader.makeGrid());
+		compassAaody = new Compass(directionalReader.getAllKeywords().get(7), new Coordinates(0, 4));
+		compassCwou = new Compass(directionalReader.getAllKeywords().get(8), new Coordinates(4, 4));
 	}
 
 	@Test
@@ -105,7 +109,7 @@ public class DirectionalTests {
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedABwDiagonalDownItAddsBwDiagonalDownToDirectionsField() {
 		findAaody.setDirectionsToPotentialStartCoordinates();	
-		Boolean actual = findAaody.checkBwDiagonalDown(new Coordinates(0,4));
+		Boolean actual = compassAaody.checkBwDiagonalDown();
 		Direction actual2 = findAaody.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0);
 		Boolean expected = true;
 		Direction expected2 = Direction.BW_DIAGONAL_DOWN;
@@ -116,7 +120,7 @@ public class DirectionalTests {
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedABwDiagonalUpItAddsBwDiagonalUpToDirectionsField() {
 		findCwou.setDirectionsToPotentialStartCoordinates();	
-		Boolean actual = findCwou.checkBwDiagonalUp(new Coordinates(4,4));
+		Boolean actual = compassCwou.checkBwDiagonalUp();
 		Direction actual2 = findCwou.getKeyword().getPotentialStartCoordinates().get(0).getDirections().get(0);
 		Boolean expected = true;
 		Direction expected2 = Direction.BW_DIAGONAL_UP;

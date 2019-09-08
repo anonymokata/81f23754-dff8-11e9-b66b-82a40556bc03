@@ -11,6 +11,7 @@ public class MainReaderTests {
 	Finder findXander;
 	Finder findGiles;
 	Finder findAll;
+	Compass compassXander;
 
 	@BeforeEach
 	public void setup() {
@@ -18,6 +19,7 @@ public class MainReaderTests {
 		findXander = new Finder(mainReader.getAllKeywords().get(1), mainReader.makeGrid());	
 		findGiles = new Finder(mainReader.getAllKeywords().get(2), mainReader.makeGrid());
 		findAll = new Finder(mainReader.getAllKeywords(), mainReader.makeGrid());
+		compassXander = new Compass(mainReader.getAllKeywords().get(1), new Coordinates(14, 5));
 	}
 	
 	@Test
@@ -51,7 +53,8 @@ public class MainReaderTests {
 	
 	@Test
 	public void whenCheckBwHorizontalIsPassedMatchingCoordinatesItReturnsTrue() {
-	Boolean actual = findXander.checkBwHorizontal(new Coordinates(14,5));
+	findXander.setDirectionsToPotentialStartCoordinates();
+	Boolean actual = compassXander.checkBwHorizontal();
 	Boolean expected = true;
 	assertEquals(expected, actual);
 	}
