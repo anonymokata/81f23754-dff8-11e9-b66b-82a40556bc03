@@ -9,20 +9,16 @@ public class Horizontal extends Compass {
 		super();
 		this.keyword = keyword;
 		this.coordinates = coordinates;
-//		secondLetter = keyword.getSecondLetter();
-//		thisRow = coordinates.getRow();
-//		thisCol = coordinates.getCol();
-//		oneAhead = coordinates.getCol() + 1;
-//		oneBelow = coordinates.getRow() + 1;
-//		oneAbove = coordinates.getRow() - 1;
-//		oneBehind = coordinates.getCol() - 1;
+		thisRow = coordinates.getRow();
+		oneAhead = coordinates.getCol() + 1;
+
 	}
 	
 	@Override
 	public String getGridSubstring() {
 		String gridSubstring = "";
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			gridSubstring += Finder.grid[coordinates.getRow()][coordinates.getCol() + 1 + i];
+			gridSubstring += grid[thisRow][oneAhead + i];
 		}
 		return gridSubstring;
 	}
@@ -32,7 +28,7 @@ public class Horizontal extends Compass {
 		List<Coordinates> foundCoordinates = new ArrayList<>();
 		foundCoordinates.add(coordinates);
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			foundCoordinates.add(new Coordinates(coordinates.getRow(), coordinates.getCol() + 1 + i));
+			foundCoordinates.add(new Coordinates(thisRow, oneAhead + i));
 		}
 		return foundCoordinates;
 	}

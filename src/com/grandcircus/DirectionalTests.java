@@ -161,17 +161,17 @@ public class DirectionalTests {
 		assertEquals(expected2, actual2);
 	}
 	
-//	@Test
-//	public void whenSetKeywordToDirectionTypeIsPassedAVerticalKeywordItCreatesAVerticallSubtypeAndReturnsCoordinates() {
-//		findBuffyVertical.setDirectionsToPotentialCoordinates();
-//		findBuffyVertical.setKeywordToDirectionType();
-//		Boolean actual = findBuffyVertical.getKeyword().getIsFound();
-//		String actual2 = findBuffyVertical.getKeyword().getCoordinates().toString();
-//		Boolean expected = true;
-//		String expected2 = "[(0,0), (1,0), (2,0), (3,0), (4,0)]";
-//		assertEquals(expected, actual);
-//		assertEquals(expected2, actual2);
-//	}
+	@Test
+	public void whenSetKeywordToDirectionTypeIsPassedAVerticalKeywordItCreatesAVerticallSubtypeAndReturnsCoordinates() {
+		findBuffyVertical.setDirectionsToPotentialCoordinates();
+		findBuffyVertical.setKeywordToDirectionType();
+		Boolean actual = findBuffyVertical.getKeyword().getIsFound();
+		String actual2 = findBuffyVertical.getKeyword().getCoordinates().toString();
+		Boolean expected = true;
+		String expected2 = "[(0,0), (1,0), (2,0), (3,0), (4,0)]";
+		assertEquals(expected, actual);
+		assertEquals(expected2, actual2);
+	}
 //	
 //	@Test
 //	public void whenSetKeywordToDirectionTypeIsPassedADiagonalDownlKeywordItCreatesADiagonalDownlSubtypeAndReturnsCoordinates() {
