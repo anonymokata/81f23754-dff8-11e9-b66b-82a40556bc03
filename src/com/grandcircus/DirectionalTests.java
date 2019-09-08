@@ -211,15 +211,15 @@ public class DirectionalTests {
 		String expected = "[(4,2), (3,2), (2,2), (1,2), (0,2)]";
 		assertEquals(expected, actual);
 	}
-//	
-//	@Test
-//	public void whenSetKeywordToDirectionTypeIsPassedABwDiagonalDownItCreatesABwDiagonalDownSubtype() {
-//		findAaody.setDirectionsToPotentialCoordinates();
-//		findAaody.setKeywordToDirectionType();
-//		String actual = findAaody.getKeyword().getCoordinates().toString();
-//		String expected = "[(0,4), (1,3), (2,2), (3,1), (4,0)]";
-//		assertEquals(expected, actual);
-//	}
+	
+	@Test
+	public void whenSetKeywordToDirectionTypeIsPassedABwDiagonalDownItCreatesABwDiagonalDownSubtype() {
+		findAaody.setDirectionsToPotentialCoordinates();
+		findAaody.setKeywordToDirectionType();
+		String actual = findAaody.getKeyword().getCoordinates().toString();
+		String expected = "[(0,4), (1,3), (2,2), (3,1), (4,0)]";
+		assertEquals(expected, actual);
+	}
 //	
 //	@Test
 //	public void whenSetKeywordToDirectionTypeIsPassedABwDiagonalUPItCreatesABwDiagonalUpSubtype() {
