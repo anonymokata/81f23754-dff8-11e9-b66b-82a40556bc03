@@ -5,32 +5,28 @@ import java.util.List;
 
 public class Finder {
 	public static String[][] grid;
-
+	
 	private Keyword keyword;
 	private List<Keyword> allKeywords;
-
-	public Finder(List<Keyword> allKeywords, String[][] grid) {
-		super();
-		this.allKeywords = allKeywords;
-		Finder.grid = grid;
-	}
 
 	public Finder(Keyword keyword, String[][] grid) {
 		super();
 		this.keyword = keyword;
 		Finder.grid = grid;
 	}
-
+	
+	public Finder(List<Keyword> allKeywords, String[][] grid) {
+		super();
+		this.allKeywords = allKeywords;
+		Finder.grid = grid;
+	}
+	
 	public Keyword getKeyword() {
 		return keyword;
 	}
 
 	public void setKeyword(Keyword keyword) {
 		this.keyword = keyword;
-	}
-
-	public List<Keyword> getAllKeywords() {
-		return allKeywords;
 	}
 
 	public String printAllKeywordCoordinates(List<String> allKeywordCoordinates) {
@@ -88,49 +84,49 @@ public class Finder {
 	}	
 
 	public void setKeywordToDirectionType() {
-		Keyword directionType;
+		Compass directionType;
 		for (PotentialCoordinates potential : keyword.getPotentialCoordinates()) {
 			for (Direction each : potential.getDirections()) {
 				switch (each) {
 				case HORIZONTAL:
-					directionType = new Horizontal(keyword.getWord(), potential.getStartCoordinates());
+					directionType = new Horizontal(keyword, potential.getStartCoordinates());
 					directionType.findRemainingCoordinates();
 					break;
-				case VERTICAL:
-					directionType = new Vertical(keyword.getWord(), potential.getStartCoordinates());
-					directionType.findRemainingCoordinates();
-					break;
-				case DIAGONAL_DOWN:
-					directionType = new DiagonalDown(keyword.getWord(), potential.getStartCoordinates());
-					directionType.findRemainingCoordinates();
-					break;
-				case DIAGONAL_UP:
-					directionType = new DiagonalUp(keyword.getWord(), potential.getStartCoordinates());
-					directionType.findRemainingCoordinates();
-					break;
-				case BW_HORIZONTAL:
-					directionType = new BwHorizontal(keyword.getWord(), potential.getStartCoordinates());
-					directionType.findRemainingCoordinates();
-					break;
-				case BW_VERTICAL:
-					directionType = new BwVertical(keyword.getWord(), potential.getStartCoordinates());
-					directionType.findRemainingCoordinates();
-					break;
-				case BW_DIAGONAL_DOWN:
-					directionType = new BwDiagonalDown(keyword.getWord(), potential.getStartCoordinates());
-					directionType.findRemainingCoordinates();
-					break;
-				case BW_DIAGONAL_UP:
-					directionType = new BwDiagonalUp(keyword.getWord(), potential.getStartCoordinates());
-					directionType.findRemainingCoordinates();
-					break;
+//				case VERTICAL:
+//					directionType = new Vertical(keyword.getWord(), potential.getStartCoordinates());
+//					directionType.findRemainingCoordinates();
+//					break;
+//				case DIAGONAL_DOWN:
+//					directionType = new DiagonalDown(keyword.getWord(), potential.getStartCoordinates());
+//					directionType.findRemainingCoordinates();
+//					break;
+//				case DIAGONAL_UP:
+//					directionType = new DiagonalUp(keyword.getWord(), potential.getStartCoordinates());
+//					directionType.findRemainingCoordinates();
+//					break;
+//				case BW_HORIZONTAL:
+//					directionType = new BwHorizontal(keyword.getWord(), potential.getStartCoordinates());
+//					directionType.findRemainingCoordinates();
+//					break;
+//				case BW_VERTICAL:
+//					directionType = new BwVertical(keyword.getWord(), potential.getStartCoordinates());
+//					directionType.findRemainingCoordinates();
+//					break;
+//				case BW_DIAGONAL_DOWN:
+//					directionType = new BwDiagonalDown(keyword.getWord(), potential.getStartCoordinates());
+//					directionType.findRemainingCoordinates();
+//					break;
+//				case BW_DIAGONAL_UP:
+//					directionType = new BwDiagonalUp(keyword.getWord(), potential.getStartCoordinates());
+//					directionType.findRemainingCoordinates();
+//					break;
 				default:
 					directionType = null;
 					break;
 				}
 
-				keyword.setIsFound(directionType.getIsFound());
-				keyword.setCoordinates(directionType.getCoordinates());
+				keyword.setIsFound(directionType.keyword.getIsFound());
+				keyword.setCoordinates(directionType.keyword.getCoordinates());
 				if (keyword.getIsFound())
 					return;
 			}

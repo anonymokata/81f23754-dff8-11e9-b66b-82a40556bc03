@@ -5,19 +5,18 @@ import java.util.List;
 
 public class Compass {
 
-	private Keyword keyword;
-	private Coordinates coordinates;
-	private String[][] grid = Finder.grid;
-	private String secondLetter;
-	private Integer thisRow;
-	private Integer thisCol;
-	private Integer oneAhead;
-	private Integer oneBelow;
-	private Integer oneAbove;
-	private Integer oneBehind;
+	protected Keyword keyword;
+	protected Coordinates coordinates;
+	protected String[][] grid = Finder.grid;
+	protected String secondLetter;
+	protected Integer thisRow;
+	protected Integer thisCol;
+	protected Integer oneAhead;
+	protected Integer oneBelow;
+	protected Integer oneAbove;
+	protected Integer oneBehind;
 	
-	public Coordinates getCoordinates() {
-		return coordinates;
+	public Compass() {
 	}
 
 	public Compass(Keyword keyword, Coordinates coordinates) {
@@ -32,6 +31,10 @@ public class Compass {
 		oneAbove = coordinates.getRow() - 1;
 		oneBehind = coordinates.getCol() - 1;
 	}	
+	
+	public Coordinates getCoordinates() {
+		return coordinates;
+	}
 		
 	protected List<Direction> getDirections() {
 		List<Direction> directions = new ArrayList<>();
@@ -132,5 +135,32 @@ public class Compass {
 
 	private Boolean thereIsRoomBehind() {
 		return keyword.getLength() <= oneAhead;
+	}
+	
+	public String getRemainingLetters() {
+		return keyword.word.substring(1, keyword.word.length());
+	}
+	
+	public void findRemainingCoordinates() {
+		setCoordinatesOfRemainingLetters(getGridSubstring(), getRemainingCoordinates());
+	}
+	
+	public void setCoordinatesOfRemainingLetters(String gridSubstring, List<Coordinates> foundCoordinates) {
+		if (keywordEqualsSubsubtring(gridSubstring)) {
+			keyword.setIsFound(true);
+			keyword.setCoordinates(foundCoordinates);
+		}
+	}
+	
+	public Boolean keywordEqualsSubsubtring(String gridSubstring) {
+		return getRemainingLetters().equals(gridSubstring);
+	}
+
+	public String getGridSubstring() {
+		return null;
+	}
+
+	public List<Coordinates> getRemainingCoordinates() {
+		return null;
 	}
 }

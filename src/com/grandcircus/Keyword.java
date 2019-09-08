@@ -79,32 +79,32 @@ public class Keyword {
 		return word.substring(1, 2);
 	}
 	
-	public String getRemainingLetters() {
-		return word.substring(1, word.length());
-	}
+//	public String getRemainingLetters() {
+//		return word.substring(1, word.length());
+//	}
 
-	public void findRemainingCoordinates() {
-		setCoordinatesOfRemainingLetters(getGridSubstring(), getRemainingCoordinates());
-	}
-	
-	public void setCoordinatesOfRemainingLetters(String gridSubstring, List<Coordinates> foundCoordinates) {
-		if (keywordEqualsSubsubtring(gridSubstring)) {
-			setIsFound(true);
-			setCoordinates(foundCoordinates);
-		}
-	}
-	
-	public Boolean keywordEqualsSubsubtring(String gridSubstring) {
-		return getRemainingLetters().equals(gridSubstring);
-	}
-
-	public String getGridSubstring() {
-		return null;
-	}
-
-	public List<Coordinates> getRemainingCoordinates() {
-		return null;
-	}
+//	public void findRemainingCoordinates() {
+//		setCoordinatesOfRemainingLetters(getGridSubstring(), getRemainingCoordinates());
+//	}
+//	
+//	public void setCoordinatesOfRemainingLetters(String gridSubstring, List<Coordinates> foundCoordinates) {
+//		if (keywordEqualsSubsubtring(gridSubstring)) {
+//			setIsFound(true);
+//			setCoordinates(foundCoordinates);
+//		}
+//	}
+//	
+//	public Boolean keywordEqualsSubsubtring(String gridSubstring) {
+//		return getRemainingLetters().equals(gridSubstring);
+//	}
+//
+//	public String getGridSubstring() {
+//		return null;
+//	}
+//
+//	public List<Coordinates> getRemainingCoordinates() {
+//		return null;
+//	}
 	
 	public String writeCoordinatesString() {
 		String coordinatesString = word + ": ";
