@@ -152,51 +152,51 @@ public class DirectionalTests {
 //		assertEquals(expected, actual);
 //	}
 //	
-//	@Test
-//	public void whenSetKeywordToDirectionTypeIsPassedAHorizontalKeywordItCreatesAHorizontalSubtype() {
-//		findDawn.setDirectionsToPotentialCoordinates();
-//		findDawn.setKeywordToDirectionType();
-//		Boolean actual = findDawn.getKeyword().getIsFound();
-//		String actual2 = findDawn.getKeyword().getAllCoordinates().toString();
-//		Boolean expected = true;
-//		String expected2 = "[(3,1), (3,2), (3,3), (3,4)]";
-//		assertEquals(expected, actual);
-//		assertEquals(expected2, actual2);
-//	}
-//	
-//	@Test
-//	public void whenSetKeywordToDirectionTypeIsPassedAVerticalKeywordItCreatesAVerticallSubtypeAndReturnsCoordinates() {
-//		findBuffy.setDirectionsToPotentialCoordinates();
-//		findBuffy.setKeywordToDirectionType();
-//		Boolean actual = findBuffy.getKeyword().getIsFound();
-//		String actual2 = findBuffy.getKeyword().getAllCoordinates().toString();
-//		Boolean expected = true;
-//		String expected2 = "[(0,0), (1,0), (2,0), (3,0), (4,0)]";
-//		assertEquals(expected, actual);
-//		assertEquals(expected2, actual2);
-//	}
-//	
-//	@Test
-//	public void whenSetKeywordToDirectionTypeIsPassedADiagonalDownlKeywordItCreatesADiagonalDownlSubtypeAndReturnsCoordinates() {
-//		findBuow.setDirectionsToPotentialCoordinates();
-//		findBuow.setKeywordToDirectionType();
-//		String actual = findBuow.getKeyword().getAllCoordinates().toString();
-//		String expected = "[(0,0), (1,1), (2,2), (3,3)]";
-//		assertEquals(expected, actual);
-//	}
-//
-//	@Test
-//	public void whenCheckSecondCoordinatesIsPassedADiagonalUpItKeywordItCreatesADiagonalUpSubtype() {
-//		findYdoa.setDirectionsToPotentialCoordinates();
-//		findYdoa.setKeywordToDirectionType();
-//		Boolean actual = findYdoa.getKeyword().getIsFound();
-//		String actual2 = findYdoa.getKeyword().getAllCoordinates().toString();
-//		Boolean expected = true;
-//		String expected2 = "[(4,0), (3,1), (2,2), (1,3)]";
-//		assertEquals(expected, actual);
-//		assertEquals(expected2, actual2);
-//	}
-//	
+	@Test
+	public void whenSetKeywordToDirectionTypeIsPassedAHorizontalKeywordItCreatesAHorizontalSubtype() {
+		findDawn.setDirectionsToPotentialCoordinates();
+		findDawn.setKeywordToDirectionType();
+		Boolean actual = findDawn.getKeyword().getIsFound();
+		String actual2 = findDawn.getKeyword().getAllCoordinates().toString();
+		Boolean expected = true;
+		String expected2 = "[(3,1), (3,2), (3,3), (3,4)]";
+		assertEquals(expected, actual);
+		assertEquals(expected2, actual2);
+	}
+	
+	@Test
+	public void whenSetKeywordToDirectionTypeIsPassedAVerticalKeywordItCreatesAVerticallSubtypeAndReturnsCoordinates() {
+		findBuffy.setDirectionsToPotentialCoordinates();
+		findBuffy.setKeywordToDirectionType();
+		Boolean actual = findBuffy.getKeyword().getIsFound();
+		String actual2 = findBuffy.getKeyword().getAllCoordinates().toString();
+		Boolean expected = true;
+		String expected2 = "[(0,0), (1,0), (2,0), (3,0), (4,0)]";
+		assertEquals(expected, actual);
+		assertEquals(expected2, actual2);
+	}
+	
+	@Test
+	public void whenSetKeywordToDirectionTypeIsPassedADiagonalDownlKeywordItCreatesADiagonalDownlSubtypeAndReturnsCoordinates() {
+		findBuow.setDirectionsToPotentialCoordinates();
+		findBuow.setKeywordToDirectionType();
+		String actual = findBuow.getKeyword().getAllCoordinates().toString();
+		String expected = "[(0,0), (1,1), (2,2), (3,3)]";
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void whenCheckSecondCoordinatesIsPassedADiagonalUpItKeywordItCreatesADiagonalUpSubtype() {
+		findYdoa.setDirectionsToPotentialCoordinates();
+		findYdoa.setKeywordToDirectionType();
+		Boolean actual = findYdoa.getKeyword().getIsFound();
+		String actual2 = findYdoa.getKeyword().getAllCoordinates().toString();
+		Boolean expected = true;
+		String expected2 = "[(4,0), (3,1), (2,2), (1,3)]";
+		assertEquals(expected, actual);
+		assertEquals(expected2, actual2);
+	}
+	
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedABwHorizontallKeywordItCreatesABwHorizontalSubtype() {
 		findRaru.setDirectionsToPotentialCoordinates();

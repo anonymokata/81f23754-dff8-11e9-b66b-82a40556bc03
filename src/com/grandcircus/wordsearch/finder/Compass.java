@@ -178,8 +178,8 @@ public class Compass {
 
 	public void findFullMatch() {
 		makeGridSubstring();
-		findRemainingCoordinates();
 		if (keywordEqualsSubsubtring()) {
+			findRemainingCoordinates();
 			keyword.setIsFound(true);
 			keyword.setAllCoordinates(getRemainingCoordinates());
 		}

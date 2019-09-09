@@ -11,23 +11,25 @@ public class Vertical extends Compass  {
 		super(compass.getKeyword(), compass.getCoordinates());
 	}
 
-		@Override
-		public String getGridSubstring() {
-			String gridSubstring = "";
-			for (int i = 0; i < getRemainingLetters().length(); i++) {
-				gridSubstring += grid[down + i][thisCol];
+	@Override
+	public void makeGridSubstring() {
+		String gridSubstring = "";
+		int aStep = 0;
+		for (; !outOfLetters(aStep); aStep++) {
+				gridSubstring += grid[down + aStep][thisCol];
 			}
-			return gridSubstring;
+			setGridSubstring(gridSubstring);
 		}
 		
-		@Override
-		public List<Coordinates> getRemainingCoordinates() {
-			List<Coordinates> foundCoordinates = new ArrayList<>();
-			foundCoordinates.add(coordinates);
-			for (int i = 0; i < getRemainingLetters().length(); i++) {
-				foundCoordinates.add(new Coordinates(down + i, thisCol));
+	@Override
+	public void findRemainingCoordinates() {
+		List<Coordinates> foundCoordinates = new ArrayList<>();
+		foundCoordinates.add(coordinates);
+		int aStep = 0;
+		for (; !outOfLetters(aStep); aStep++) {
+				foundCoordinates.add(new Coordinates(down + aStep, thisCol));
 			}
-			return foundCoordinates;
+		setRemainingCoordinates(foundCoordinates);
 		}
 		
 		@Override
