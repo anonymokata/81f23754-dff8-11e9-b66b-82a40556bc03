@@ -2,18 +2,13 @@ package com.grandcircus.wordsearch.finder;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.grandcircus.wordsearch.keyword.Coordinates;
-import com.grandcircus.wordsearch.keyword.Keyword;
+
 
 public class DiagonalDown extends Compass {
 
-	public DiagonalDown (Keyword keyword, Coordinates coordinates) {
-		super();
-		this.keyword = keyword;
-		this.coordinates = coordinates;
-		oneAhead = coordinates.getCol() + 1;
-		oneDown = coordinates.getRow() + 1;
+	public DiagonalDown (Compass compass) {
+		super(compass.getKeyword(), compass.getCoordinates());
 	}
 	
 	@Override

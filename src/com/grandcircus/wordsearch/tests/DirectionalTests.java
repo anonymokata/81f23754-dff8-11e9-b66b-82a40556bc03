@@ -192,7 +192,7 @@ public class DirectionalTests {
 	public void whenSetKeywordToDirectionTypeIsPassedADiagonalDownlKeywordItCreatesADiagonalDownlSubtypeAndReturnsCoordinates() {
 		findBuow.setDirectionsToPotentialCoordinates();
 		findBuow.setKeywordToDirectionType();
-		String actual = findBuow.getKeyword().getCoordinates().toString();
+		String actual = findBuow.getKeyword().getAllCoordinates().toString();
 		String expected = "[(0,0), (1,1), (2,2), (3,3)]";
 		assertEquals(expected, actual);
 	}
