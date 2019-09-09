@@ -17,7 +17,7 @@ public class DirectionalTests {
 	WordSearchReader directionalReader;
 	Finder findTara;
 	Finder findDawn;
-	Finder findBuffyVertical;
+	Finder findBuffy;
 	Finder findYdoa;
 	Finder findBuow;
 	Finder findRaru;
@@ -35,7 +35,7 @@ public class DirectionalTests {
 		directionalReader = new WordSearchReader("directional_tests.txt");
 		findTara = new Finder(directionalReader.getAllKeywords().get(0), directionalReader.makeGrid());
 		findDawn = new Finder(directionalReader.getAllKeywords().get(1), directionalReader.makeGrid());
-		findBuffyVertical = new Finder(directionalReader.getAllKeywords().get(2), directionalReader.makeGrid());
+		findBuffy = new Finder(directionalReader.getAllKeywords().get(2), directionalReader.makeGrid());
 		findYdoa = new Finder(directionalReader.getAllKeywords().get(3), directionalReader.makeGrid());
 		findBuow = new Finder(directionalReader.getAllKeywords().get(4), directionalReader.makeGrid());
 		findRaru = new Finder(directionalReader.getAllKeywords().get(5), directionalReader.makeGrid());
@@ -71,8 +71,8 @@ public class DirectionalTests {
 	
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAVerticalItAddsVerticalToDirectionsField() {
-		findBuffyVertical.setDirectionsToPotentialCoordinates();
-		Direction actual = findBuffyVertical.getCompasses().get(0).getDirections().get(0); 
+		findBuffy.setDirectionsToPotentialCoordinates();
+		Direction actual = findBuffy.getCompasses().get(0).getDirections().get(0); 
 		Direction expected = Direction.VERTICAL;
 		assertEquals(expected, actual);
 	}
@@ -80,9 +80,9 @@ public class DirectionalTests {
 	
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAVerticalAndDiagnalDownClueItAddserticalAndDiagonalDownToDirectionsField() {
-		findBuffyVertical.setDirectionsToPotentialCoordinates();
-		Direction actual = findBuffyVertical.getCompasses().get(0).getDirections().get(0);
-		Direction actual2 = findBuffyVertical.getCompasses().get(0).getDirections().get(1);
+		findBuffy.setDirectionsToPotentialCoordinates();
+		Direction actual = findBuffy.getCompasses().get(0).getDirections().get(0);
+		Direction actual2 = findBuffy.getCompasses().get(0).getDirections().get(1);
 		Direction expected = Direction.VERTICAL;
 		Direction expected2 = Direction.DIAGONAL_DOWN;
 		assertEquals(expected, actual);
@@ -168,10 +168,10 @@ public class DirectionalTests {
 	
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedAVerticalKeywordItCreatesAVerticallSubtypeAndReturnsCoordinates() {
-		findBuffyVertical.setDirectionsToPotentialCoordinates();
-		findBuffyVertical.setKeywordToDirectionType();
-		Boolean actual = findBuffyVertical.getKeyword().getIsFound();
-		String actual2 = findBuffyVertical.getKeyword().getAllCoordinates().toString();
+		findBuffy.setDirectionsToPotentialCoordinates();
+		findBuffy.setKeywordToDirectionType();
+		Boolean actual = findBuffy.getKeyword().getIsFound();
+		String actual2 = findBuffy.getKeyword().getAllCoordinates().toString();
 		Boolean expected = true;
 		String expected2 = "[(0,0), (1,0), (2,0), (3,0), (4,0)]";
 		assertEquals(expected, actual);
@@ -237,7 +237,7 @@ public class DirectionalTests {
 	
 	@Test
 	public void whenFindKeywordIsPassedCoordinatesAreReturned() {
-		String actual = findBuffyVertical.findKeyword();
+		String actual = findBuffy.findKeyword();
 		String expected = "BUFFY: (0,0),(1,0),(2,0),(3,0),(4,0)";
 		assertEquals(expected, actual);
 	}

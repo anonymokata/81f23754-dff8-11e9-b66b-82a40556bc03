@@ -138,13 +138,17 @@ public class Finder {
 					break;
 				}
 
-				keyword.setIsFound(directionType.keyword.getIsFound());
-				keyword.setAllCoordinates(directionType.getKeyword().getAllCoordinates());
+				checkIfFound(directionType);
 				if (keyword.getIsFound())
 					return;
 			}
 			if (keyword.getIsFound())
 				return;
 		}
+	}
+	
+	private void checkIfFound(Compass directionType) {
+		keyword.setIsFound(directionType.keyword.getIsFound());
+		keyword.setAllCoordinates(directionType.getKeyword().getAllCoordinates());
 	}
 }
