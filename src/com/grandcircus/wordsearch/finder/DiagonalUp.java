@@ -8,12 +8,8 @@ import com.grandcircus.wordsearch.keyword.Keyword;
 
 public class DiagonalUp extends Compass {
 
-	public DiagonalUp (Keyword keyword, Coordinates coordinates) {
-		super();
-		this.keyword = keyword;
-		this.coordinates = coordinates;
-		oneAhead = coordinates.getCol() + 1;
-		oneUp = coordinates.getRow() - 1;
+	public DiagonalUp (Compass compass) {
+		super(compass.getKeyword(), compass.getCoordinates());
 	}
 	
 	@Override

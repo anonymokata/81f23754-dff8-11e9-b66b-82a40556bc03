@@ -113,26 +113,26 @@ public class Finder {
 					directionType = new DiagonalDown(potential);
 					directionType.findRemainingCoordinates();
 					break;
-//				case DIAGONAL_UP:
-//					directionType = new DiagonalUp(keyword, potential.getStartCoordinates());
-//					directionType.findRemainingCoordinates();
-//					break;
-//				case BW_HORIZONTAL:
-//					directionType = new BwHorizontal(keyword, potential.getStartCoordinates());
-//					directionType.findRemainingCoordinates();
-//					break;
-//				case BW_VERTICAL:
-//					directionType = new BwVertical(keyword, potential.getStartCoordinates());
-//					directionType.findRemainingCoordinates();
-//					break;
-//				case BW_DIAGONAL_DOWN:
-//					directionType = new BwDiagonalDown(keyword, potential.getStartCoordinates());
-//					directionType.findRemainingCoordinates();
-//					break;
-//				case BW_DIAGONAL_UP:
-//					directionType = new BwDiagonalUp(keyword, potential.getStartCoordinates());
-//					directionType.findRemainingCoordinates();
-//					break;
+				case DIAGONAL_UP:
+					directionType = new DiagonalUp(potential);
+					directionType.findRemainingCoordinates();
+					break;
+				case BW_HORIZONTAL:
+					directionType = new BwHorizontal(potential);
+					directionType.findRemainingCoordinates();
+					break;
+				case BW_VERTICAL:
+					directionType = new BwVertical(potential);
+					directionType.findRemainingCoordinates();
+					break;
+				case BW_DIAGONAL_DOWN:
+					directionType = new BwDiagonalDown(potential);
+					directionType.findRemainingCoordinates();
+					break;
+				case BW_DIAGONAL_UP:
+					directionType = new BwDiagonalUp(potential);
+					directionType.findRemainingCoordinates();
+					break;
 				default:
 					directionType = null;
 					break;

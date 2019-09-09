@@ -8,14 +8,9 @@ import com.grandcircus.wordsearch.keyword.Keyword;
 
 public class BwVertical extends Compass {
 
-	public BwVertical (Keyword keyword, Coordinates coordinates) {
-		super();
-		this.keyword = keyword;
-		this.coordinates = coordinates;
-		thisCol = coordinates.getCol();
-		oneUp = coordinates.getRow() - 1;
-		
-	}	
+	public BwVertical (Compass compass) {
+		super(compass.getKeyword(), compass.getCoordinates());
+	}
 	
 	@Override
 	public String getGridSubstring() {
