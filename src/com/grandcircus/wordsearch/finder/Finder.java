@@ -6,7 +6,7 @@ import java.util.List;
 import com.grandcircus.wordsearch.keyword.Coordinates;
 import com.grandcircus.wordsearch.keyword.Direction;
 import com.grandcircus.wordsearch.keyword.Keyword;
-import com.grandcircus.wordsearch.keyword.PotentialCoordinates;
+
 
 public class Finder {
 	public static String[][] grid;
@@ -71,12 +71,12 @@ public class Finder {
 		setKeywordToDirectionType();
 	}
 
-	public List<PotentialCoordinates> findFirstPotentials() {
-		List<PotentialCoordinates> potentials = new ArrayList<>();
+	public List<Coordinates> findFirstPotentials() {
+		List<Coordinates> potentials = new ArrayList<>();
 		for (int row = 0; row < grid.length; row++) {
 			for (int col = 0; col < grid.length; col++) {
 				if (keyword.getWord().startsWith(grid[row][col])) {
-					potentials.add(new PotentialCoordinates(new Coordinates(row, col)));
+					potentials.add(new Coordinates(row, col));
 				}
 			}
 		}
@@ -86,8 +86,8 @@ public class Finder {
 	public void findGoodPotentials() {
 		Compass potential;
 		List<Compass> goodPotentials = new ArrayList<>();
-		for (PotentialCoordinates each : keyword.getPotentialCoordinates()) {
-			potential = new Compass(keyword, each.getStartCoordinates());
+		for (Coordinates coordinates : keyword.getPotentialCoordinates()) {
+			potential = new Compass(keyword, coordinates);
 			potential.findDirections();
 			if (!potential.getDirections().isEmpty()) {
 				goodPotentials.add(potential);

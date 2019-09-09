@@ -7,7 +7,7 @@ public class Keyword {
 	protected String word;
 	private Boolean isFound = false;
 	protected Coordinates tempCoordinates;
-	protected List<PotentialCoordinates> potentialCoordinates;
+	protected List<Coordinates> potentialCoordinates;
 	private List<Coordinates> allCoordinates;
 
 	public Keyword() {
@@ -23,12 +23,6 @@ public class Keyword {
 		super();
 		this.word = word;
 		this.tempCoordinates = tempCoordinates;
-	}
-
-	public Keyword(String word, List<PotentialCoordinates> potentialCoordinates) {
-		super();
-		this.word = word;
-		this.potentialCoordinates = potentialCoordinates;
 	}
 
 	public String getWord() {
@@ -55,11 +49,11 @@ public class Keyword {
 		this.tempCoordinates = tempCoordinates;
 	}
 
-	public List<PotentialCoordinates> getPotentialCoordinates() {
+	public List<Coordinates> getPotentialCoordinates() {
 		return potentialCoordinates;
 	}
 
-	public void setPotentialCoordinates(List<PotentialCoordinates> potentialCoordinates) {
+	public void setPotentialCoordinates(List<Coordinates> potentialCoordinates) {
 		this.potentialCoordinates = potentialCoordinates;
 	}
 

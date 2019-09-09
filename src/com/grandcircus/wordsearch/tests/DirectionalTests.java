@@ -54,10 +54,8 @@ public class DirectionalTests {
 		findDawn.findFirstPotentials();
 		String actual = findTara.findFirstPotentials().toString(); 
 		String actual2 = findDawn.findFirstPotentials().toString();
-		String expected = "[PotentialStartCoordinates [startCoordinates=(0,1), directions=null]]";
-		String expected2 = "[PotentialStartCoordinates [startCoordinates=(2,3), directions=null], "
-				+ "PotentialStartCoordinates [startCoordinates=(3,1), directions=null], "
-				+ "PotentialStartCoordinates [startCoordinates=(4,3), directions=null]]";
+		String expected = "[(0,1)]";
+		String expected2 = "[(2,3), (3,1), (4,3)]";
 		assertEquals(expected, actual);
 		assertEquals(expected2, actual2);
 	}
@@ -66,7 +64,7 @@ public class DirectionalTests {
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAHorizontalClueItAddsHorizontalToDirectionsField() {
 		findTara.setDirectionsToPotentialCoordinates();
-		Direction actual = findTara.getKeyword().getPotentialCoordinates().get(0).getDirections().get(0); 
+		Direction actual = findTara.getCompasses().get(0).getDirections().get(0); 
 		Direction expected = Direction.HORIZONTAL;
 		assertEquals(expected, actual);
 	}
@@ -74,7 +72,7 @@ public class DirectionalTests {
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAVerticalItAddsVerticalToDirectionsField() {
 		findBuffyVertical.setDirectionsToPotentialCoordinates();
-		Direction actual = findBuffyVertical.getKeyword().getPotentialCoordinates().get(0).getDirections().get(0); 
+		Direction actual = findBuffyVertical.getCompasses().get(0).getDirections().get(0); 
 		Direction expected = Direction.VERTICAL;
 		assertEquals(expected, actual);
 	}
@@ -83,8 +81,8 @@ public class DirectionalTests {
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAVerticalAndDiagnalDownClueItAddserticalAndDiagonalDownToDirectionsField() {
 		findBuffyVertical.setDirectionsToPotentialCoordinates();
-		Direction actual = findBuffyVertical.getKeyword().getPotentialCoordinates().get(0).getDirections().get(0);
-		Direction actual2 = findBuffyVertical.getKeyword().getPotentialCoordinates().get(0).getDirections().get(1);
+		Direction actual = findBuffyVertical.getCompasses().get(0).getDirections().get(0);
+		Direction actual2 = findBuffyVertical.getCompasses().get(0).getDirections().get(1);
 		Direction expected = Direction.VERTICAL;
 		Direction expected2 = Direction.DIAGONAL_DOWN;
 		assertEquals(expected, actual);
@@ -94,7 +92,7 @@ public class DirectionalTests {
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedADiagonalUpItAddsDiagonalUpToDirectionsField() {
 		findYdoa.setDirectionsToPotentialCoordinates();
-		Direction actual = findYdoa.getKeyword().getPotentialCoordinates().get(0).getDirections().get(0);
+		Direction actual = findYdoa.getCompasses().get(0).getDirections().get(0);
 		Direction expected = Direction.DIAGONAL_UP;
 		assertEquals(expected, actual);
 	}
@@ -102,7 +100,7 @@ public class DirectionalTests {
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedABwHorizontalItAddsBwHorizontalToDirectionsField() {
 		findRaru.setDirectionsToPotentialCoordinates();
-		Direction actual = findRaru.getKeyword().getPotentialCoordinates().get(1).getDirections().get(0);
+		Direction actual = findRaru.getCompasses().get(0).getDirections().get(1);
 		Direction expected = Direction.BW_HORIZONTAL;
 		assertEquals(expected, actual);
 	} 
@@ -110,7 +108,7 @@ public class DirectionalTests {
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedABwVerticalItAddsBwVerticalToDirectionsField() {
 		findBaora.setDirectionsToPotentialCoordinates();	
-		Direction actual = findBaora.getKeyword().getPotentialCoordinates().get(0).getDirections().get(0);
+		Direction actual = findBaora.getCompasses().get(0).getDirections().get(0);
 		Direction expected = Direction.BW_VERTICAL;
 		assertEquals(expected, actual);
 	} 
@@ -119,7 +117,7 @@ public class DirectionalTests {
 	public void whenCheckSecondCoordinatesIsPassedABwDiagonalDownItAddsBwDiagonalDownToDirectionsField() {
 		findAaody.setDirectionsToPotentialCoordinates();	
 		Boolean actual = compassAaody.checkBwDiagonalDown();
-		Direction actual2 = findAaody.getKeyword().getPotentialCoordinates().get(0).getDirections().get(0);
+		Direction actual2 = findAaody.getCompasses().get(0).getDirections().get(0);
 		Boolean expected = true;
 		Direction expected2 = Direction.BW_DIAGONAL_DOWN;
 		assertEquals(expected, actual);
@@ -130,7 +128,7 @@ public class DirectionalTests {
 	public void whenCheckSecondCoordinatesIsPassedABwDiagonalUpItAddsBwDiagonalUpToDirectionsField() {
 		findCwou.setDirectionsToPotentialCoordinates();	
 		Boolean actual = compassCwou.checkBwDiagonalUp();
-		Direction actual2 = findCwou.getKeyword().getPotentialCoordinates().get(0).getDirections().get(0);
+		Direction actual2 = findCwou.getCompasses().get(0).getDirections().get(0);
 		Boolean expected = true;
 		Direction expected2 = Direction.BW_DIAGONAL_UP;
 		assertEquals(expected, actual);
