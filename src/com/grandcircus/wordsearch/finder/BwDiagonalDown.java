@@ -2,16 +2,14 @@ package com.grandcircus.wordsearch.finder;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.grandcircus.wordsearch.keyword.Coordinates;
-import com.grandcircus.wordsearch.keyword.Keyword;
 
 public class BwDiagonalDown extends Compass {
 
-	public BwDiagonalDown (Compass compass) {
+	public BwDiagonalDown(Compass compass) {
 		super(compass.getKeyword(), compass.getCoordinates());
 	}
-	
+
 	@Override
 	public String getGridSubstring() {
 		String gridSubstring = "";
@@ -20,7 +18,7 @@ public class BwDiagonalDown extends Compass {
 		}
 		return gridSubstring;
 	}
-	
+
 	@Override
 	public List<Coordinates> getRemainingCoordinates() {
 		List<Coordinates> foundCoordinates = new ArrayList<>();
@@ -35,6 +33,4 @@ public class BwDiagonalDown extends Compass {
 	public String toString() {
 		return "BwDiagonalDown";
 	}
-
 }
-

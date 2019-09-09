@@ -28,7 +28,7 @@ public class Compass {
 		super();
 		this.keyword = keyword;
 		this.coordinates = coordinates;
-		secondLetter = keyword.getSecondLetter();
+		secondLetter = keyword.getSecondLetter();	
 		thisRow = coordinates.getRow();
 		thisCol = coordinates.getCol();
 		oneAhead = coordinates.getCol() + 1;
