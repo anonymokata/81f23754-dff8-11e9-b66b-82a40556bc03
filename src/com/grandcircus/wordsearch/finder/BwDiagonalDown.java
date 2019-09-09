@@ -11,22 +11,24 @@ public class BwDiagonalDown extends Compass {
 	}
 
 	@Override
-	public String getGridSubstring() {
+	public void makeGridSubstring() {
 		String gridSubstring = "";
-		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			gridSubstring += grid[down + i][back - i];
+		int aStep = 0;
+		for (; !outOfLetters(aStep); aStep++) {
+			gridSubstring += grid[down + aStep][back - aStep];
 		}
-		return gridSubstring;
+		setGridSubstring(gridSubstring);
 	}
 
 	@Override
-	public List<Coordinates> getRemainingCoordinates() {
+	public void findRemainingCoordinates() {
 		List<Coordinates> foundCoordinates = new ArrayList<>();
 		foundCoordinates.add(coordinates);
-		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			foundCoordinates.add(new Coordinates(down + i, back - i));
+		int aStep = 0;
+		for (; !outOfLetters(aStep); aStep++) {
+			foundCoordinates.add(new Coordinates(down + aStep, back - aStep));
 		}
-		return foundCoordinates;
+		setRemainingCoordinates(foundCoordinates);
 	}
 
 	@Override

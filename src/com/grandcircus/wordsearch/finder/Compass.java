@@ -10,11 +10,11 @@ import com.grandcircus.wordsearch.keyword.Keyword;
 public class Compass {
 
 	protected Keyword keyword;
-	protected String gridSubstring;
-	protected List<Coordinates> remainingCoordinates;
 	protected Coordinates coordinates;
 	private List<Direction> directions;
+	protected List<Coordinates> remainingCoordinates;
 	protected String[][] grid = Finder.grid;
+	protected String gridSubstring;
 	protected String secondLetter;
 	protected String remainingLetters;
 	protected Integer numberOfRemainingLetters;
@@ -32,7 +32,7 @@ public class Compass {
 		super();
 		this.keyword = keyword;
 		this.coordinates = coordinates;
-		secondLetter = keyword.getSecondLetter();	
+		secondLetter = keyword.getSecondLetter();
 		remainingLetters = keyword.getRemainingLetters();
 		numberOfRemainingLetters = keyword.getRemainingLetters().length();
 		thisRow = coordinates.getRow();
@@ -41,9 +41,8 @@ public class Compass {
 		down = coordinates.getRow() + 1;
 		up = coordinates.getRow() - 1;
 		back = coordinates.getCol() - 1;
-	}	
-	
-	
+	}
+
 	public Keyword getKeyword() {
 		return keyword;
 	}
@@ -51,7 +50,7 @@ public class Compass {
 	public Coordinates getCoordinates() {
 		return coordinates;
 	}
-	
+
 	public List<Direction> getDirections() {
 		return directions;
 	}
@@ -59,7 +58,7 @@ public class Compass {
 	public void setDirections(List<Direction> directions) {
 		this.directions = directions;
 	}
-	
+
 	public String getGridSubstring() {
 		return gridSubstring;
 	}
@@ -75,7 +74,7 @@ public class Compass {
 	public void setRemainingCoordinates(List<Coordinates> remainingCoordinates) {
 		this.remainingCoordinates = remainingCoordinates;
 	}
-	
+
 	protected void findDirections() {
 		List<Direction> directions = new ArrayList<>();
 		if (checkHorizontal()) {
@@ -176,29 +175,31 @@ public class Compass {
 	private Boolean thereIsRoomBehind() {
 		return keyword.getLength() <= forward;
 	}
-	
-	public void findRemainingCoordinates() {
-		buildGridSubstring();
-		buildRemainingCoordinates();
+
+	public void findFullMatch() {
+		makeGridSubstring();
+		findRemainingCoordinates();
 		if (keywordEqualsSubsubtring()) {
 			keyword.setIsFound(true);
 			keyword.setAllCoordinates(getRemainingCoordinates());
 		}
 	}
-	
+
 	public Boolean keywordEqualsSubsubtring() {
 		return remainingLetters.equals(gridSubstring);
 	}
 
-	public void buildGridSubstring() {}
-	
-	public void buildRemainingCoordinates() {}
-	
-	public Boolean outOfLetters(Integer aStep) {
-		return numberOfRemainingLetters - aStep <= 0; 
+	public void makeGridSubstring() {
 	}
-	
-	//REMOVE
+
+	public void findRemainingCoordinates() {
+	}
+
+	public Boolean outOfLetters(Integer aStep) {
+		return numberOfRemainingLetters - aStep <= 0;
+	}
+
+	// REMOVE
 	public String getRemainingLetters() {
 		return keyword.getWord().substring(1, keyword.getWord().length());
 	}

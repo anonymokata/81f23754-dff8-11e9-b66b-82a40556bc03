@@ -12,22 +12,24 @@ public class BwHorizontal extends Compass {
 	}
 	
 	@Override
-	public String getGridSubstring() {
+	public void makeGridSubstring() {
 		String gridSubstring = "";
-		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			gridSubstring += grid[thisRow][back - i];
+		int aStep = 0;
+		for (; !outOfLetters(aStep); aStep++) {
+			gridSubstring += grid[thisRow][back - aStep];
 		}
-		return gridSubstring;
+		setGridSubstring(gridSubstring);
 	}
 	
 	@Override
-	public List<Coordinates> getRemainingCoordinates() {
+	public void findRemainingCoordinates() {
 		List<Coordinates> foundCoordinates = new ArrayList<>();
 		foundCoordinates.add(coordinates);
-		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			foundCoordinates.add(new Coordinates(thisRow, back - i));
+		int aStep = 0;
+		for (; !outOfLetters(aStep); aStep++) {
+			foundCoordinates.add(new Coordinates(thisRow, back - aStep));
 		}
-		return foundCoordinates;
+		setRemainingCoordinates(foundCoordinates);
 	}
 
 	@Override
