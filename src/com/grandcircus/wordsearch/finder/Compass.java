@@ -10,6 +10,8 @@ import com.grandcircus.wordsearch.keyword.Keyword;
 public class Compass {
 
 	protected Keyword keyword;
+	protected String gridSubstring;
+	protected List<Coordinates> remainingCoordinates;
 	protected Coordinates coordinates;
 	private List<Direction> directions;
 	protected String[][] grid = Finder.grid;
@@ -56,6 +58,22 @@ public class Compass {
 
 	public void setDirections(List<Direction> directions) {
 		this.directions = directions;
+	}
+	
+	public String getGridSubstring() {
+		return gridSubstring;
+	}
+
+	public void setGridSubstring(String gridSubstring) {
+		this.gridSubstring = gridSubstring;
+	}
+
+	public List<Coordinates> getRemainingCoordinates() {
+		return remainingCoordinates;
+	}
+
+	public void setRemainingCoordinates(List<Coordinates> remainingCoordinates) {
+		this.remainingCoordinates = remainingCoordinates;
 	}
 	
 	protected void findDirections() {
@@ -159,6 +177,23 @@ public class Compass {
 		return keyword.getLength() <= forward;
 	}
 	
+	public void findRemainingCoordinates() {
+		buildGridSubstring();
+		buildRemainingCoordinates();
+		if (keywordEqualsSubsubtring()) {
+			keyword.setIsFound(true);
+			keyword.setAllCoordinates(getRemainingCoordinates());
+		}
+	}
+	
+	public Boolean keywordEqualsSubsubtring() {
+		return remainingLetters.equals(gridSubstring);
+	}
+
+	public void buildGridSubstring() {}
+	
+	public void buildRemainingCoordinates() {}
+	
 	public Boolean outOfLetters(Integer aStep) {
 		return numberOfRemainingLetters - aStep <= 0; 
 	}
@@ -166,28 +201,5 @@ public class Compass {
 	//REMOVE
 	public String getRemainingLetters() {
 		return keyword.getWord().substring(1, keyword.getWord().length());
-	}
-	
-	public void findRemainingCoordinates() {
-		setCoordinatesOfRemainingLetters(getGridSubstring(), getRemainingCoordinates());
-	}
-	
-	public void setCoordinatesOfRemainingLetters(String gridSubstring, List<Coordinates> foundCoordinates) {
-		if (keywordEqualsSubsubtring(gridSubstring)) {
-			keyword.setIsFound(true);
-			keyword.setAllCoordinates(foundCoordinates);
-		}
-	}
-	
-	public Boolean keywordEqualsSubsubtring(String gridSubstring) {
-		return getRemainingLetters().equals(gridSubstring);
-	}
-
-	public String getGridSubstring() {
-		return null;
-	}
-
-	public List<Coordinates> getRemainingCoordinates() {
-		return null;
 	}
 }

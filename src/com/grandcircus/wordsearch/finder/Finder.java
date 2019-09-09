@@ -101,34 +101,34 @@ public class Finder {
 		for (Compass potential : getCompasses()) {
 			for (Direction each : potential.getDirections()) {
 				switch (each) {
-				case HORIZONTAL:
-					directionType = new Horizontal(potential);
-					directionType.findRemainingCoordinates();
-					break;
-				case VERTICAL:
-					directionType = new Vertical(potential);
-					directionType.findRemainingCoordinates();
-					break;
-				case DIAGONAL_DOWN:
-					directionType = new DiagonalDown(potential);
-					directionType.findRemainingCoordinates();
-					break;
-				case DIAGONAL_UP:
-					directionType = new DiagonalUp(potential);
-					directionType.findRemainingCoordinates();
-					break;
-				case BW_HORIZONTAL:
-					directionType = new BwHorizontal(potential);
-					directionType.findRemainingCoordinates();
-					break;
-				case BW_VERTICAL:
-					directionType = new BwVertical(potential);
-					directionType.findRemainingCoordinates();
-					break;
-				case BW_DIAGONAL_DOWN:
-					directionType = new BwDiagonalDown(potential);
-					directionType.findRemainingCoordinates();
-					break;
+//				case HORIZONTAL:
+//					directionType = new Horizontal(potential);
+//					directionType.findRemainingCoordinates();
+//					break;
+//				case VERTICAL:
+//					directionType = new Vertical(potential);
+//					directionType.findRemainingCoordinates();
+//					break;
+//				case DIAGONAL_DOWN:
+//					directionType = new DiagonalDown(potential);
+//					directionType.findRemainingCoordinates();
+//					break;
+//				case DIAGONAL_UP:
+//					directionType = new DiagonalUp(potential);
+//					directionType.findRemainingCoordinates();
+//					break;
+//				case BW_HORIZONTAL:
+//					directionType = new BwHorizontal(potential);
+//					directionType.findRemainingCoordinates();
+//					break;
+//				case BW_VERTICAL:
+//					directionType = new BwVertical(potential);
+//					directionType.findRemainingCoordinates();
+//					break;
+//				case BW_DIAGONAL_DOWN:
+//					directionType = new BwDiagonalDown(potential);
+//					directionType.findRemainingCoordinates();
+//					break;
 				case BW_DIAGONAL_UP:
 					directionType = new BwDiagonalUp(potential);
 					directionType.findRemainingCoordinates();

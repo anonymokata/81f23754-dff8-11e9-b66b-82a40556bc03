@@ -9,33 +9,32 @@ public class BwDiagonalUp extends Compass {
 	protected String gridSubstring;
 	protected List<Coordinates> remainingCoordinates;
 	protected Integer aStep;
-	
-	public BwDiagonalUp (Compass compass) {
+
+	public BwDiagonalUp(Compass compass) {
 		super(compass.getKeyword(), compass.getCoordinates());
 	}
-	
+
 	@Override
-	public String getGridSubstring() {
-		String gridSubstring = "";		
+	public void buildGridSubstring() {
+		String gridSubstring = "";
 		for (aStep = 0; !outOfLetters(aStep); aStep++) {
 			gridSubstring += grid[up - aStep][back - aStep];
 		}
-		return gridSubstring;
+		setGridSubstring(gridSubstring);
 	}
-	
+
 	@Override
-	public List<Coordinates> getRemainingCoordinates() {
+	public void buildRemainingCoordinates() {
 		List<Coordinates> foundCoordinates = new ArrayList<>();
 		foundCoordinates.add(coordinates);
 		for (aStep = 0; !outOfLetters(aStep); aStep++) {
 			foundCoordinates.add(new Coordinates(up - aStep, back - aStep));
 		}
-		return foundCoordinates;
+		setRemainingCoordinates(foundCoordinates);
 	}
-	
+
 	@Override
 	public String toString() {
 		return "BwDiagonalUp";
 	}
 }
-
