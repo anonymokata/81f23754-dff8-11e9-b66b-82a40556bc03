@@ -22,6 +22,24 @@ public class WordSearchReader {
 		this(Paths.get(filePath));
 	}
 
+	public String[][] makeGrid() {
+		List<String> puzzle = readPuzzle();
+		String[][] grid = new String[puzzle.size()][puzzle.size()];
+		for (int i = 0; i < puzzle.size(); i++) {
+			grid[i] = puzzle.get(i).split(",");
+		}
+		return grid;
+	}
+	
+	public List<String> readPuzzle() {
+		List<String> lines = readFile();
+		List<String> puzzle = new ArrayList<>();
+		for (int i = 1; i < lines.size(); i++) {
+			puzzle.add(lines.get(i));
+		}
+		return puzzle;
+	}
+	
 	public List<Keyword> getAllKeywords() {
 		String[] splitKeywords = splitKeywords();
 		List<Keyword> keywords = new ArrayList<>();
@@ -39,24 +57,6 @@ public class WordSearchReader {
 	public String readKeywords() {
 		List<String> lines = readFile();
 		return lines.get(0);
-	}
-
-	public String[][] makeGrid() {
-		List<String> puzzle = readPuzzle();
-		String[][] grid = new String[puzzle.size()][puzzle.size()];
-		for (int i = 0; i < puzzle.size(); i++) {
-			grid[i] = puzzle.get(i).split(",");
-		}
-		return grid;
-	}
-
-	public List<String> readPuzzle() {
-		List<String> lines = readFile();
-		List<String> puzzle = new ArrayList<>();
-		for (int i = 1; i < lines.size(); i++) {
-			puzzle.add(lines.get(i));
-		}
-		return puzzle;
 	}
 
 	public List<String> readFile() {

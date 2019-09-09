@@ -1,8 +1,17 @@
-package com.grandcircus.wordsearch.finder;
+package com.grandcircus.wordsearch.app;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.grandcircus.wordsearch.compass.BwDiagonalDown;
+import com.grandcircus.wordsearch.compass.BwDiagonalUp;
+import com.grandcircus.wordsearch.compass.BwHorizontal;
+import com.grandcircus.wordsearch.compass.BwVertical;
+import com.grandcircus.wordsearch.compass.Compass;
+import com.grandcircus.wordsearch.compass.DiagonalDown;
+import com.grandcircus.wordsearch.compass.DiagonalUp;
+import com.grandcircus.wordsearch.compass.Horizontal;
+import com.grandcircus.wordsearch.compass.Vertical;
 import com.grandcircus.wordsearch.keyword.Coordinates;
 import com.grandcircus.wordsearch.keyword.Direction;
 import com.grandcircus.wordsearch.keyword.Keyword;
@@ -42,6 +51,7 @@ public class Finder {
 	public void setCompasses(List<Compass> compasses) {
 		this.compasses = compasses;
 	}
+
 
 	public String printAllKeywordCoordinates(List<String> allKeywordCoordinates) {
 		String formattedPrintout = "\n\nWord Search Coordinates: \n\n";
@@ -148,7 +158,7 @@ public class Finder {
 	}
 	
 	private void checkIfFound(Compass directionType) {
-		keyword.setIsFound(directionType.keyword.getIsFound());
+		keyword.setIsFound(directionType.getKeyword().getIsFound());
 		keyword.setAllCoordinates(directionType.getKeyword().getAllCoordinates());
 	}
 }

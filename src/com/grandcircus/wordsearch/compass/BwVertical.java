@@ -1,13 +1,12 @@
-package com.grandcircus.wordsearch.finder;
+package com.grandcircus.wordsearch.compass;
 
 import java.util.ArrayList;
 import java.util.List;
 import com.grandcircus.wordsearch.keyword.Coordinates;
 
+public class BwVertical extends Compass {
 
-public class BwHorizontal extends Compass {
-
-	public BwHorizontal (Compass compass) {
+	public BwVertical (Compass compass) {
 		super(compass.getKeyword(), compass.getCoordinates());
 	}
 	
@@ -16,7 +15,7 @@ public class BwHorizontal extends Compass {
 		String gridSubstring = "";
 		int aStep = 0;
 		for (; !outOfLetters(aStep); aStep++) {
-			gridSubstring += grid[thisRow][back - aStep];
+			gridSubstring += grid[up - aStep][thisCol];
 		}
 		setGridSubstring(gridSubstring);
 	}
@@ -27,14 +26,14 @@ public class BwHorizontal extends Compass {
 		remainingCoordinates.add(coordinates);
 		int aStep = 0;
 		for (; !outOfLetters(aStep); aStep++) {
-			remainingCoordinates.add(new Coordinates(thisRow, back - aStep));
+			remainingCoordinates.add(new Coordinates(up - aStep, thisCol));
 		}
 		setRemainingCoordinates(remainingCoordinates);
 	}
 
 	@Override
 	public String toString() {
-		return "BwHorizontal";
+		return "BwVertical";
 	}
 
 }

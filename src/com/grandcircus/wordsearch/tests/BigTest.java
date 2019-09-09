@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.grandcircus.wordsearch.app.Finder;
 import com.grandcircus.wordsearch.app.WordSearchReader;
-import com.grandcircus.wordsearch.finder.Finder;
 
 public class BigTest {
 

@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.grandcircus.wordsearch.app.Finder;
 import com.grandcircus.wordsearch.app.WordSearchReader;
-import com.grandcircus.wordsearch.finder.Compass;
-import com.grandcircus.wordsearch.finder.Finder;
+import com.grandcircus.wordsearch.compass.Compass;
 import com.grandcircus.wordsearch.keyword.Coordinates;
 import com.grandcircus.wordsearch.keyword.Direction;
 
@@ -136,7 +136,6 @@ public class DirectionalTests {
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedAHorizontalMatchItSetsIsFoundToTrue() {
 		findTara.setDirectionsToPotentialCoordinates();
-		findTara.setKeywordToDirectionType();
 		Boolean actual = findTara.getKeyword().getIsFound(); 
 		String actual2 = findTara.getKeyword().getAllCoordinates().toString();
 		Boolean expected = true;
@@ -155,7 +154,6 @@ public class DirectionalTests {
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedAHorizontalKeywordItCreatesAHorizontalSubtype() {
 		findDawn.setDirectionsToPotentialCoordinates();
-		findDawn.setKeywordToDirectionType();
 		Boolean actual = findDawn.getKeyword().getIsFound();
 		String actual2 = findDawn.getKeyword().getAllCoordinates().toString();
 		Boolean expected = true;
@@ -167,7 +165,6 @@ public class DirectionalTests {
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedAVerticalKeywordItCreatesAVerticallSubtypeAndReturnsCoordinates() {
 		findBuffy.setDirectionsToPotentialCoordinates();
-		findBuffy.setKeywordToDirectionType();
 		Boolean actual = findBuffy.getKeyword().getIsFound();
 		String actual2 = findBuffy.getKeyword().getAllCoordinates().toString();
 		Boolean expected = true;
@@ -179,7 +176,6 @@ public class DirectionalTests {
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedADiagonalDownlKeywordItCreatesADiagonalDownlSubtypeAndReturnsCoordinates() {
 		findBuow.setDirectionsToPotentialCoordinates();
-		findBuow.setKeywordToDirectionType();
 		String actual = findBuow.getKeyword().getAllCoordinates().toString();
 		String expected = "[(0,0), (1,1), (2,2), (3,3)]";
 		assertEquals(expected, actual);
@@ -188,7 +184,6 @@ public class DirectionalTests {
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedADiagonalUpItKeywordItCreatesADiagonalUpSubtype() {
 		findYdoa.setDirectionsToPotentialCoordinates();
-		findYdoa.setKeywordToDirectionType();
 		Boolean actual = findYdoa.getKeyword().getIsFound();
 		String actual2 = findYdoa.getKeyword().getAllCoordinates().toString();
 		Boolean expected = true;

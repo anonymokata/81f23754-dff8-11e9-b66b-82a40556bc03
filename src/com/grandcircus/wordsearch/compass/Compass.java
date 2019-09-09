@@ -1,8 +1,9 @@
-package com.grandcircus.wordsearch.finder;
+package com.grandcircus.wordsearch.compass;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.grandcircus.wordsearch.app.Finder;
 import com.grandcircus.wordsearch.keyword.Coordinates;
 import com.grandcircus.wordsearch.keyword.Direction;
 import com.grandcircus.wordsearch.keyword.Keyword;
@@ -79,7 +80,7 @@ public class Compass {
 		return remainingLetters;
 	}
 
-	protected void findDirections() {
+	public void findDirections() {
 		List<Direction> directions = new ArrayList<>();
 		if (checkHorizontal()) {
 			directions.add(Direction.HORIZONTAL);
