@@ -169,7 +169,7 @@ public class DirectionalTests {
 		findDawn.setDirectionsToPotentialCoordinates();
 		findDawn.setKeywordToDirectionType();
 		Boolean actual = findDawn.getKeyword().getIsFound();
-		String actual2 = findDawn.getKeyword().getCoordinates().toString();
+		String actual2 = findDawn.getKeyword().getAllCoordinates().toString();
 		Boolean expected = true;
 		String expected2 = "[(3,1), (3,2), (3,3), (3,4)]";
 		assertEquals(expected, actual);
@@ -181,7 +181,7 @@ public class DirectionalTests {
 		findBuffyVertical.setDirectionsToPotentialCoordinates();
 		findBuffyVertical.setKeywordToDirectionType();
 		Boolean actual = findBuffyVertical.getKeyword().getIsFound();
-		String actual2 = findBuffyVertical.getKeyword().getCoordinates().toString();
+		String actual2 = findBuffyVertical.getKeyword().getAllCoordinates().toString();
 		Boolean expected = true;
 		String expected2 = "[(0,0), (1,0), (2,0), (3,0), (4,0)]";
 		assertEquals(expected, actual);

@@ -2,23 +2,13 @@ package com.grandcircus.wordsearch.finder;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.grandcircus.wordsearch.keyword.Coordinates;
-import com.grandcircus.wordsearch.keyword.Keyword;
+
 
 public class Vertical extends Compass  {
 
-	public Vertical (Keyword keyword, Coordinates coordinates) {
-		super();
-		this.keyword = keyword;
-		this.coordinates = coordinates;
-//		secondLetter = keyword.getSecondLetter();
-//		thisRow = coordinates.getRow();
-		thisCol = coordinates.getCol();
-//		oneAhead = coordinates.getCol() + 1;
-		oneDown = coordinates.getRow() + 1;
-//		oneAbove = coordinates.getRow() - 1;
-//		oneBehind = coordinates.getCol() - 1;
+	public Vertical (Compass compass) {
+		super(compass.getKeyword(), compass.getCoordinates());
 	}
 
 		@Override
