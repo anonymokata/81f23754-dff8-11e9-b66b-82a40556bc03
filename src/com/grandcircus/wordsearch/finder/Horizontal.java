@@ -8,15 +8,23 @@ import com.grandcircus.wordsearch.keyword.Keyword;
 
 public class Horizontal extends Compass {
 
-	public Horizontal (Keyword keyword, Coordinates coordinates) {
-		super();
-		this.keyword = keyword;
-		this.coordinates = coordinates;
-		thisRow = coordinates.getRow();
-		oneAhead = coordinates.getCol() + 1;
-
+	public Horizontal (Compass compass) {
+		super(compass.getKeyword(), compass.getCoordinates());
+//		this.keyword = getKeyword();
+//		this.coordinates = getCoordinates();
+//		thisRow = coordinates.getRow();
+//		oneAhead = coordinates.getCol() + 1;
 	}
 	
+//	public Horizontal (Keyword keyword, Coordinates coordinates) {
+//		super();
+//		this.keyword = keyword;
+//		this.coordinates = coordinates;
+//		thisRow = coordinates.getRow();
+//		oneAhead = coordinates.getCol() + 1;
+//
+//	}
+//	
 	@Override
 	public String getGridSubstring() {
 		String gridSubstring = "";

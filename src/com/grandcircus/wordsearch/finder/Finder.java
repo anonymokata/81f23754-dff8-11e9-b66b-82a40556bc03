@@ -13,6 +13,7 @@ public class Finder {
 	
 	private Keyword keyword;
 	private List<Keyword> allKeywords;
+	private List<Compass> compasses;
 
 	public Finder(Keyword keyword, String[][] grid) {
 		super();
@@ -34,6 +35,14 @@ public class Finder {
 		this.keyword = keyword;
 	}
 
+	public List<Compass> getCompasses() {
+		return compasses;
+	}
+
+	public void setCompasses(List<Compass> compasses) {
+		this.compasses = compasses;
+	}
+
 	public String printAllKeywordCoordinates(List<String> allKeywordCoordinates) {
 		String formattedPrintout = "\n\nWord Search Coordinates: \n\n";
 		for (String each : allKeywordCoordinates) {
@@ -53,13 +62,13 @@ public class Finder {
 	
 	public String findKeyword() {
 		setDirectionsToPotentialCoordinates();
-		setKeywordToDirectionType();
 		return keyword.writeCoordinatesString();
 	}
 	
 	public void setDirectionsToPotentialCoordinates() {
 		keyword.setPotentialCoordinates(findFirstPotentials());
-		keyword.setPotentialCoordinates(findGoodPotentials());
+		findGoodPotentials();
+		setKeywordToDirectionType();
 	}
 
 	public List<PotentialCoordinates> findFirstPotentials() {
@@ -74,64 +83,63 @@ public class Finder {
 		return potentials;
 	}
 
-	public List<PotentialCoordinates> findGoodPotentials() {
-		Compass compass;
-		PotentialCoordinates potentials;
-		List<PotentialCoordinates> goodPotentials = new ArrayList<>();
+	public void findGoodPotentials() {
+		Compass potential;
+		List<Compass> goodPotentials = new ArrayList<>();
 		for (PotentialCoordinates each : keyword.getPotentialCoordinates()) {
-			 compass = new Compass(keyword, each.getStartCoordinates());
-			if (!compass.getDirections().isEmpty()) {
-				potentials = new PotentialCoordinates(each.getStartCoordinates(), compass.getDirections());
-				goodPotentials.add(potentials);
+			potential = new Compass(keyword, each.getStartCoordinates());
+			potential.findDirections();
+			if (!potential.getDirections().isEmpty()) {
+				goodPotentials.add(potential);
 			}
 		}
-		return goodPotentials;
+		setCompasses(goodPotentials);
 	}	
 
 	public void setKeywordToDirectionType() {
 		Compass directionType;
-		for (PotentialCoordinates potential : keyword.getPotentialCoordinates()) {
+		for (Compass potential : getCompasses()) {
 			for (Direction each : potential.getDirections()) {
 				switch (each) {
 				case HORIZONTAL:
-					directionType = new Horizontal(keyword, potential.getStartCoordinates());
+					directionType = new Horizontal(potential);
 					directionType.findRemainingCoordinates();
 					break;
-				case VERTICAL:
-					directionType = new Vertical(keyword, potential.getStartCoordinates());
-					directionType.findRemainingCoordinates();
-					break;
-				case DIAGONAL_DOWN:
-					directionType = new DiagonalDown(keyword, potential.getStartCoordinates());
-					directionType.findRemainingCoordinates();
-					break;
-				case DIAGONAL_UP:
-					directionType = new DiagonalUp(keyword, potential.getStartCoordinates());
-					directionType.findRemainingCoordinates();
-					break;
-				case BW_HORIZONTAL:
-					directionType = new BwHorizontal(keyword, potential.getStartCoordinates());
-					directionType.findRemainingCoordinates();
-					break;
-				case BW_VERTICAL:
-					directionType = new BwVertical(keyword, potential.getStartCoordinates());
-					directionType.findRemainingCoordinates();
-					break;
-				case BW_DIAGONAL_DOWN:
-					directionType = new BwDiagonalDown(keyword, potential.getStartCoordinates());
-					directionType.findRemainingCoordinates();
-					break;
-				case BW_DIAGONAL_UP:
-					directionType = new BwDiagonalUp(keyword, potential.getStartCoordinates());
-					directionType.findRemainingCoordinates();
-					break;
+//				case VERTICAL:
+//					directionType = new Vertical(keyword, potential.getStartCoordinates());
+//					directionType.findRemainingCoordinates();
+//					break;
+//				case DIAGONAL_DOWN:
+//					directionType = new DiagonalDown(keyword, potential.getStartCoordinates());
+//					directionType.findRemainingCoordinates();
+//					break;
+//				case DIAGONAL_UP:
+//					directionType = new DiagonalUp(keyword, potential.getStartCoordinates());
+//					directionType.findRemainingCoordinates();
+//					break;
+//				case BW_HORIZONTAL:
+//					directionType = new BwHorizontal(keyword, potential.getStartCoordinates());
+//					directionType.findRemainingCoordinates();
+//					break;
+//				case BW_VERTICAL:
+//					directionType = new BwVertical(keyword, potential.getStartCoordinates());
+//					directionType.findRemainingCoordinates();
+//					break;
+//				case BW_DIAGONAL_DOWN:
+//					directionType = new BwDiagonalDown(keyword, potential.getStartCoordinates());
+//					directionType.findRemainingCoordinates();
+//					break;
+//				case BW_DIAGONAL_UP:
+//					directionType = new BwDiagonalUp(keyword, potential.getStartCoordinates());
+//					directionType.findRemainingCoordinates();
+//					break;
 				default:
 					directionType = null;
 					break;
 				}
 
 				keyword.setIsFound(directionType.keyword.getIsFound());
-				keyword.setCoordinates(directionType.keyword.getCoordinates());
+				keyword.setAllCoordinates(directionType.getKeyword().getAllCoordinates());
 				if (keyword.getIsFound())
 					return;
 			}

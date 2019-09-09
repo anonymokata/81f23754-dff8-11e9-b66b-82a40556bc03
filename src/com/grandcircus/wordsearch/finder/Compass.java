@@ -6,11 +6,13 @@ import java.util.List;
 import com.grandcircus.wordsearch.keyword.Coordinates;
 import com.grandcircus.wordsearch.keyword.Direction;
 import com.grandcircus.wordsearch.keyword.Keyword;
+import com.grandcircus.wordsearch.keyword.PotentialCoordinates;
 
 public class Compass {
 
 	protected Keyword keyword;
 	protected Coordinates coordinates;
+	private List<Direction> directions;
 	protected String[][] grid = Finder.grid;
 	protected String secondLetter;
 	protected Integer thisRow;
@@ -36,11 +38,36 @@ public class Compass {
 		oneBack = coordinates.getCol() - 1;
 	}	
 	
+	
+	public Keyword getKeyword() {
+		return keyword;
+	}
+
 	public Coordinates getCoordinates() {
 		return coordinates;
 	}
-		
-	protected List<Direction> getDirections() {
+	
+	public List<Direction> getDirections() {
+		return directions;
+	}
+
+	public void setDirections(List<Direction> directions) {
+		this.directions = directions;
+	}
+
+//	public void findGoodPotentials() {
+//		Compass potential;
+//		List<Compass> goodPotentials = new ArrayList<>();
+//		for (PotentialCoordinates each : keyword.getPotentialCoordinates()) {
+//			potential = new Compass(keyword, each.getStartCoordinates());
+//			if (!potential.getDirections().isEmpty()) {
+//				goodPotentials.add(potential);
+//			}
+//		}
+//		setCompasses(goodPotentials);
+//	}	
+	
+	protected void findDirections() {
 		List<Direction> directions = new ArrayList<>();
 		if (checkHorizontal()) {
 			directions.add(Direction.HORIZONTAL);
@@ -66,7 +93,7 @@ public class Compass {
 		if (checkBwDiagonalUp()) {
 			directions.add(Direction.BW_DIAGONAL_UP);
 		}
-		return directions;
+		setDirections(directions);
 	}
 
 	protected Boolean checkHorizontal() {
@@ -152,7 +179,7 @@ public class Compass {
 	public void setCoordinatesOfRemainingLetters(String gridSubstring, List<Coordinates> foundCoordinates) {
 		if (keywordEqualsSubsubtring(gridSubstring)) {
 			keyword.setIsFound(true);
-			keyword.setCoordinates(foundCoordinates);
+			keyword.setAllCoordinates(foundCoordinates);
 		}
 	}
 	

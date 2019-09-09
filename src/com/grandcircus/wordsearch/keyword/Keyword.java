@@ -8,7 +8,7 @@ public class Keyword {
 	private Boolean isFound = false;
 	protected Coordinates tempCoordinates;
 	protected List<PotentialCoordinates> potentialCoordinates;
-	private List<Coordinates> coordinates;
+	private List<Coordinates> allCoordinates;
 
 	public Keyword() {
 		super();
@@ -63,12 +63,12 @@ public class Keyword {
 		this.potentialCoordinates = potentialCoordinates;
 	}
 
-	public List<Coordinates> getCoordinates() {
-		return coordinates;
+	public List<Coordinates> getAllCoordinates() {
+		return allCoordinates;
 	}
 
-	public void setCoordinates(List<Coordinates> coordinates) {
-		this.coordinates = coordinates;
+	public void setAllCoordinates(List<Coordinates> allCoordinates) {
+		this.allCoordinates = allCoordinates;
 	}
 
 	public Integer getLength() {
@@ -79,42 +79,15 @@ public class Keyword {
 		return word.substring(1, 2);
 	}
 	
-//	public String getRemainingLetters() {
-//		return word.substring(1, word.length());
-//	}
-
-//	public void findRemainingCoordinates() {
-//		setCoordinatesOfRemainingLetters(getGridSubstring(), getRemainingCoordinates());
-//	}
-//	
-//	public void setCoordinatesOfRemainingLetters(String gridSubstring, List<Coordinates> foundCoordinates) {
-//		if (keywordEqualsSubsubtring(gridSubstring)) {
-//			setIsFound(true);
-//			setCoordinates(foundCoordinates);
-//		}
-//	}
-//	
-//	public Boolean keywordEqualsSubsubtring(String gridSubstring) {
-//		return getRemainingLetters().equals(gridSubstring);
-//	}
-//
-//	public String getGridSubstring() {
-//		return null;
-//	}
-//
-//	public List<Coordinates> getRemainingCoordinates() {
-//		return null;
-//	}
-	
 	public String writeCoordinatesString() {
 		String coordinatesString = word + ": ";
 		if (word.length() > 2) {
-			for (int i = 0; i < coordinates.size() - 1; i++) {
-				coordinatesString += coordinates.get(i) + ",";
+			for (int i = 0; i < allCoordinates.size() - 1; i++) {
+				coordinatesString += allCoordinates.get(i) + ",";
 			}
-			coordinatesString += coordinates.get(coordinates.size() - 1);
+			coordinatesString += allCoordinates.get(allCoordinates.size() - 1);
 		} else {
-			coordinatesString += coordinates.get(0) + "," + coordinates.get(1);
+			coordinatesString += allCoordinates.get(0) + "," + allCoordinates.get(1);
 		}
 
 		return coordinatesString;

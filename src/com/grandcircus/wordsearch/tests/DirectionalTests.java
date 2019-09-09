@@ -63,10 +63,18 @@ public class DirectionalTests {
 	}
 	
 	
+//	@Test
+//	public void whenCheckSecondCoordinatesIsPassedAHorizontalClueItAddsHorizontalToDirectionsField() {
+//		findTara.setDirectionsToPotentialCoordinates();
+//		Direction actual = findTara.getKeyword().getPotentialCoordinates().get(0).getDirections().get(0); 
+//		Direction expected = Direction.HORIZONTAL;
+//		assertEquals(expected, actual);
+//	}
+	
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAHorizontalClueItAddsHorizontalToDirectionsField() {
 		findTara.setDirectionsToPotentialCoordinates();
-		Direction actual = findTara.getKeyword().getPotentialCoordinates().get(0).getDirections().get(0); 
+		Direction actual = findTara.getCompasses().get(0).getDirections().get(0); 
 		Direction expected = Direction.HORIZONTAL;
 		assertEquals(expected, actual);
 	}
@@ -142,7 +150,7 @@ public class DirectionalTests {
 		findTara.setDirectionsToPotentialCoordinates();
 		findTara.setKeywordToDirectionType();
 		Boolean actual = findTara.getKeyword().getIsFound(); 
-		String actual2 = findTara.getKeyword().getCoordinates().toString();
+		String actual2 = findTara.getKeyword().getAllCoordinates().toString();
 		Boolean expected = true;
 		String expected2 = "[(0,1), (0,2), (0,3), (0,4)]";
 		assertEquals(expected, actual);
