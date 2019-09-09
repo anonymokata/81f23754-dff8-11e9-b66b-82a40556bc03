@@ -6,15 +6,19 @@ import com.grandcircus.wordsearch.keyword.Coordinates;
 
 public class BwDiagonalUp extends Compass {
 
+	protected String gridSubstring;
+	protected List<Coordinates> remainingCoordinates;
+	protected Integer aStep;
+	
 	public BwDiagonalUp (Compass compass) {
 		super(compass.getKeyword(), compass.getCoordinates());
 	}
 	
 	@Override
 	public String getGridSubstring() {
-		String gridSubstring = "";
-		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			gridSubstring += grid[oneUp - i][oneBack - i];
+		String gridSubstring = "";		
+		for (aStep = 0; !outOfLetters(aStep); aStep++) {
+			gridSubstring += grid[up - aStep][back - aStep];
 		}
 		return gridSubstring;
 	}
@@ -23,12 +27,12 @@ public class BwDiagonalUp extends Compass {
 	public List<Coordinates> getRemainingCoordinates() {
 		List<Coordinates> foundCoordinates = new ArrayList<>();
 		foundCoordinates.add(coordinates);
-		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			foundCoordinates.add(new Coordinates(oneUp - i, oneBack - i));
+		for (aStep = 0; !outOfLetters(aStep); aStep++) {
+			foundCoordinates.add(new Coordinates(up - aStep, back - aStep));
 		}
 		return foundCoordinates;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "BwDiagonalUp";

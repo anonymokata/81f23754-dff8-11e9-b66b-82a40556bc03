@@ -73,6 +73,10 @@ public class Keyword {
 		return word.substring(1, 2);
 	}
 	
+	public String getRemainingLetters() {
+		return word.substring(1, word.length());
+	}
+	
 	public String writeCoordinatesString() {
 		String coordinatesString = word + ": ";
 		if (word.length() > 2) {

@@ -14,12 +14,14 @@ public class Compass {
 	private List<Direction> directions;
 	protected String[][] grid = Finder.grid;
 	protected String secondLetter;
+	protected String remainingLetters;
+	protected Integer numberOfRemainingLetters;
 	protected Integer thisRow;
 	protected Integer thisCol;
-	protected Integer oneAhead;
-	protected Integer oneDown;
-	protected Integer oneUp;
-	protected Integer oneBack;
+	protected Integer forward;
+	protected Integer down;
+	protected Integer up;
+	protected Integer back;
 	
 	public Compass() {
 	}
@@ -29,12 +31,14 @@ public class Compass {
 		this.keyword = keyword;
 		this.coordinates = coordinates;
 		secondLetter = keyword.getSecondLetter();	
+		remainingLetters = keyword.getRemainingLetters();
+		numberOfRemainingLetters = keyword.getRemainingLetters().length();
 		thisRow = coordinates.getRow();
 		thisCol = coordinates.getCol();
-		oneAhead = coordinates.getCol() + 1;
-		oneDown = coordinates.getRow() + 1;
-		oneUp = coordinates.getRow() - 1;
-		oneBack = coordinates.getCol() - 1;
+		forward = coordinates.getCol() + 1;
+		down = coordinates.getRow() + 1;
+		up = coordinates.getRow() - 1;
+		back = coordinates.getCol() - 1;
 	}	
 	
 	
@@ -85,56 +89,56 @@ public class Compass {
 
 	protected Boolean checkHorizontal() {
 		if (thereIsRoomAhead()) {
-			return (secondLetter.equals(grid[thisRow][oneAhead]));
+			return (secondLetter.equals(grid[thisRow][forward]));
 		}
 		return false;
 	}
 
 	protected Boolean checkVertical() {
 		if (thereIsRoomBelow()) {
-			return (secondLetter.equals(grid[oneDown][thisCol]));
+			return (secondLetter.equals(grid[down][thisCol]));
 		}
 		return false;
 	}
 
 	protected Boolean checkDiagonalDown() {
 		if (thereIsRoomAhead() && thereIsRoomBelow()) {
-			return (secondLetter.equals(grid[oneDown][oneAhead]));
+			return (secondLetter.equals(grid[down][forward]));
 		}
 		return false;
 	}
 
 	protected Boolean checkDiagonalUp() {
 		if (thereIsRoomAhead() && thereIsRoomAbove()) {
-			return (secondLetter.equals(grid[oneUp][oneAhead]));
+			return (secondLetter.equals(grid[up][forward]));
 		}
 		return false;
 	}
 
 	public Boolean checkBwHorizontal() {
 		if (thereIsRoomBehind()) {
-			return (secondLetter.equals(grid[thisRow][oneBack]));
+			return (secondLetter.equals(grid[thisRow][back]));
 		}
 		return false;
 	}
 
 	protected Boolean checkBwVertical() {
 		if (thereIsRoomAbove()) {
-			return (secondLetter.equals(grid[oneUp][thisCol]));
+			return (secondLetter.equals(grid[up][thisCol]));
 		}
 		return false;
 	}
 
 	public Boolean checkBwDiagonalDown() {
 		if (thereIsRoomBehind() && thereIsRoomBelow()) {
-			return (secondLetter.equals(grid[oneDown][oneBack]));
+			return (secondLetter.equals(grid[down][back]));
 		}
 		return false;
 	}
 
 	public Boolean checkBwDiagonalUp() {
 		if (thereIsRoomBehind() && thereIsRoomAbove()) {
-			return (secondLetter.equals(grid[oneUp][oneBack]));
+			return (secondLetter.equals(grid[up][back]));
 		}
 		return false;
 	}
@@ -148,13 +152,18 @@ public class Compass {
 	}
 
 	private Boolean thereIsRoomAbove() {
-		return keyword.getLength() <= oneDown;
+		return keyword.getLength() <= down;
 	}
 
 	private Boolean thereIsRoomBehind() {
-		return keyword.getLength() <= oneAhead;
+		return keyword.getLength() <= forward;
 	}
 	
+	public Boolean outOfLetters(Integer aStep) {
+		return numberOfRemainingLetters - aStep <= 0; 
+	}
+	
+	//REMOVE
 	public String getRemainingLetters() {
 		return keyword.getWord().substring(1, keyword.getWord().length());
 	}

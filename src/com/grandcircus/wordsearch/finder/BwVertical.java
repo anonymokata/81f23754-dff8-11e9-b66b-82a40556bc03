@@ -14,7 +14,7 @@ public class BwVertical extends Compass {
 	public String getGridSubstring() {
 		String gridSubstring = "";
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			gridSubstring += grid[oneUp - i][thisCol];
+			gridSubstring += grid[up - i][thisCol];
 		}
 		return gridSubstring;
 	}
@@ -24,7 +24,7 @@ public class BwVertical extends Compass {
 		List<Coordinates> foundCoordinates = new ArrayList<>();
 		foundCoordinates.add(coordinates);
 		for (int i = 0; i < getRemainingLetters().length(); i++) {
-			foundCoordinates.add(new Coordinates(oneUp - i, thisCol));
+			foundCoordinates.add(new Coordinates(up - i, thisCol));
 		}
 		return foundCoordinates;
 	}
