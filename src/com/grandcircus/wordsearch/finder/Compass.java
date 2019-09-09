@@ -59,6 +59,14 @@ public class Compass {
 		this.directions = directions;
 	}
 
+	public List<Coordinates> getRemainingCoordinates() {
+		return remainingCoordinates;
+	}
+
+	public void setRemainingCoordinates(List<Coordinates> remainingCoordinates) {
+		this.remainingCoordinates = remainingCoordinates;
+	}
+	
 	public String getGridSubstring() {
 		return gridSubstring;
 	}
@@ -67,12 +75,8 @@ public class Compass {
 		this.gridSubstring = gridSubstring;
 	}
 
-	public List<Coordinates> getRemainingCoordinates() {
-		return remainingCoordinates;
-	}
-
-	public void setRemainingCoordinates(List<Coordinates> remainingCoordinates) {
-		this.remainingCoordinates = remainingCoordinates;
+	public String getRemainingLetters() {
+		return remainingLetters;
 	}
 
 	protected void findDirections() {
@@ -197,10 +201,5 @@ public class Compass {
 
 	public Boolean outOfLetters(Integer aStep) {
 		return numberOfRemainingLetters - aStep <= 0;
-	}
-
-	// REMOVE
-	public String getRemainingLetters() {
-		return keyword.getWord().substring(1, keyword.getWord().length());
 	}
 }

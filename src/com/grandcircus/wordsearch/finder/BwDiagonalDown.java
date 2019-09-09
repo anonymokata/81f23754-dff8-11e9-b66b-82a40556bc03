@@ -22,13 +22,13 @@ public class BwDiagonalDown extends Compass {
 
 	@Override
 	public void findRemainingCoordinates() {
-		List<Coordinates> foundCoordinates = new ArrayList<>();
-		foundCoordinates.add(coordinates);
+		List<Coordinates> remainingCoordinates = new ArrayList<>();
+		remainingCoordinates.add(coordinates);
 		int aStep = 0;
 		for (; !outOfLetters(aStep); aStep++) {
-			foundCoordinates.add(new Coordinates(down + aStep, back - aStep));
+			remainingCoordinates.add(new Coordinates(down + aStep, back - aStep));
 		}
-		setRemainingCoordinates(foundCoordinates);
+		setRemainingCoordinates(remainingCoordinates);
 	}
 
 	@Override

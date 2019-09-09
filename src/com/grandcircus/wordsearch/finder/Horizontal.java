@@ -22,13 +22,13 @@ public class Horizontal extends Compass {
 	
 	@Override
 	public void findRemainingCoordinates() {
-		List<Coordinates> foundCoordinates = new ArrayList<>();
-		foundCoordinates.add(coordinates);
+		List<Coordinates> remainingCoordinates = new ArrayList<>();
+		remainingCoordinates.add(coordinates);
 		int aStep = 0;
 		for (; !outOfLetters(aStep); aStep++) {
-			foundCoordinates.add(new Coordinates(thisRow, forward + aStep));
+			remainingCoordinates.add(new Coordinates(thisRow, forward + aStep));
 		}
-		setRemainingCoordinates(foundCoordinates);
+		setRemainingCoordinates(remainingCoordinates);
 	}
 
 	@Override

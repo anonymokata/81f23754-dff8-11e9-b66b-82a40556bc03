@@ -23,13 +23,13 @@ public class DiagonalDown extends Compass {
 	
 	@Override
 	public void findRemainingCoordinates() {
-		List<Coordinates> foundCoordinates = new ArrayList<>();
-		foundCoordinates.add(coordinates);
+		List<Coordinates> remainingCoordinates = new ArrayList<>();
+		remainingCoordinates.add(coordinates);
 		int aStep = 0;
 		for (; !outOfLetters(aStep); aStep++) {
-			foundCoordinates.add(new Coordinates(down + aStep, forward + aStep));
+			remainingCoordinates.add(new Coordinates(down + aStep, forward + aStep));
 		}
-		setRemainingCoordinates(foundCoordinates);
+		setRemainingCoordinates(remainingCoordinates);
 	}
 	
 	

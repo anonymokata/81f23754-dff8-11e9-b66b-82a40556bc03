@@ -23,13 +23,13 @@ public class Vertical extends Compass  {
 		
 	@Override
 	public void findRemainingCoordinates() {
-		List<Coordinates> foundCoordinates = new ArrayList<>();
-		foundCoordinates.add(coordinates);
+		List<Coordinates> remainingCoordinates = new ArrayList<>();
+		remainingCoordinates.add(coordinates);
 		int aStep = 0;
 		for (; !outOfLetters(aStep); aStep++) {
-				foundCoordinates.add(new Coordinates(down + aStep, thisCol));
+				remainingCoordinates.add(new Coordinates(down + aStep, thisCol));
 			}
-		setRemainingCoordinates(foundCoordinates);
+		setRemainingCoordinates(remainingCoordinates);
 		}
 		
 		@Override
