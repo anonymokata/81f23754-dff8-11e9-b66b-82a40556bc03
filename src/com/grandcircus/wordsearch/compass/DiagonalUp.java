@@ -30,11 +30,4 @@ public class DiagonalUp extends Compass {
 		}
 		setRemainingCoordinates(remainingCoordinates);
 	}
-	
-	
-	@Override
-	public String toString() {
-		return "DiagonalUp";
-	}
-	
 }

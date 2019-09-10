@@ -6,31 +6,16 @@ public class Keyword {
 
 	protected String word;
 	private Boolean isFound = false;
-	protected Coordinates tempCoordinates;
 	protected List<Coordinates> potentialCoordinates;
 	private List<Coordinates> allCoordinates;
-
-	public Keyword() {
-		super();
-	}
 
 	public Keyword(String word) {
 		super();
 		this.word = word;
 	}
-	
-	public Keyword(String word, Coordinates tempCoordinates) {
-		super();
-		this.word = word;
-		this.tempCoordinates = tempCoordinates;
-	}
 
 	public String getWord() {
 		return word;
-	}
-
-	public void setWord(String word) {
-		this.word = word;
 	}
 
 	public Boolean getIsFound() {
@@ -39,14 +24,6 @@ public class Keyword {
 
 	public void setIsFound(Boolean isFound) {
 		this.isFound = isFound;
-	}
-	
-	public Coordinates getTempCoordinates() {
-		return tempCoordinates;
-	}
-
-	public void setTempCoordinates(Coordinates tempCoordinates) {
-		this.tempCoordinates = tempCoordinates;
 	}
 
 	public List<Coordinates> getPotentialCoordinates() {
@@ -90,10 +67,4 @@ public class Keyword {
 
 		return coordinatesString;
 	}
-	
-	@Override
-	public String toString() {
-		return word;
-	}
-
 }

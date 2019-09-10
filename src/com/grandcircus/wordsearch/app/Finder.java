@@ -147,13 +147,10 @@ public class Finder {
 					directionType = null;
 					break;
 				}
-
 				checkIfFound(directionType);
 				if (keyword.getIsFound())
 					return;
 			}
-			if (keyword.getIsFound())
-				return;
 		}
 	}
 	

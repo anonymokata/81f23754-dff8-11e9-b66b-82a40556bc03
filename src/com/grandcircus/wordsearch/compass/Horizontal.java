@@ -30,10 +30,4 @@ public class Horizontal extends Compass {
 		}
 		setRemainingCoordinates(remainingCoordinates);
 	}
-
-	@Override
-	public String toString() {
-		return "Horizontal";
-	}
-
 }

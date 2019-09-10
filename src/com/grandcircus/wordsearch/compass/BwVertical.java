@@ -30,11 +30,5 @@ public class BwVertical extends Compass {
 		}
 		setRemainingCoordinates(remainingCoordinates);
 	}
-
-	@Override
-	public String toString() {
-		return "BwVertical";
-	}
-
 }
 

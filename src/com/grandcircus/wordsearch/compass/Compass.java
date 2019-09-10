@@ -25,9 +25,6 @@ public class Compass {
 	protected Integer down;
 	protected Integer up;
 	protected Integer back;
-	
-	public Compass() {
-	}
 
 	public Compass(Keyword keyword, Coordinates coordinates) {
 		super();
@@ -67,17 +64,9 @@ public class Compass {
 	public void setRemainingCoordinates(List<Coordinates> remainingCoordinates) {
 		this.remainingCoordinates = remainingCoordinates;
 	}
-	
-	public String getGridSubstring() {
-		return gridSubstring;
-	}
 
 	public void setGridSubstring(String gridSubstring) {
 		this.gridSubstring = gridSubstring;
-	}
-
-	public String getRemainingLetters() {
-		return remainingLetters;
 	}
 
 	public void findDirections() {

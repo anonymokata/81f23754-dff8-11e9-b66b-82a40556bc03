@@ -31,10 +31,4 @@ public class DiagonalDown extends Compass {
 		}
 		setRemainingCoordinates(remainingCoordinates);
 	}
-	
-	
-	@Override
-	public String toString() {
-		return "DiagonalDown";
-	}
 }

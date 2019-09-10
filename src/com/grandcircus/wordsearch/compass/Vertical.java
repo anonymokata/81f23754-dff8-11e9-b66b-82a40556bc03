@@ -31,9 +31,4 @@ public class Vertical extends Compass  {
 			}
 		setRemainingCoordinates(remainingCoordinates);
 		}
-		
-		@Override
-		public String toString() {
-			return "Vertical";
-		}
 }

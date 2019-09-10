@@ -146,7 +146,7 @@ public class DirectionalTests {
 	
 	@Test
 	public void whenGetKeywordSubstringIsPassedADirectionItReturnsSubstring() {
-		String actual = compassTara.getRemainingLetters();
+		String actual = compassTara.getKeyword().getRemainingLetters();
 		String expected = "ARA";
 		assertEquals(expected, actual);
 	}

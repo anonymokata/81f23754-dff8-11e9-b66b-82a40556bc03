@@ -30,9 +30,4 @@ public class BwDiagonalUp extends Compass {
 		}
 		setRemainingCoordinates(remainingCoordinates);
 	}
-
-	@Override
-	public String toString() {
-		return "BwDiagonalUp";
-	}
 }

@@ -31,11 +31,5 @@ public class BwHorizontal extends Compass {
 		}
 		setRemainingCoordinates(remainingCoordinates);
 	}
-
-	@Override
-	public String toString() {
-		return "BwHorizontal";
-	}
-
 }
 

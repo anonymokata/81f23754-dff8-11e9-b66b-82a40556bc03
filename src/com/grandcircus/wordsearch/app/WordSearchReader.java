@@ -60,7 +60,6 @@ public class WordSearchReader {
 	}
 
 	public List<String> readFile() {
-
 		try {
 			return Files.readAllLines(filePath);
 		} catch (FileNotFoundException ex) {
