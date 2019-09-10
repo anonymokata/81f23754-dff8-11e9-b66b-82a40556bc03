@@ -18,30 +18,30 @@ public class BigTest {
 
 	@BeforeEach
 	public void setup() {
-		mainReader = new WordSearchReader("big_puzzle.txt");
+		mainReader = new WordSearchReader("mega_puzzle.txt");
 		findXander = new Finder(mainReader.getAllKeywords().get(1), mainReader.makeGrid());
-		findGiles = new Finder(mainReader.getAllKeywords().get(2), mainReader.makeGrid());
+		findGiles = new Finder(mainReader.getAllKeywords().get(3), mainReader.makeGrid());
 		findAll = new Finder(mainReader.getAllKeywords(), mainReader.makeGrid());
 	}
 	
 	@Test
 	public void whenReadKeywordsIsPassedItReturnsAStringOfKeywords() {
 		String actual = mainReader.readKeywords();
-		String expected = "BUFFY,XANDER,GILES,ANGEL,WILLOW,DAWN,SPIKE,HELLMOUTH,SLAYER,OZ,TARA";
+		String expected = "BUFFY,XANDER,WILLOW,GILES,CORDELIA,ANGEL,OZ,SPIKE,RILEY,ANYA,DAWN,TARA,JOYCE,FAITH,DRUSILLA,GLORY,CALEB,WARREN,JONATHAN,ANDREW";
 	    assertEquals(expected, actual);
 	}
 	
 	@Test
 	public void whenFindKeywordIsPassedCoordinatesAreReturned() {
 		String actual = findXander.findKeyword();
-		String expected = "XANDER: (13,15),(14,16),(15,17),(16,18),(17,19),(18,20)";
+		String expected = "XANDER: (27,37),(26,37),(25,37),(24,37),(23,37),(22,37)";
 		assertEquals(expected, actual);
 	}
 	
 	@Test
 	public void whenFindKeywordIsPassedGilesIsReturned() {
 		String actual = findGiles.findKeyword();
-		String expected = "GILES: (1,23),(2,24),(3,25),(4,26),(5,27)";
+		String expected = "GILES: (9,18),(10,17),(11,16),(12,15),(13,14)";
 		assertEquals(expected, actual);
 	}
 	
@@ -50,17 +50,26 @@ public class BigTest {
 		String actual = findAll.printAllKeywordCoordinates(findAll.findAllKeywordCoordinates());
 		String expected = 
 				"\n\nWord Search Coordinates: \n\n" +  
-				"BUFFY: (13,5),(13,6),(13,7),(13,8),(13,9)\n" + 
-				"XANDER: (13,15),(14,16),(15,17),(16,18),(17,19),(18,20)\n" + 
-				"GILES: (1,23),(2,24),(3,25),(4,26),(5,27)\n" + 
-				"ANGEL: (18,9),(19,9),(20,9),(21,9),(22,9)\n" + 
-				"WILLOW: (24,23),(23,23),(22,23),(21,23),(20,23),(19,23)\n" + 
-				"DAWN: (17,13),(17,12),(17,11),(17,10)\n" + 
-				"SPIKE: (22,26),(23,25),(24,24),(25,23),(26,22)\n" + 
-				"HELLMOUTH: (11,8),(11,7),(11,6),(11,5),(11,4),(11,3),(11,2),(11,1),(11,0)\n" + 
-				"SLAYER: (20,0),(19,1),(18,2),(17,3),(16,4),(15,5)\n" + 
-				"OZ: (9,27),(10,28)\n" + 
-				"TARA: (22,3),(21,2),(20,1),(19,0)\n";
+				"BUFFY: (5,21),(6,21),(7,21),(8,21),(9,21)\n" + 
+				"XANDER: (27,37),(26,37),(25,37),(24,37),(23,37),(22,37)\n" + 
+				"WILLOW: (18,1),(17,2),(16,3),(15,4),(14,5),(13,6)\n" + 
+				"GILES: (9,18),(10,17),(11,16),(12,15),(13,14)\n" + 
+				"CORDELIA: (14,7),(15,6),(16,5),(17,4),(18,3),(19,2),(20,1),(21,0)\n" + 
+				"ANGEL: (13,11),(13,10),(13,9),(13,8),(13,7)\n" + 
+				"OZ: (10,28),(11,27)\n" + 
+				"SPIKE: (27,33),(26,32),(25,31),(24,30),(23,29)\n" + 
+				"RILEY: (20,20),(19,20),(18,20),(17,20),(16,20)\n" + 
+				"ANYA: (30,35),(31,34),(32,33),(33,32)\n" + 
+				"DAWN: (32,12),(32,11),(32,10),(32,9)\n" + 
+				"TARA: (12,25),(11,24),(10,23),(9,22)\n" + 
+				"JOYCE: (21,2),(20,3),(19,4),(18,5),(17,6)\n" + 
+				"FAITH: (23,17),(23,18),(23,19),(23,20),(23,21)\n" + 
+				"DRUSILLA: (32,32),(32,31),(32,30),(32,29),(32,28),(32,27),(32,26),(32,25)\n" + 
+				"GLORY: (3,20),(4,21),(5,22),(6,23),(7,24)\n" + 
+				"CALEB: (19,33),(20,33),(21,33),(22,33),(23,33)\n" + 
+				"WARREN: (24,7),(24,8),(24,9),(24,10),(24,11),(24,12)\n" + 
+				"JONATHAN: (19,7),(18,6),(17,5),(16,4),(15,3),(14,2),(13,1),(12,0)\n" + 
+				"ANDREW: (0,25),(1,26),(2,27),(3,28),(4,29),(5,30)\n";
 		assertEquals(expected, actual);
 	}
 }

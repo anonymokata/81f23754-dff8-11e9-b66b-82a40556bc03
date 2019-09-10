@@ -109,28 +109,28 @@ public class Compass {
 		setDirections(directions);
 	}
 
-	protected Boolean checkHorizontal() {
+	public Boolean checkHorizontal() {
 		if (thereIsRoomAhead()) {
 			return (secondLetter.equals(grid[thisRow][forward]));
 		}
 		return false;
 	}
 
-	protected Boolean checkVertical() {
+	public Boolean checkVertical() {
 		if (thereIsRoomBelow()) {
 			return (secondLetter.equals(grid[down][thisCol]));
 		}
 		return false;
 	}
 
-	protected Boolean checkDiagonalDown() {
+	public Boolean checkDiagonalDown() {
 		if (thereIsRoomAhead() && thereIsRoomBelow()) {
 			return (secondLetter.equals(grid[down][forward]));
 		}
 		return false;
 	}
 
-	protected Boolean checkDiagonalUp() {
+	public Boolean checkDiagonalUp() {
 		if (thereIsRoomAhead() && thereIsRoomAbove()) {
 			return (secondLetter.equals(grid[up][forward]));
 		}
@@ -144,7 +144,7 @@ public class Compass {
 		return false;
 	}
 
-	protected Boolean checkBwVertical() {
+	public Boolean checkBwVertical() {
 		if (thereIsRoomAbove()) {
 			return (secondLetter.equals(grid[up][thisCol]));
 		}
@@ -194,11 +194,9 @@ public class Compass {
 		return remainingLetters.equals(gridSubstring);
 	}
 
-	public void makeGridSubstring() {
-	}
+	public void makeGridSubstring() {}
 
-	public void findRemainingCoordinates() {
-	}
+	public void findRemainingCoordinates() {}
 
 	public Boolean outOfLetters(Integer aStep) {
 		return numberOfRemainingLetters - aStep <= 0;
