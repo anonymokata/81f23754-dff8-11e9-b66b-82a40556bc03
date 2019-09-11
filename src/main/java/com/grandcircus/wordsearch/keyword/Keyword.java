@@ -57,14 +57,21 @@ public class Keyword {
 	public String writeCoordinatesString() {
 		String coordinatesString = word + ": ";
 		if (word.length() > 2) {
-			for (int i = 0; i < allCoordinates.size() - 1; i++) {
-				coordinatesString += allCoordinates.get(i) + ",";
-			}
-			coordinatesString += allCoordinates.get(allCoordinates.size() - 1);
+			return writeLongString(coordinatesString);
 		} else {
-			coordinatesString += allCoordinates.get(0) + "," + allCoordinates.get(1);
+			return writeShortString(coordinatesString);
 		}
-
+	}
+	
+	private String writeLongString(String coordinatesString) {
+		for (int i = 0; i < allCoordinates.size() - 1; i++) {
+			coordinatesString += allCoordinates.get(i) + ",";
+		}
+		coordinatesString += allCoordinates.get(allCoordinates.size() - 1);
 		return coordinatesString;
+	}
+	
+	private String writeShortString(String coordinatesString) {
+		return coordinatesString += allCoordinates.get(0) + "," + allCoordinates.get(1);
 	}
 }

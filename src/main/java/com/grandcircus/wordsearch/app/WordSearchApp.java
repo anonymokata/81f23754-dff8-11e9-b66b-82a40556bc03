@@ -9,5 +9,5 @@ public class WordSearchApp {
 		
 		findAll.findAllKeywordCoordinates();
 		System.out.println(findAll.printAllKeywordCoordinates());
-	}
+	}	
 }
