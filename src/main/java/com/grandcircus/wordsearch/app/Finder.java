@@ -16,27 +16,26 @@ import com.grandcircus.wordsearch.keyword.Coordinates;
 import com.grandcircus.wordsearch.keyword.Direction;
 import com.grandcircus.wordsearch.keyword.Keyword;
 
-
 public class Finder {
 	public static String[][] grid;
-	
+
 	private Keyword keyword;
 	private List<Keyword> allKeywords;
 	private List<Compass> compasses;
-	private List<String> allKeywordCoordinates; 
+	private List<String> allKeywordCoordinates;
 
 	public Finder(Keyword keyword, String[][] grid) {
 		super();
 		this.keyword = keyword;
 		Finder.grid = grid;
 	}
-	
+
 	public Finder(List<Keyword> allKeywords, String[][] grid) {
 		super();
 		this.allKeywords = allKeywords;
 		Finder.grid = grid;
 	}
-	
+
 	public Keyword getKeyword() {
 		return keyword;
 	}
@@ -44,7 +43,7 @@ public class Finder {
 	public void setKeyword(Keyword keyword) {
 		this.keyword = keyword;
 	}
-	
+
 	public List<Keyword> getAllKeywords() {
 		return allKeywords;
 	}
@@ -56,7 +55,6 @@ public class Finder {
 	public void setCompasses(List<Compass> compasses) {
 		this.compasses = compasses;
 	}
-
 
 	public List<String> getAllKeywordCoordinates() {
 		return allKeywordCoordinates;
@@ -73,7 +71,7 @@ public class Finder {
 		}
 		return formattedPrintout;
 	}
-	
+
 	public void findAllKeywordCoordinates() {
 		List<String> allKeywordCoordinates = new ArrayList<>();
 		for (Keyword each : allKeywords) {
@@ -82,12 +80,12 @@ public class Finder {
 		}
 		setAllKeywordCoordinates(allKeywordCoordinates);
 	}
-	
+
 	public String findKeyword() {
 		setDirectionsToPotentialCoordinates();
 		return keyword.writeCoordinatesString();
 	}
-	
+
 	public void setDirectionsToPotentialCoordinates() {
 		keyword.setPotentialCoordinates(findFirstPotentials());
 		findGoodPotentials();
@@ -107,17 +105,23 @@ public class Finder {
 	}
 
 	public void findGoodPotentials() {
-		Compass potential;
 		List<Compass> goodPotentials = new ArrayList<>();
-		for (Coordinates coordinates : keyword.getPotentialCoordinates()) {
-			potential = new Compass(keyword, coordinates);
-			potential.findDirections();
-			if (!potential.getDirections().isEmpty()) {
-				goodPotentials.add(potential);
+		for (Compass each : makeCompasses()) {
+			each.findDirections();
+			if (!each.getDirections().isEmpty()) {
+				goodPotentials.add(each);
 			}
 		}
 		setCompasses(goodPotentials);
-	}	
+	}
+
+	private List<Compass> makeCompasses() {
+		List<Compass> potentials = new ArrayList<>();
+		for (Coordinates coordinates : keyword.getPotentialCoordinates()) {
+			potentials.add(new Compass(keyword, coordinates));
+		}
+		return potentials;
+	}
 
 	public void setKeywordToDirectionType() {
 		Compass directionType;
@@ -166,7 +170,7 @@ public class Finder {
 			}
 		}
 	}
-	
+
 	private void checkIfFound(Compass directionType) {
 		keyword.setIsFound(directionType.getKeyword().getIsFound());
 		keyword.setAllCoordinates(directionType.getKeyword().getAllCoordinates());

@@ -179,21 +179,6 @@ public class Compass {
 		}
 	}
 
-	public Boolean keywordEqualsSubsubtring() {
-		return remainingLetters.equals(gridSubstring);
-	}
-
-	public String buildSubString(Integer aStep) {
-//		String gridSubstring = grid[thisRow][forward + aStep];
-//		return gridSubstring;
-		return null;
-	}
-	
-	public Coordinates buildRemainingCoordinates(Integer aStep) {
-		return null;
-	}
-	
-	
 	public void makeGridSubstring() {
 		String gridSubstring = "";
 		int aStep = 0;
@@ -201,6 +186,14 @@ public class Compass {
 			gridSubstring += buildSubString(aStep);
 		}
 		setGridSubstring(gridSubstring);
+	}
+
+	public String buildSubString(Integer aStep) {
+		return null;
+	}
+
+	public Boolean keywordEqualsSubsubtring() {
+		return remainingLetters.equals(gridSubstring);
 	}
 
 	public void findRemainingCoordinates() {
@@ -212,12 +205,10 @@ public class Compass {
 		}
 		setRemainingCoordinates(remainingCoordinates);
 	}
-	
-//	public void makeGridSubstring() {
-//		
-//	}
 
-//	public void findRemainingCoordinates() {}
+	public Coordinates buildRemainingCoordinates(Integer aStep) {
+		return null;
+	}
 
 	public Boolean outOfLetters(Integer aStep) {
 		return numberOfRemainingLetters - aStep <= 0;
