@@ -33,14 +33,14 @@ public class BigTest {
 	
 	@Test
 	public void whenFindKeywordIsPassedCoordinatesAreReturned() {
-		String actual = findXander.findKeyword();
+		String actual = findXander.findKeywordCoordinates();
 		String expected = "XANDER: (27,37),(26,37),(25,37),(24,37),(23,37),(22,37)";
 		assertEquals(expected, actual);
 	}
 	
 	@Test
 	public void whenFindKeywordIsPassedGilesIsReturned() {
-		String actual = findGiles.findKeyword();
+		String actual = findGiles.findKeywordCoordinates();
 		String expected = "GILES: (9,18),(10,17),(11,16),(12,15),(13,14)";
 		assertEquals(expected, actual);
 	}

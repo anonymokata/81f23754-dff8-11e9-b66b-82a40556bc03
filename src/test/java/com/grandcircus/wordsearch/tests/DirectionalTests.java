@@ -33,7 +33,7 @@ public class DirectionalTests {
 
 		directionalReader = new WordSearchReader("directional_tests.txt");
 		findAll = new Finder(directionalReader.getAllKeywords(), directionalReader.makeGrid());
-//		findTara = findAll.getAllKeywords().get(0)
+//		findTara = findAll.getAllKeywords().get(0).setK
 		findTara = new Finder(directionalReader.getAllKeywords().get(0), directionalReader.makeGrid());
 		findDawn = new Finder(directionalReader.getAllKeywords().get(1), directionalReader.makeGrid());
 		findBuffy = new Finder(directionalReader.getAllKeywords().get(2), directionalReader.makeGrid());
@@ -229,7 +229,7 @@ public class DirectionalTests {
 	
 	@Test
 	public void whenFindKeywordIsPassedCoordinatesAreReturned() {
-		String actual = findBuffy.findKeyword();
+		String actual = findBuffy.findKeywordCoordinates();
 		String expected = "BUFFY: (0,0),(1,0),(2,0),(3,0),(4,0)";
 		assertEquals(expected, actual);
 	}
