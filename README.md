@@ -5,9 +5,9 @@ Welcome to the Word Search Kata README.
 Below please find instructions to run all application tests from the terminal(Mac) or Bash(Windows) using Maven.
 
 To follow these steps you will need:
--Git
--Java 1.7+
--Maven
+- Git
+- Java 1.7+
+- Maven
 
 Please take the following steps to clone and test the kata:
 1. Clone or download the repo to a chosen directory.
