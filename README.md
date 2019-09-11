@@ -13,7 +13,7 @@ Please take the following steps to clone and test the kata:
 1. Clone or download the repo to a chosen directory.
 2. From the command line, navigate to the *WordSearch* folder inside your chosen directory.
 3. Type: *mvn clean test* and press *Enter*. 
-4. The app should build and all tests should run. 
+4. The app will build, run all tests, and execute the *Main* class. 
 
 Please direct any questions to: gbreitenbeck@gmail.com
 
