@@ -1,6 +1,7 @@
 package com.grandcircus.wordsearch.app;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.grandcircus.wordsearch.compass.BwDiagonalDown;
@@ -85,7 +86,7 @@ public class Finder {
 	}
 
 	public List<Coordinates> findFirstPotentials() {
-		List<Coordinates> potentials = new ArrayList<>();
+		List<Coordinates> potentials = new ArrayList<>();		
 		for (int row = 0; row < grid.length; row++) {
 			for (int col = 0; col < grid.length; col++) {
 				if (keyword.getWord().startsWith(grid[row][col])) {
