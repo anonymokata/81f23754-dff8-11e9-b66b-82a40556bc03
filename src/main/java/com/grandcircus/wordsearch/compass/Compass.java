@@ -173,9 +173,8 @@ public class Compass {
 	public void findFullMatch() {
 		makeGridSubstring();
 		if (keywordEqualsSubsubtring()) {
-			findRemainingCoordinates();
 			keyword.setIsFound(true);
-			keyword.setAllCoordinates(getRemainingCoordinates());
+			keyword.setAllCoordinates(findRemainingCoordinates());
 		}
 	}
 
@@ -196,14 +195,14 @@ public class Compass {
 		return remainingLetters.equals(gridSubstring);
 	}
 
-	public void findRemainingCoordinates() {
+	public List<Coordinates> findRemainingCoordinates() {
 		List<Coordinates> remainingCoordinates = new ArrayList<>();
 		remainingCoordinates.add(coordinates);
 		int aStep = 0;
 		for (; !outOfLetters(aStep); aStep++) {
 			remainingCoordinates.add(buildRemainingCoordinates(aStep));
 		}
-		setRemainingCoordinates(remainingCoordinates);
+		return remainingCoordinates;
 	}
 
 	public Coordinates buildRemainingCoordinates(Integer aStep) {

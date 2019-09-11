@@ -55,11 +55,11 @@ public class Finder {
 	public void setCompasses(List<Compass> compasses) {
 		this.compasses = compasses;
 	}
-	
+
 	public List<String> getAllKeywordCoordinates() {
 		return allKeywordCoordinates;
 	}
-	
+
 	public void setAllKeywordCoordinates(List<String> allKeywordCoordinates) {
 		this.allKeywordCoordinates = allKeywordCoordinates;
 	}
@@ -85,7 +85,7 @@ public class Finder {
 	}
 
 	public List<Coordinates> findFirstPotentials() {
-		List<Coordinates> potentials = new ArrayList<>();		
+		List<Coordinates> potentials = new ArrayList<>();
 		for (int row = 0; row < grid.length; row++) {
 			for (int col = 0; col < grid.length; col++) {
 				if (keyword.getWord().startsWith(grid[row][col])) {
@@ -156,18 +156,22 @@ public class Finder {
 					directionType = null;
 					break;
 				}
-				checkIfFound(directionType);
-				if (keyword.getIsFound())
+				if (keywordIsFound(directionType)) {
 					return;
+				}
 			}
 		}
 	}
 
-	private void checkIfFound(Compass directionType) {
-		keyword.setIsFound(directionType.getKeyword().getIsFound());
-		keyword.setAllCoordinates(directionType.getKeyword().getAllCoordinates());
+	private Boolean keywordIsFound(Compass directionType) {
+		if (directionType.getKeyword().getIsFound()) {
+			keyword.setIsFound(true);
+			keyword.setAllCoordinates(directionType.getKeyword().getAllCoordinates());
+			return true;
+		}
+		return false;
 	}
-	
+
 	public String printAllKeywordCoordinates() {
 		String formattedPrintout = "\n\nWord Search Coordinates: \n\n";
 		for (String each : getAllKeywordCoordinates()) {

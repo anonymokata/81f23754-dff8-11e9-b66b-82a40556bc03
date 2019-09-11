@@ -1,0 +1,15 @@
+/Users/josephbreitenbeck/gcircus/WordSearch/src/main/java/com/grandcircus/wordsearch/compass/Vertical.java
+/Users/josephbreitenbeck/gcircus/WordSearch/src/main/java/com/grandcircus/wordsearch/keyword/Direction.java
+/Users/josephbreitenbeck/gcircus/WordSearch/src/main/java/com/grandcircus/wordsearch/compass/DiagonalDown.java
+/Users/josephbreitenbeck/gcircus/WordSearch/src/main/java/com/grandcircus/wordsearch/app/WordSearchReader.java
+/Users/josephbreitenbeck/gcircus/WordSearch/src/main/java/com/grandcircus/wordsearch/keyword/Keyword.java
+/Users/josephbreitenbeck/gcircus/WordSearch/src/main/java/com/grandcircus/wordsearch/keyword/Coordinates.java
+/Users/josephbreitenbeck/gcircus/WordSearch/src/main/java/com/grandcircus/wordsearch/app/WordSearchApp.java
+/Users/josephbreitenbeck/gcircus/WordSearch/src/main/java/com/grandcircus/wordsearch/compass/BwHorizontal.java
+/Users/josephbreitenbeck/gcircus/WordSearch/src/main/java/com/grandcircus/wordsearch/compass/BwDiagonalUp.java
+/Users/josephbreitenbeck/gcircus/WordSearch/src/main/java/com/grandcircus/wordsearch/app/Finder.java
+/Users/josephbreitenbeck/gcircus/WordSearch/src/main/java/com/grandcircus/wordsearch/compass/BwDiagonalDown.java
+/Users/josephbreitenbeck/gcircus/WordSearch/src/main/java/com/grandcircus/wordsearch/compass/Horizontal.java
+/Users/josephbreitenbeck/gcircus/WordSearch/src/main/java/com/grandcircus/wordsearch/compass/Compass.java
+/Users/josephbreitenbeck/gcircus/WordSearch/src/main/java/com/grandcircus/wordsearch/compass/DiagonalUp.java
+/Users/josephbreitenbeck/gcircus/WordSearch/src/main/java/com/grandcircus/wordsearch/compass/BwVertical.java
