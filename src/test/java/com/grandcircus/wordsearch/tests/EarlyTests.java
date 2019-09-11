@@ -14,10 +14,12 @@ import com.grandcircus.wordsearch.app.WordSearchReader;
 public class EarlyTests {
 
 	WordSearchReader smallTest;
-
+	WordSearchReader missingFileTest;
+	
 	@BeforeEach
 	public void setup() {	
 		smallTest = new WordSearchReader("early_tests.txt");
+		missingFileTest = new WordSearchReader("missing_file.txt");
 	}
 
 	@Test
@@ -39,6 +41,13 @@ public class EarlyTests {
 		String[][] actual = smallTest.makeGrid();
 		String[][] expected = {{"Y","G","M"}, {"E","K","G"}, {"H","O","A"}};
 		assertArrayEquals(expected, actual);
+	}
+	
+	@Test
+	public void whenReadFileCallsAMissingFileItReturnsAnEmptyStringArrayList() {	
+		String actual = missingFileTest.readFile().toString();
+		String expected = "[]";
+		assertEquals(expected, actual);
 	}
 	
 }

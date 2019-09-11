@@ -57,14 +57,6 @@ public class MainReaderTests {
 	}
 	
 	@Test
-	public void whenCheckBwHorizontalIsPassedMatchingCoordinatesItReturnsTrue() {
-	findXander.addDirectionsToPotentialCoordinates();
-	Boolean actual = compassXander.checkBwHorizontal();
-	Boolean expected = true;
-	assertEquals(expected, actual);
-	}
-	
-	@Test
 	public void whenCheckSecondCoordinatesIsPassedABwHorizontalItAddsBwHorizontalToDirectionsField2() {
 		findXander.addDirectionsToPotentialCoordinates();
 		Direction actual = findXander.getCompasses().get(0).getDirections().get(0);

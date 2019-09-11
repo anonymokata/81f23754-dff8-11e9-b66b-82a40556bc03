@@ -117,23 +117,17 @@ public class DirectionalTests {
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedABwDiagonalDownItAddsBwDiagonalDownToDirectionsField() {
 		findAaody.addDirectionsToPotentialCoordinates();	
-		Boolean actual = compassAaody.checkBwDiagonalDown();
-		Direction actual2 = findAaody.getCompasses().get(0).getDirections().get(0);
-		Boolean expected = true;
-		Direction expected2 = Direction.BW_DIAGONAL_DOWN;
+		Direction actual = findAaody.getCompasses().get(0).getDirections().get(0);
+		Direction expected = Direction.BW_DIAGONAL_DOWN;
 		assertEquals(expected, actual);
-		assertEquals(expected2, actual2);
 	} 
 	
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedABwDiagonalUpItAddsBwDiagonalUpToDirectionsField() {
 		findCwou.addDirectionsToPotentialCoordinates();	
-		Boolean actual = compassCwou.checkBwDiagonalUp();
-		Direction actual2 = findCwou.getCompasses().get(0).getDirections().get(0);
-		Boolean expected = true;
-		Direction expected2 = Direction.BW_DIAGONAL_UP;
+		Direction actual = findCwou.getCompasses().get(0).getDirections().get(0);
+		Direction expected = Direction.BW_DIAGONAL_UP;
 		assertEquals(expected, actual);
-		assertEquals(expected2, actual2);
 	} 
 	
 	@Test

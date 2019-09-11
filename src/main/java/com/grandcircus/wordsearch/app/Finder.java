@@ -1,7 +1,6 @@
 package com.grandcircus.wordsearch.app;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.grandcircus.wordsearch.compass.BwDiagonalDown;
@@ -99,21 +98,21 @@ public class Finder {
 
 	public void findGoodPotentials() {
 		List<Compass> goodPotentials = new ArrayList<>();
-		for (Compass each : makeCompasses()) {
-			each.findDirections();
-			if (!each.getDirections().isEmpty()) {
-				goodPotentials.add(each);
+		for (Compass compassPotential : makeCompasses()) {
+			compassPotential.findDirections();
+			if (!compassPotential.getDirections().isEmpty()) {
+				goodPotentials.add(compassPotential);
 			}
 		}
 		setCompasses(goodPotentials);
 	}
 
 	private List<Compass> makeCompasses() {
-		List<Compass> potentials = new ArrayList<>();
+		List<Compass> compassPotentials = new ArrayList<>();
 		for (Coordinates coordinates : keyword.getPotentialCoordinates()) {
-			potentials.add(new Compass(keyword, coordinates));
+			compassPotentials.add(new Compass(keyword, coordinates));
 		}
-		return potentials;
+		return compassPotentials;
 	}
 
 	public void setKeywordToDirectionType() {

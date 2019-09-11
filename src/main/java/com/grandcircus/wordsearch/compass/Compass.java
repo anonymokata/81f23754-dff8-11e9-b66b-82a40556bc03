@@ -98,56 +98,56 @@ public class Compass {
 		setDirections(directions);
 	}
 
-	public Boolean checkHorizontal() {
+	private Boolean checkHorizontal() {
 		if (thereIsRoomAhead()) {
 			return (secondLetter.equals(grid[thisRow][forward]));
 		}
 		return false;
 	}
 
-	public Boolean checkVertical() {
+	private Boolean checkVertical() {
 		if (thereIsRoomBelow()) {
 			return (secondLetter.equals(grid[down][thisCol]));
 		}
 		return false;
 	}
 
-	public Boolean checkDiagonalDown() {
+	private Boolean checkDiagonalDown() {
 		if (thereIsRoomAhead() && thereIsRoomBelow()) {
 			return (secondLetter.equals(grid[down][forward]));
 		}
 		return false;
 	}
 
-	public Boolean checkDiagonalUp() {
+	private Boolean checkDiagonalUp() {
 		if (thereIsRoomAhead() && thereIsRoomAbove()) {
 			return (secondLetter.equals(grid[up][forward]));
 		}
 		return false;
 	}
 
-	public Boolean checkBwHorizontal() {
+	private Boolean checkBwHorizontal() {
 		if (thereIsRoomBehind()) {
 			return (secondLetter.equals(grid[thisRow][back]));
 		}
 		return false;
 	}
 
-	public Boolean checkBwVertical() {
+	private Boolean checkBwVertical() {
 		if (thereIsRoomAbove()) {
 			return (secondLetter.equals(grid[up][thisCol]));
 		}
 		return false;
 	}
 
-	public Boolean checkBwDiagonalDown() {
+	private Boolean checkBwDiagonalDown() {
 		if (thereIsRoomBehind() && thereIsRoomBelow()) {
 			return (secondLetter.equals(grid[down][back]));
 		}
 		return false;
 	}
 
-	public Boolean checkBwDiagonalUp() {
+	private Boolean checkBwDiagonalUp() {
 		if (thereIsRoomBehind() && thereIsRoomAbove()) {
 			return (secondLetter.equals(grid[up][back]));
 		}

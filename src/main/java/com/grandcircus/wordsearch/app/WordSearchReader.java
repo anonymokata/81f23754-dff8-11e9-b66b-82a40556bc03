@@ -1,8 +1,8 @@
 package com.grandcircus.wordsearch.app;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -62,7 +62,8 @@ public class WordSearchReader {
 	public List<String> readFile() {
 		try {
 			return Files.readAllLines(filePath);
-		} catch (FileNotFoundException ex) {
+		} catch (NoSuchFileException ex) {
+			ex.printStackTrace();
 			return new ArrayList<>();
 		} catch (IOException ex) {
 			ex.printStackTrace();
