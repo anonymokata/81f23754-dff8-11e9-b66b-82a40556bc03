@@ -47,7 +47,7 @@ public class MainReaderTests {
 	
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedAHorizontalKeywordItCreatesAHorizontalSubtypeAndReturnsHorizontalCoordinates() {
-		findGiles.setDirectionsToPotentialCoordinates();
+		findGiles.addDirectionsToPotentialCoordinates();
 		Boolean actual = findGiles.getKeyword().getIsFound();
 		String actual2 = findGiles.getKeyword().getAllCoordinates().toString();
 		Boolean expected = true;
@@ -58,7 +58,7 @@ public class MainReaderTests {
 	
 	@Test
 	public void whenCheckBwHorizontalIsPassedMatchingCoordinatesItReturnsTrue() {
-	findXander.setDirectionsToPotentialCoordinates();
+	findXander.addDirectionsToPotentialCoordinates();
 	Boolean actual = compassXander.checkBwHorizontal();
 	Boolean expected = true;
 	assertEquals(expected, actual);
@@ -66,7 +66,7 @@ public class MainReaderTests {
 	
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedABwHorizontalItAddsBwHorizontalToDirectionsField2() {
-		findXander.setDirectionsToPotentialCoordinates();
+		findXander.addDirectionsToPotentialCoordinates();
 		Direction actual = findXander.getCompasses().get(0).getDirections().get(0);
 		Direction expected = Direction.BW_HORIZONTAL;
 		assertEquals(expected, actual);
@@ -74,7 +74,7 @@ public class MainReaderTests {
 	
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedABwHorizontallKeywordItCreatesABwHorizontalSubtype() {
-		findXander.setDirectionsToPotentialCoordinates();
+		findXander.addDirectionsToPotentialCoordinates();
 		String actual = findXander.getKeyword().getAllCoordinates().toString();
 		String expected = "[(14,5), (14,4), (14,3), (14,2), (14,1), (14,0)]";
 		assertEquals(expected, actual);

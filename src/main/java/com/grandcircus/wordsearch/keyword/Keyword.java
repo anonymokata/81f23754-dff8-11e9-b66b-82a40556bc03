@@ -49,11 +49,11 @@ public class Keyword {
 	public String getSecondLetter() {
 		return word.substring(1, 2);
 	}
-	
+
 	public String getRemainingLetters() {
 		return word.substring(1, word.length());
 	}
-	
+
 	public String writeCoordinatesString() {
 		String coordinatesString = word + ": ";
 		if (word.length() > 2) {
@@ -62,7 +62,7 @@ public class Keyword {
 			return writeShortString(coordinatesString);
 		}
 	}
-	
+
 	private String writeLongString(String coordinatesString) {
 		for (int i = 0; i < allCoordinates.size() - 1; i++) {
 			coordinatesString += allCoordinates.get(i) + ",";
@@ -70,7 +70,7 @@ public class Keyword {
 		coordinatesString += allCoordinates.get(allCoordinates.size() - 1);
 		return coordinatesString;
 	}
-	
+
 	private String writeShortString(String coordinatesString) {
 		return coordinatesString += allCoordinates.get(0) + "," + allCoordinates.get(1);
 	}
