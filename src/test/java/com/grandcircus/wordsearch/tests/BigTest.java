@@ -47,7 +47,8 @@ public class BigTest {
 	
 	@Test
 	public void whenPrintAllKeywordsIsPassedItPrintsAPrettyList() {
-		String actual = findAll.printAllKeywordCoordinates(findAll.findAllKeywordCoordinates());
+		findAll.findAllKeywordCoordinates();
+		String actual = findAll.printAllKeywordCoordinates();
 		String expected = 
 				"\n\nWord Search Coordinates: \n\n" +  
 				"BUFFY: (5,21),(6,21),(7,21),(8,21),(9,21)\n" + 

@@ -81,8 +81,9 @@ public class MainReaderTests {
 	}
 	
 	@Test
-	public void whenFindAllKeywordCoordinatesIsPassedItReturnsAListOfPrintedCoordinates() {
-		String actual = findAll.findAllKeywordCoordinates().toString();
+	public void whenFindAllKeywordCoordinatesIsPassedItAddsToFinderFieldAListOfPrintedCoordinates() {
+		findAll.findAllKeywordCoordinates();
+		String actual = findAll.getAllKeywordCoordinates().toString();
 		String expected = "[BUFFY: (4,7),(3,8),(2,9),(1,10),(0,11), "
 				+ "XANDER: (14,5),(14,4),(14,3),(14,2),(14,1),(14,0), "
 				+ "GILES: (13,0),(13,1),(13,2),(13,3),(13,4), "
@@ -97,7 +98,8 @@ public class MainReaderTests {
 	
 	@Test
 	public void whenPrintAllKeywordsIsPassedItPrintsAPrettyList() {
-		String actual = findAll.printAllKeywordCoordinates(findAll.findAllKeywordCoordinates());
+		findAll.findAllKeywordCoordinates();
+		String actual = findAll.printAllKeywordCoordinates();
 		String expected = 
 				"\n\nWord Search Coordinates: \n\n" + 		  
 				"BUFFY: (4,7),(3,8),(2,9),(1,10),(0,11)\n" + 

@@ -23,6 +23,7 @@ public class Finder {
 	private Keyword keyword;
 	private List<Keyword> allKeywords;
 	private List<Compass> compasses;
+	private List<String> allKeywordCoordinates; 
 
 	public Finder(Keyword keyword, String[][] grid) {
 		super();
@@ -43,6 +44,10 @@ public class Finder {
 	public void setKeyword(Keyword keyword) {
 		this.keyword = keyword;
 	}
+	
+	public List<Keyword> getAllKeywords() {
+		return allKeywords;
+	}
 
 	public List<Compass> getCompasses() {
 		return compasses;
@@ -53,21 +58,29 @@ public class Finder {
 	}
 
 
-	public String printAllKeywordCoordinates(List<String> allKeywordCoordinates) {
+	public List<String> getAllKeywordCoordinates() {
+		return allKeywordCoordinates;
+	}
+
+	public void setAllKeywordCoordinates(List<String> allKeywordCoordinates) {
+		this.allKeywordCoordinates = allKeywordCoordinates;
+	}
+
+	public String printAllKeywordCoordinates() {
 		String formattedPrintout = "\n\nWord Search Coordinates: \n\n";
-		for (String each : allKeywordCoordinates) {
+		for (String each : getAllKeywordCoordinates()) {
 			formattedPrintout += each + "\n";
 		}
 		return formattedPrintout;
 	}
 	
-	public List<String> findAllKeywordCoordinates() {
+	public void findAllKeywordCoordinates() {
 		List<String> allKeywordCoordinates = new ArrayList<>();
 		for (Keyword each : allKeywords) {
 			setKeyword(each);
 			allKeywordCoordinates.add(findKeyword());
 		}
-		return allKeywordCoordinates;
+		setAllKeywordCoordinates(allKeywordCoordinates);
 	}
 	
 	public String findKeyword() {

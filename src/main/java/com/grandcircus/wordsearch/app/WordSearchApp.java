@@ -7,7 +7,7 @@ public class WordSearchApp {
 		WordSearchReader reader = new WordSearchReader("mega_puzzle.txt");
 		Finder findAll = new Finder(reader.getAllKeywords(), reader.makeGrid());
 		
-		String printedKeywords = (findAll.printAllKeywordCoordinates(findAll.findAllKeywordCoordinates()));
-		System.out.println(printedKeywords);
+		findAll.findAllKeywordCoordinates();
+		System.out.println(findAll.printAllKeywordCoordinates());
 	}
 }

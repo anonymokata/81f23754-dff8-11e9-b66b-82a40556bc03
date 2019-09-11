@@ -183,9 +183,41 @@ public class Compass {
 		return remainingLetters.equals(gridSubstring);
 	}
 
-	public void makeGridSubstring() {}
+	public String buildSubString(Integer aStep) {
+//		String gridSubstring = grid[thisRow][forward + aStep];
+//		return gridSubstring;
+		return null;
+	}
+	
+	public Coordinates buildRemainingCoordinates(Integer aStep) {
+		return null;
+	}
+	
+	
+	public void makeGridSubstring() {
+		String gridSubstring = "";
+		int aStep = 0;
+		for (; !outOfLetters(aStep); aStep++) {
+			gridSubstring += buildSubString(aStep);
+		}
+		setGridSubstring(gridSubstring);
+	}
 
-	public void findRemainingCoordinates() {}
+	public void findRemainingCoordinates() {
+		List<Coordinates> remainingCoordinates = new ArrayList<>();
+		remainingCoordinates.add(coordinates);
+		int aStep = 0;
+		for (; !outOfLetters(aStep); aStep++) {
+			remainingCoordinates.add(buildRemainingCoordinates(aStep));
+		}
+		setRemainingCoordinates(remainingCoordinates);
+	}
+	
+//	public void makeGridSubstring() {
+//		
+//	}
+
+//	public void findRemainingCoordinates() {}
 
 	public Boolean outOfLetters(Integer aStep) {
 		return numberOfRemainingLetters - aStep <= 0;

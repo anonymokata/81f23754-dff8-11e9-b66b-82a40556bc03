@@ -32,6 +32,8 @@ public class DirectionalTests {
 	public void setup() {
 
 		directionalReader = new WordSearchReader("directional_tests.txt");
+		findAll = new Finder(directionalReader.getAllKeywords(), directionalReader.makeGrid());
+//		findTara = findAll.getAllKeywords().get(0)
 		findTara = new Finder(directionalReader.getAllKeywords().get(0), directionalReader.makeGrid());
 		findDawn = new Finder(directionalReader.getAllKeywords().get(1), directionalReader.makeGrid());
 		findBuffy = new Finder(directionalReader.getAllKeywords().get(2), directionalReader.makeGrid());
@@ -41,7 +43,7 @@ public class DirectionalTests {
 		findBaora = new Finder(directionalReader.getAllKeywords().get(6), directionalReader.makeGrid());
 		findAaody = new Finder(directionalReader.getAllKeywords().get(7), directionalReader.makeGrid());
 		findCwou = new Finder(directionalReader.getAllKeywords().get(8), directionalReader.makeGrid());
-		findAll = new Finder(directionalReader.getAllKeywords(), directionalReader.makeGrid());
+		
 		compassTara = new Compass(directionalReader.getAllKeywords().get(0), new Coordinates(0, 4));
 		compassAaody = new Compass(directionalReader.getAllKeywords().get(7), new Coordinates(0, 4));
 		compassCwou = new Compass(directionalReader.getAllKeywords().get(8), new Coordinates(4, 4));
@@ -234,7 +236,8 @@ public class DirectionalTests {
 	
 	@Test
 	public void whenFindAllKeywordCoordinatesIsPassedItReturnsAListOfPrintedCoordinates() {
-		String actual = findAll.findAllKeywordCoordinates().toString();
+		findAll.findAllKeywordCoordinates();
+		String actual = findAll.getAllKeywordCoordinates().toString();
 		String expected = "[TARA: (0,1),(0,2),(0,3),(0,4), DAWN: (3,1),(3,2),(3,3),(3,4), "
 				+ "BUFFY: (0,0),(1,0),(2,0),(3,0),(4,0), YDOA: (4,0),(3,1),(2,2),(1,3), "
 				+ "BUOW: (0,0),(1,1),(2,2),(3,3), RARU: (1,4),(1,3),(1,2),(1,1), "
