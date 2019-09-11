@@ -2,10 +2,9 @@
 
 Welcome to the Word Search Kata README.
 
-Below please find instructions to run all application tests from the terminal(Mac) or Bash(Windows) using Maven.
+This README contains instructions to run all application tests from the terminal(Mac) or Bash(Windows) using Maven.
 
-To follow these steps you will need:
-- Git
+To take these steps you will need:
 - Java 1.7+
 - Maven
 
