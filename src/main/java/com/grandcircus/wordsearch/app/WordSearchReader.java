@@ -12,7 +12,6 @@ import com.grandcircus.wordsearch.keyword.Keyword;
 
 public class WordSearchReader {
 	private Path filePath;
-	
 
 	public WordSearchReader(Path filePath) {
 		this.filePath = filePath;

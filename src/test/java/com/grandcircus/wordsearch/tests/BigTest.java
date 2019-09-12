@@ -50,7 +50,7 @@ public class BigTest {
 		findAll.findAllKeywordCoordinates();
 		String actual = findAll.printAllKeywordCoordinates();
 		String expected = 
-				"\n\nWord Search Coordinates: \n\n" +  
+				"\n\nBuffy the Vampire Slayer\n\nWord Search Coordinates: \n\n" +  
 				"BUFFY: (5,21),(6,21),(7,21),(8,21),(9,21)\n" + 
 				"XANDER: (27,37),(26,37),(25,37),(24,37),(23,37),(22,37)\n" + 
 				"WILLOW: (18,1),(17,2),(16,3),(15,4),(14,5),(13,6)\n" + 

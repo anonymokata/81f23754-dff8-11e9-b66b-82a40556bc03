@@ -173,7 +173,7 @@ public class Finder {
 	}
 
 	public String printAllKeywordCoordinates() {
-		String formattedPrintout = "\n\nWord Search Coordinates: \n\n";
+		String formattedPrintout = "\n\nBuffy the Vampire Slayer\n\nWord Search Coordinates: \n\n";
 		for (String each : getAllKeywordCoordinates()) {
 			formattedPrintout += each + "\n";
 		}

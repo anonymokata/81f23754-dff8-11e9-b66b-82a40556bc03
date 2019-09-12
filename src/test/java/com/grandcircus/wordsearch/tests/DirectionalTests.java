@@ -33,7 +33,6 @@ public class DirectionalTests {
 
 		directionalReader = new WordSearchReader("directional_tests.txt");
 		findAll = new Finder(directionalReader.getAllKeywords(), directionalReader.makeGrid());
-//		findTara = findAll.getAllKeywords().get(0).setK
 		findTara = new Finder(directionalReader.getAllKeywords().get(0), directionalReader.makeGrid());
 		findDawn = new Finder(directionalReader.getAllKeywords().get(1), directionalReader.makeGrid());
 		findBuffy = new Finder(directionalReader.getAllKeywords().get(2), directionalReader.makeGrid());
