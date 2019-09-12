@@ -11,6 +11,7 @@ import java.util.List;
 import com.grandcircus.wordsearch.keyword.Keyword;
 
 public class WordSearchReader {
+	public static String[][] grid;
 	private Path filePath;
 
 	public WordSearchReader(Path filePath) {
@@ -29,7 +30,7 @@ public class WordSearchReader {
 		}
 		return grid;
 	}
-	
+
 	public List<String> readPuzzle() {
 		List<String> lines = readFile();
 		List<String> puzzle = new ArrayList<>();
@@ -38,7 +39,7 @@ public class WordSearchReader {
 		}
 		return puzzle;
 	}
-	
+
 	public List<Keyword> getAllKeywords() {
 		String[] splitKeywords = splitKeywords();
 		List<Keyword> keywords = new ArrayList<>();

@@ -6,22 +6,24 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.grandcircus.wordsearch.app.Finder;
+import com.grandcircus.wordsearch.app.Grid;
 import com.grandcircus.wordsearch.app.WordSearchReader;
 
 public class BigTest {
 
 	WordSearchReader mainReader;
+	Grid grid;
 	Finder findXander;
 	Finder findGiles;
 	Finder findAll;
-	
 
 	@BeforeEach
 	public void setup() {
 		mainReader = new WordSearchReader("mega_puzzle.txt");
-		findXander = new Finder(mainReader.getAllKeywords().get(1), mainReader.makeGrid());
-		findGiles = new Finder(mainReader.getAllKeywords().get(3), mainReader.makeGrid());
-		findAll = new Finder(mainReader.getAllKeywords(), mainReader.makeGrid());
+		grid = new Grid(mainReader.makeGrid());
+		findXander = new Finder(mainReader.getAllKeywords().get(1));
+		findGiles = new Finder(mainReader.getAllKeywords().get(3));
+		findAll = new Finder(mainReader.getAllKeywords());
 	}
 	
 	@Test

@@ -15,9 +15,9 @@ public class EarlyTests {
 
 	WordSearchReader smallTest;
 	WordSearchReader missingFileTest;
-	
+
 	@BeforeEach
-	public void setup() {	
+	public void setup() {
 		smallTest = new WordSearchReader("early_tests.txt");
 		missingFileTest = new WordSearchReader("missing_file.txt");
 	}
@@ -26,28 +26,27 @@ public class EarlyTests {
 	public void whenReadFileIsPassedItReturnsAListOfStringsFromTheTextFile() {
 		List<String> actual = smallTest.readFile();
 		List<String> expected = Arrays.asList("BUFFY,XANDER,GILES", "Y,G,M", "E,K,G", "H,O,A");
-	    assertEquals(expected, actual);
+		assertEquals(expected, actual);
 	}
-	
+
 	@Test
 	public void whenReadPuzzleIsPassedItReturnsTheListOfPuzzleStrings() {
 		List<String> actual = smallTest.readPuzzle();
 		List<String> expected = Arrays.asList("Y,G,M", "E,K,G", "H,O,A");
-	    assertEquals(expected, actual);
+		assertEquals(expected, actual);
 	}
-	
+
 	@Test
 	public void whenMakeGridIsPassedItReturnsThePuzzleAsA2DArraySmall() {
 		String[][] actual = smallTest.makeGrid();
-		String[][] expected = {{"Y","G","M"}, {"E","K","G"}, {"H","O","A"}};
+		String[][] expected = { { "Y", "G", "M" }, { "E", "K", "G" }, { "H", "O", "A" } };
 		assertArrayEquals(expected, actual);
 	}
-	
+
 	@Test
-	public void whenReadFileCallsAMissingFileItReturnsAnEmptyStringArrayList() {	
+	public void whenReadFileCallsAMissingFileItReturnsAnEmptyStringArrayList() {
 		String actual = missingFileTest.readFile().toString();
 		String expected = "[]";
 		assertEquals(expected, actual);
 	}
-	
 }

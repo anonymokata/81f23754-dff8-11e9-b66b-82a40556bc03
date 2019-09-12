@@ -17,23 +17,24 @@ import com.grandcircus.wordsearch.keyword.Direction;
 import com.grandcircus.wordsearch.keyword.Keyword;
 
 public class Finder {
-	public static String[][] grid;
+//	public static String[][] grid;
 
 	private Keyword keyword;
 	private List<Keyword> allKeywords;
 	private List<Compass> compasses;
 	private List<String> allKeywordCoordinates;
+	private String[][] grid = Grid.grid;
 
-	public Finder(Keyword keyword, String[][] grid) {
+	public Finder(Keyword keyword) {
 		super();
 		this.keyword = keyword;
-		Finder.grid = grid;
+//		Finder.grid = grid;
 	}
 
-	public Finder(List<Keyword> allKeywords, String[][] grid) {
+	public Finder(List<Keyword> allKeywords) {
 		super();
 		this.allKeywords = allKeywords;
-		Finder.grid = grid;
+//		Finder.grid = grid;
 	}
 
 	public Keyword getKeyword() {
@@ -156,9 +157,8 @@ public class Finder {
 					directionType = null;
 					break;
 				}
-				if (keywordIsFound(directionType)) {
+				if (keywordIsFound(directionType))
 					return;
-				}
 			}
 		}
 	}

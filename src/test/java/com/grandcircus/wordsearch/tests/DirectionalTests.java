@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.grandcircus.wordsearch.app.Finder;
+import com.grandcircus.wordsearch.app.Grid;
 import com.grandcircus.wordsearch.app.WordSearchReader;
 import com.grandcircus.wordsearch.compass.Compass;
 import com.grandcircus.wordsearch.keyword.Coordinates;
@@ -14,6 +15,7 @@ import com.grandcircus.wordsearch.keyword.Direction;
 public class DirectionalTests {
 
 	WordSearchReader directionalReader;
+	Grid grid;
 	Finder findTara;
 	Finder findDawn;
 	Finder findBuffy;
@@ -25,59 +27,53 @@ public class DirectionalTests {
 	Finder findCwou;
 	Finder findAll;
 	Compass compassTara;
-	Compass compassAaody;
-	Compass compassCwou;
-	
+
 	@BeforeEach
 	public void setup() {
 
 		directionalReader = new WordSearchReader("directional_tests.txt");
-		findAll = new Finder(directionalReader.getAllKeywords(), directionalReader.makeGrid());
-		findTara = new Finder(directionalReader.getAllKeywords().get(0), directionalReader.makeGrid());
-		findDawn = new Finder(directionalReader.getAllKeywords().get(1), directionalReader.makeGrid());
-		findBuffy = new Finder(directionalReader.getAllKeywords().get(2), directionalReader.makeGrid());
-		findYdoa = new Finder(directionalReader.getAllKeywords().get(3), directionalReader.makeGrid());
-		findBuow = new Finder(directionalReader.getAllKeywords().get(4), directionalReader.makeGrid());
-		findRaru = new Finder(directionalReader.getAllKeywords().get(5), directionalReader.makeGrid());
-		findBaora = new Finder(directionalReader.getAllKeywords().get(6), directionalReader.makeGrid());
-		findAaody = new Finder(directionalReader.getAllKeywords().get(7), directionalReader.makeGrid());
-		findCwou = new Finder(directionalReader.getAllKeywords().get(8), directionalReader.makeGrid());
-		
+		grid = new Grid(directionalReader.makeGrid());
+		findTara = new Finder(directionalReader.getAllKeywords().get(0));
+		findDawn = new Finder(directionalReader.getAllKeywords().get(1));
+		findBuffy = new Finder(directionalReader.getAllKeywords().get(2));
+		findYdoa = new Finder(directionalReader.getAllKeywords().get(3));
+		findBuow = new Finder(directionalReader.getAllKeywords().get(4));
+		findRaru = new Finder(directionalReader.getAllKeywords().get(5));
+		findBaora = new Finder(directionalReader.getAllKeywords().get(6));
+		findAaody = new Finder(directionalReader.getAllKeywords().get(7));
+		findCwou = new Finder(directionalReader.getAllKeywords().get(8));
+		findAll = new Finder(directionalReader.getAllKeywords());
 		compassTara = new Compass(directionalReader.getAllKeywords().get(0), new Coordinates(0, 4));
-		compassAaody = new Compass(directionalReader.getAllKeywords().get(7), new Coordinates(0, 4));
-		compassCwou = new Compass(directionalReader.getAllKeywords().get(8), new Coordinates(4, 4));
 	}
 
 	@Test
 	public void whenFindPotentialStartCoordinatesIsPassedItReturnsPotentalStartCoordinates() {
 		findTara.findFirstPotentials();
 		findDawn.findFirstPotentials();
-		String actual = findTara.findFirstPotentials().toString(); 
+		String actual = findTara.findFirstPotentials().toString();
 		String actual2 = findDawn.findFirstPotentials().toString();
 		String expected = "[(0,1)]";
 		String expected2 = "[(2,3), (3,1), (4,3)]";
 		assertEquals(expected, actual);
 		assertEquals(expected2, actual2);
 	}
-	
-	
+
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAHorizontalClueItAddsHorizontalToDirectionsField() {
 		findTara.addDirectionsToPotentialCoordinates();
-		Direction actual = findTara.getCompasses().get(0).getDirections().get(0); 
+		Direction actual = findTara.getCompasses().get(0).getDirections().get(0);
 		Direction expected = Direction.HORIZONTAL;
 		assertEquals(expected, actual);
 	}
-	
+
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAVerticalItAddsVerticalToDirectionsField() {
 		findBuffy.addDirectionsToPotentialCoordinates();
-		Direction actual = findBuffy.getCompasses().get(0).getDirections().get(0); 
+		Direction actual = findBuffy.getCompasses().get(0).getDirections().get(0);
 		Direction expected = Direction.VERTICAL;
 		assertEquals(expected, actual);
 	}
-	
-	
+
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedAVerticalAndDiagnalDownClueItAddserticalAndDiagonalDownToDirectionsField() {
 		findBuffy.addDirectionsToPotentialCoordinates();
@@ -86,7 +82,8 @@ public class DirectionalTests {
 		Direction expected = Direction.VERTICAL;
 		Direction expected2 = Direction.DIAGONAL_DOWN;
 		assertEquals(expected, actual);
-		assertEquals(expected2, actual2);;
+		assertEquals(expected2, actual2);
+		;
 	}
 
 	@Test
@@ -96,57 +93,57 @@ public class DirectionalTests {
 		Direction expected = Direction.DIAGONAL_UP;
 		assertEquals(expected, actual);
 	}
-	
+
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedABwHorizontalItAddsBwHorizontalToDirectionsField() {
 		findRaru.addDirectionsToPotentialCoordinates();
 		Direction actual = findRaru.getCompasses().get(0).getDirections().get(1);
 		Direction expected = Direction.BW_HORIZONTAL;
 		assertEquals(expected, actual);
-	} 
-	
+	}
+
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedABwVerticalItAddsBwVerticalToDirectionsField() {
-		findBaora.addDirectionsToPotentialCoordinates();	
+		findBaora.addDirectionsToPotentialCoordinates();
 		Direction actual = findBaora.getCompasses().get(0).getDirections().get(0);
 		Direction expected = Direction.BW_VERTICAL;
 		assertEquals(expected, actual);
-	} 
-	
+	}
+
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedABwDiagonalDownItAddsBwDiagonalDownToDirectionsField() {
-		findAaody.addDirectionsToPotentialCoordinates();	
+		findAaody.addDirectionsToPotentialCoordinates();
 		Direction actual = findAaody.getCompasses().get(0).getDirections().get(0);
 		Direction expected = Direction.BW_DIAGONAL_DOWN;
 		assertEquals(expected, actual);
-	} 
-	
+	}
+
 	@Test
 	public void whenCheckSecondCoordinatesIsPassedABwDiagonalUpItAddsBwDiagonalUpToDirectionsField() {
-		findCwou.addDirectionsToPotentialCoordinates();	
+		findCwou.addDirectionsToPotentialCoordinates();
 		Direction actual = findCwou.getCompasses().get(0).getDirections().get(0);
 		Direction expected = Direction.BW_DIAGONAL_UP;
 		assertEquals(expected, actual);
-	} 
-	
+	}
+
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedAHorizontalMatchItSetsIsFoundToTrue() {
 		findTara.addDirectionsToPotentialCoordinates();
-		Boolean actual = findTara.getKeyword().getIsFound(); 
+		Boolean actual = findTara.getKeyword().getIsFound();
 		String actual2 = findTara.getKeyword().getAllCoordinates().toString();
 		Boolean expected = true;
 		String expected2 = "[(0,1), (0,2), (0,3), (0,4)]";
 		assertEquals(expected, actual);
 		assertEquals(expected2, actual2);
 	}
-	
+
 	@Test
 	public void whenGetKeywordSubstringIsPassedADirectionItReturnsSubstring() {
 		String actual = compassTara.getKeyword().getRemainingLetters();
 		String expected = "ARA";
 		assertEquals(expected, actual);
 	}
-	
+
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedAHorizontalKeywordItCreatesAHorizontalSubtype() {
 		findDawn.addDirectionsToPotentialCoordinates();
@@ -157,7 +154,7 @@ public class DirectionalTests {
 		assertEquals(expected, actual);
 		assertEquals(expected2, actual2);
 	}
-	
+
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedAVerticalKeywordItCreatesAVerticallSubtypeAndReturnsCoordinates() {
 		findBuffy.addDirectionsToPotentialCoordinates();
@@ -168,7 +165,7 @@ public class DirectionalTests {
 		assertEquals(expected, actual);
 		assertEquals(expected2, actual2);
 	}
-	
+
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedADiagonalDownlKeywordItCreatesADiagonalDownlSubtypeAndReturnsCoordinates() {
 		findBuow.addDirectionsToPotentialCoordinates();
@@ -187,7 +184,7 @@ public class DirectionalTests {
 		assertEquals(expected, actual);
 		assertEquals(expected2, actual2);
 	}
-	
+
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedABwHorizontallKeywordItCreatesABwHorizontalSubtype() {
 		findRaru.addDirectionsToPotentialCoordinates();
@@ -195,7 +192,7 @@ public class DirectionalTests {
 		String expected = "[(1,4), (1,3), (1,2), (1,1)]";
 		assertEquals(expected, actual);
 	}
-	
+
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedABwVerticalItCreatesABwVerticalSubtype() {
 		findBaora.addDirectionsToPotentialCoordinates();
@@ -203,7 +200,7 @@ public class DirectionalTests {
 		String expected = "[(4,2), (3,2), (2,2), (1,2), (0,2)]";
 		assertEquals(expected, actual);
 	}
-	
+
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedABwDiagonalDownItCreatesABwDiagonalDownSubtype() {
 		findAaody.addDirectionsToPotentialCoordinates();
@@ -211,7 +208,7 @@ public class DirectionalTests {
 		String expected = "[(0,4), (1,3), (2,2), (3,1), (4,0)]";
 		assertEquals(expected, actual);
 	}
-	
+
 	@Test
 	public void whenSetKeywordToDirectionTypeIsPassedABwDiagonalUPItCreatesABwDiagonalUpSubtype() {
 		findCwou.addDirectionsToPotentialCoordinates();
@@ -219,14 +216,14 @@ public class DirectionalTests {
 		String expected = "[(4,4), (3,3), (2,2), (1,1)]";
 		assertEquals(expected, actual);
 	}
-	
+
 	@Test
 	public void whenFindKeywordIsPassedCoordinatesAreReturned() {
 		String actual = findBuffy.findKeywordCoordinates();
 		String expected = "BUFFY: (0,0),(1,0),(2,0),(3,0),(4,0)";
 		assertEquals(expected, actual);
 	}
-	
+
 	@Test
 	public void whenFindAllKeywordCoordinatesIsPassedItReturnsAListOfPrintedCoordinates() {
 		findAll.findAllKeywordCoordinates();
@@ -238,5 +235,4 @@ public class DirectionalTests {
 				+ "CWOU: (4,4),(3,3),(2,2),(1,1)]";
 		assertEquals(expected, actual);
 	}
-	
 }

@@ -2,9 +2,9 @@ package com.grandcircus.wordsearch.compass;
 
 import com.grandcircus.wordsearch.keyword.Coordinates;
 
-public class Vertical extends Compass  {
+public class Vertical extends Compass {
 
-	public Vertical (Compass compass) {
+	public Vertical(Compass compass) {
 		super(compass.getKeyword(), compass.getCoordinates());
 	}
 
@@ -13,7 +13,7 @@ public class Vertical extends Compass  {
 		String gridSubstring = grid[down + aStep][thisCol];
 		return gridSubstring;
 	}
-	
+
 	@Override
 	public Coordinates buildRemainingCoordinates(Integer aStep) {
 		return new Coordinates(down + aStep, thisCol);
