@@ -1,6 +1,6 @@
 # WordSearch
 
-Welcome to the Buffy the Vampire Slayer Word Search Kata README.
+Welcome to the *Buffy the Vampire Slayer* Word Search Kata README.
 
 This README contains instructions to run all application tests from the terminal(Mac) or Bash(Windows) using Maven.
 
