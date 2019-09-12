@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.grandcircus.wordsearch.app.Finder;
-import com.grandcircus.wordsearch.app.Grid;
 import com.grandcircus.wordsearch.app.WordSearchReader;
 import com.grandcircus.wordsearch.compass.Compass;
 import com.grandcircus.wordsearch.keyword.Coordinates;
@@ -14,8 +13,7 @@ import com.grandcircus.wordsearch.keyword.Direction;
 
 public class DirectionalTests {
 
-	WordSearchReader directionalReader;
-	Grid grid;
+	WordSearchReader reader;
 	Finder findTara;
 	Finder findDawn;
 	Finder findBuffy;
@@ -31,19 +29,19 @@ public class DirectionalTests {
 	@BeforeEach
 	public void setup() {
 
-		directionalReader = new WordSearchReader("directional_tests.txt");
-		grid = new Grid(directionalReader.makeGrid());
-		findTara = new Finder(directionalReader.getAllKeywords().get(0));
-		findDawn = new Finder(directionalReader.getAllKeywords().get(1));
-		findBuffy = new Finder(directionalReader.getAllKeywords().get(2));
-		findYdoa = new Finder(directionalReader.getAllKeywords().get(3));
-		findBuow = new Finder(directionalReader.getAllKeywords().get(4));
-		findRaru = new Finder(directionalReader.getAllKeywords().get(5));
-		findBaora = new Finder(directionalReader.getAllKeywords().get(6));
-		findAaody = new Finder(directionalReader.getAllKeywords().get(7));
-		findCwou = new Finder(directionalReader.getAllKeywords().get(8));
-		findAll = new Finder(directionalReader.getAllKeywords());
-		compassTara = new Compass(directionalReader.getAllKeywords().get(0), new Coordinates(0, 4));
+		reader = new WordSearchReader("directional_tests.txt");
+		reader.makeGrid();
+		findAll = new Finder(reader.getAllKeywords());
+		findTara = new Finder(findAll.getAllKeywords().get(0));
+		findDawn = new Finder(findAll.getAllKeywords().get(1));
+		findBuffy = new Finder(findAll.getAllKeywords().get(2));
+		findYdoa = new Finder(findAll.getAllKeywords().get(3));
+		findBuow = new Finder(findAll.getAllKeywords().get(4));
+		findRaru = new Finder(findAll.getAllKeywords().get(5));
+		findBaora = new Finder(findAll.getAllKeywords().get(6));
+		findAaody = new Finder(findAll.getAllKeywords().get(7));
+		findCwou = new Finder(findAll.getAllKeywords().get(8));
+		compassTara = new Compass(findAll.getAllKeywords().get(0), new Coordinates(0, 4));
 	}
 
 	@Test

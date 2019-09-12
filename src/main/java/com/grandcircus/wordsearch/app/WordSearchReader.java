@@ -21,14 +21,18 @@ public class WordSearchReader {
 	public WordSearchReader(String filePath) {
 		this(Paths.get(filePath));
 	}
+	
+	public static String[][] getGrid() {
+		return grid;
+	}
 
-	public String[][] makeGrid() {
+	public void makeGrid() {
 		List<String> puzzle = readPuzzle();
 		String[][] grid = new String[puzzle.size()][puzzle.size()];
 		for (int i = 0; i < puzzle.size(); i++) {
 			grid[i] = puzzle.get(i).split(",");
 		}
-		return grid;
+		WordSearchReader.grid = grid;
 	}
 
 	public List<String> readPuzzle() {

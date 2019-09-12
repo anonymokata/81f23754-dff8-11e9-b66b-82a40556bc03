@@ -3,7 +3,7 @@ package com.grandcircus.wordsearch.compass;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.grandcircus.wordsearch.app.Grid;
+import com.grandcircus.wordsearch.app.WordSearchReader;
 import com.grandcircus.wordsearch.keyword.Coordinates;
 import com.grandcircus.wordsearch.keyword.Direction;
 import com.grandcircus.wordsearch.keyword.Keyword;
@@ -14,7 +14,7 @@ public class Compass {
 	protected Coordinates coordinates;
 	private List<Direction> directions;
 	protected List<Coordinates> remainingCoordinates;
-	protected String[][] grid = Grid.grid;
+	protected String[][] grid = WordSearchReader.grid;
 	protected String gridSubstring;
 	protected String secondLetter;
 	protected String remainingLetters;

@@ -6,30 +6,29 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.grandcircus.wordsearch.app.Finder;
-import com.grandcircus.wordsearch.app.Grid;
 import com.grandcircus.wordsearch.app.WordSearchReader;
 
 public class BigTest {
 
-	WordSearchReader mainReader;
-	Grid grid;
+	WordSearchReader reader;
 	Finder findXander;
 	Finder findGiles;
 	Finder findAll;
 
 	@BeforeEach
 	public void setup() {
-		mainReader = new WordSearchReader("mega_puzzle.txt");
-		grid = new Grid(mainReader.makeGrid());
-		findXander = new Finder(mainReader.getAllKeywords().get(1));
-		findGiles = new Finder(mainReader.getAllKeywords().get(3));
-		findAll = new Finder(mainReader.getAllKeywords());
+		reader = new WordSearchReader("mega_puzzle.txt");
+		reader.makeGrid();
+		findXander = new Finder(reader.getAllKeywords().get(1));
+		findGiles = new Finder(reader.getAllKeywords().get(3));
+		findAll = new Finder(reader.getAllKeywords());
 	}
 	
 	@Test
 	public void whenReadKeywordsIsPassedItReturnsAStringOfKeywords() {
-		String actual = mainReader.readKeywords();
-		String expected = "BUFFY,XANDER,WILLOW,GILES,CORDELIA,ANGEL,OZ,SPIKE,RILEY,ANYA,DAWN,TARA,JOYCE,FAITH,DRUSILLA,GLORY,CALEB,WARREN,JONATHAN,ANDREW";
+		String actual = reader.readKeywords();
+		String expected = "BUFFY,XANDER,WILLOW,GILES,CORDELIA,ANGEL,OZ,SPIKE,RILEY,ANYA,"
+				+ "DAWN,TARA,JOYCE,FAITH,DRUSILLA,GLORY,CALEB,WARREN,JONATHAN,ANDREW,SUNNYDALE";
 	    assertEquals(expected, actual);
 	}
 	
@@ -52,7 +51,10 @@ public class BigTest {
 		findAll.findAllKeywordCoordinates();
 		String actual = findAll.printAllKeywordCoordinates();
 		String expected = 
-				"\n\nBuffy the Vampire Slayer\n\nWord Search Coordinates: \n\n" +  
+				"\n\t||====================================||\n"
+						+ "\t||Buffy the Vampire Slayer Word Search||"
+						+ "\n\t||====================================||\n\n"
+						+ "Coordinates: \n----------------------------------------\n" +  
 				"BUFFY: (5,21),(6,21),(7,21),(8,21),(9,21)\n" + 
 				"XANDER: (27,37),(26,37),(25,37),(24,37),(23,37),(22,37)\n" + 
 				"WILLOW: (18,1),(17,2),(16,3),(15,4),(14,5),(13,6)\n" + 
@@ -72,7 +74,8 @@ public class BigTest {
 				"CALEB: (19,33),(20,33),(21,33),(22,33),(23,33)\n" + 
 				"WARREN: (24,7),(24,8),(24,9),(24,10),(24,11),(24,12)\n" + 
 				"JONATHAN: (19,7),(18,6),(17,5),(16,4),(15,3),(14,2),(13,1),(12,0)\n" + 
-				"ANDREW: (0,25),(1,26),(2,27),(3,28),(4,29),(5,30)\n";
+				"ANDREW: (0,25),(1,26),(2,27),(3,28),(4,29),(5,30)\n" + 
+				"SUNNYDALE: (38,39),(37,39),(36,39),(35,39),(34,39),(33,39),(32,39),(31,39),(30,39)\n";
 		assertEquals(expected, actual);
 	}
 }

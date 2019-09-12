@@ -38,7 +38,8 @@ public class EarlyTests {
 
 	@Test
 	public void whenMakeGridIsPassedItReturnsThePuzzleAsA2DArraySmall() {
-		String[][] actual = smallTest.makeGrid();
+		smallTest.makeGrid();
+		String[][] actual = WordSearchReader.getGrid();
 		String[][] expected = { { "Y", "G", "M" }, { "E", "K", "G" }, { "H", "O", "A" } };
 		assertArrayEquals(expected, actual);
 	}

@@ -17,24 +17,21 @@ import com.grandcircus.wordsearch.keyword.Direction;
 import com.grandcircus.wordsearch.keyword.Keyword;
 
 public class Finder {
-//	public static String[][] grid;
 
 	private Keyword keyword;
 	private List<Keyword> allKeywords;
 	private List<Compass> compasses;
 	private List<String> allKeywordCoordinates;
-	private String[][] grid = Grid.grid;
+	private String[][] grid = WordSearchReader.grid;
 
 	public Finder(Keyword keyword) {
 		super();
 		this.keyword = keyword;
-//		Finder.grid = grid;
 	}
 
 	public Finder(List<Keyword> allKeywords) {
 		super();
 		this.allKeywords = allKeywords;
-//		Finder.grid = grid;
 	}
 
 	public Keyword getKeyword() {
@@ -173,7 +170,10 @@ public class Finder {
 	}
 
 	public String printAllKeywordCoordinates() {
-		String formattedPrintout = "\n\nBuffy the Vampire Slayer\n\nWord Search Coordinates: \n\n";
+		String formattedPrintout = "\n\t||====================================||\n"
+				+ "\t||Buffy the Vampire Slayer Word Search||"
+				+ "\n\t||====================================||\n\n"
+				+ "Coordinates: \n----------------------------------------\n";
 		for (String each : getAllKeywordCoordinates()) {
 			formattedPrintout += each + "\n";
 		}
